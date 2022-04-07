@@ -18,7 +18,7 @@ sys.path.insert(0, "..")
 sys.path.insert(0, os.path.abspath(".."))
 
 file_path = pathlib.Path(__file__).parent.resolve()
-about_path = file_path / ".." / "src" / "name" / "about.py"
+about_path = file_path / ".." / "src" / "snip" / "about.py"
 
 # extract version number from about.py
 with open(about_path) as f:
@@ -30,7 +30,7 @@ with open(about_path) as f:
 
 # -- Project information -----------------------------------------------------
 
-project = "name"
+project = "snip"
 author = "Kenneth Enevoldsen"
 
 # The full version, including alpha/beta/rc tags

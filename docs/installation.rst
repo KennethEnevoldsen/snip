@@ -5,6 +5,6 @@ line in your terminal:
 
 .. code-block::
 
-   pip install name
+   pip install snip
 
 

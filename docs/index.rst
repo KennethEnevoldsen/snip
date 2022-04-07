@@ -1,10 +1,10 @@
-Name
+Snip
 ================================
 
-.. image:: https://img.shields.io/github/stars/kennethenevoldsen/name.svg?style=social&label=Star&maxAge=2592000
-   :target: https://github.com/kennethenevoldsen/name
+.. image:: https://img.shields.io/github/stars/kennethenevoldsen/snip.svg?style=social&label=Star&maxAge=2592000
+   :target: https://github.com/kennethenevoldsen/snip
 
-Name is a package for doing amazing stuff that you want done.
+Snip is a package for doing amazing stuff that you want done.
 
 
 Contents
@@ -20,7 +20,7 @@ Contents
    faq
 
 .. toctree::
-  GitHub Repository <https://github.com/kennethenevoldsen/name>
+  GitHub Repository <https://github.com/kennethenevoldsen/snip>
 
 
 Indices and search

@@ -1,7 +1,7 @@
 from setuptools import setup
 import os
 
-path = os.path.join("src", "name", "about.py")
+path = os.path.join("src", "snip", "about.py")
 
 # extract version number from about.py
 with open(path) as f:

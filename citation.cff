@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this package, please cite it as below."
+authors:
+- family-names: "Enevoldsen"
+  given-names: "Kenneth"
+  orcid: "https://orcid.org/0000-0001-8733-0966"
+title: "Snip: A package for analysing Single Nucleotide polymorphisms In Python"
+year: 2022
+url: "https://github.com/KennethEnevoldsen/snip"
+date-released: 2022-04-07

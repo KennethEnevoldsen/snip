@@ -67,12 +67,12 @@ To make the documentation you can run:
 
 How do I cite this work?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-If you use this library in your research, it would be much appreciated it if you would cite:
+If you use this library in your research, it would be much appreciated if you would cite:
 
 .. code-block::
    
-   @inproceedings{name2022,
-      title={Name, very catchy subtitle},
+   @inproceedings{snip2022,
+      title={Snip: A package for analysing Single Nucleotide polymorphisms In Python},
       author={Enevoldsen, Kenneth},
       year={2022}
    }

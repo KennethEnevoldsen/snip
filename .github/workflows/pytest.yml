@@ -31,7 +31,7 @@ jobs:
     - name: Run and write pytest
       run: |
         pip install --editable .
-        python -m  pytest --cov=src/name --cov-report term-missing | tee pytest-coverage.txt
+        python -m  pytest --cov=src/snip --cov-report term-missing | tee pytest-coverage.txt
 
 
   pytest-coverage:
@@ -49,7 +49,7 @@ jobs:
     - name: Run and write pytest
       run: |
         pip install --editable .
-        python -m  pytest --cov=src/name --cov-report term-missing | tee pytest-coverage.txt
+        python -m  pytest --cov=src/snip --cov-report term-missing | tee pytest-coverage.txt
     - name: Pytest coverage comment
       id: coverage-comment
       uses: MishaKav/pytest-coverage-comment@v1.1.24
@@ -65,8 +65,8 @@ jobs:
       uses: schneegans/dynamic-badges-action@v1.2.0
       with:
         auth: ${{ secrets.GIST_DOCS_SCOPE }}
-        gistID: ce7ccaf6aaa9faeeba83f9b61b5cfcd8
-        filename: badge-dfm-pytest-coverage.json
+        gistID: c102b02c0430c5e834a7a39abd846130
+        filename: badge-snip-coverage.json
         label: Coverage
         message: ${{ steps.coverage-comment.outputs.coverage }}
         color: ${{ steps.coverage-comment.outputs.color }}

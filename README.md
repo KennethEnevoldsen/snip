@@ -1,33 +1,52 @@
-# Name, the python package template which makes your dream come true
-This is a GitHub template for python packages.
+<a href="https://github.com/kennethenevoldsen/snip"><img src="https://github.com/KennethEnevoldsen/snip/blob/main/docs/_static/icon.png?raw=true" width="200" align="right" /></a>
+# Snip: The package template you dream of
 
 
-## Places to change thing:
+[![PyPI version](https://badge.fury.io/py/snip.svg)](https://pypi.org/project/snip/)
+[![python version](https://img.shields.io/badge/Python-%3E=3.7-blue)](https://github.com/kennethenevoldsen/snip)
+[![Code style: black](https://img.shields.io/badge/Code%20Style-Black-black)](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html)
+[![github actions pytest](https://github.com/kennethenevoldsen/snip/actions/workflows/pytest-cov-comment.yml/badge.svg)](https://github.com/kennethenevoldsen/snip/actions)
+[![github actions docs](https://github.com/kennethenevoldsen/snip/actions/workflows/documentation.yml/badge.svg)](https://kennethenevoldsen.github.io/snip/)
+![github coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/KennethEnevoldsen/c102b02c0430c5e834a7a39abd846130/raw/badge-snip-pytest-coverage.json)
+[![CodeFactor](https://www.codefactor.io/repository/github/kennethenevoldsen/snip/badge)](https://www.codefactor.io/repository/github/kennethenevoldsen/snip)
 
-### Setup
-- [ ] setup.py: update `name`
-- [ ] setup.cfg: `name`, `description`, `install_requires`, `url`
-- [ ] about.py: `__download_url__`, `__title__`
-- [ ] Name of folder `src/name` to package name
 
-### Workflows:
-- [ ] pytest: 
-  - [ ] `name` in line 35 and 54
-  - [ ] Add secret `GIST_DOCS_SCOPE` til GitHub action. This is a GitHub authentication token for `repo, read:repo hook, gist`.
-  - [ ] Add a gist and gist ID for the coverage comment
-- [ ] publish_to_pypi 
-  - [ ] `name` in line 35 and 54
-  - [ ] Add secret: `PYPI_API_TOKEN` to GitHub secrets
-- [ ] Delete `.github/workflows/tutorials.yml` if you do not use tutorials
+A utility package using SNp I Python with the intended use of using in in e.g. PyTorch.
 
-### Documentation
-- [ ] Change project name in line 33 in `docs/conf.py`
-- [ ] Change citation in `docs/faq.rst`
-- [ ] `name` in line 1, 4, 5, 23 and description in line 7 in `docs/index.rst`
-- [ ] `name` in line 7 in `docs/installation.rst`
-- [ ] Update `docs/news.rst`
-- [ ] Fill out `README_outline.md`
-  - [ ] `name` in line 1, 2, 5, 6, 8, 9, 11 ...
-  - [ ] `replace` the gist ID in line 10 for the coverage comment
-- [ ] replace `README.md` with `README_outline.md`
-- [ ] Replace icong in `docs/_static`, create a favicon using [favicon.io](https://favicon.io/favicon-converter/)
+## 🔧 Installation
+To get started using this package install it using pip by running the following line in your terminal:
+
+```
+pip install snip
+```
+
+
+For more detailed instructions on installing see the [installation instructions](https://kennethenevoldsen.github.io/snip/installation).
+
+```
+
+## 📖 Documentation
+
+| Documentation              |                                                                     |
+| -------------------------- | ------------------------------------------------------------------- |
+| 📰 **[News and changelog]** | New additions, changes and version history.                         |
+| 🎛 **[API References]**     | The reference for the package API. Including function documentation |
+| 🙋 **[FAQ]**                | Frequently asked question                                           |
+
+[usage guides]: https://kennethenevoldsen.github.io/snip/introduction.html
+[api references]: https://kennethenevoldsen.github.io/snip/
+[News and changelog]: https://kennethenevoldsen.github.io/snip/news.html
+[FAQ]: https://kennethenevoldsen.github.io/snip/faq.html
+
+## 💬 Where to ask questions
+
+| Type                           |                        |
+| ------------------------------ | ---------------------- |
+| 🚨 **Bug Reports**              | [GitHub Issue Tracker] |
+| 🎁 **Feature Requests & Ideas** | [GitHub Issue Tracker] |
+| 👩‍💻 **Usage Questions**          | [GitHub Discussions]   |
+| 🗯 **General Discussion**       | [GitHub Discussions]   |
+
+[github issue tracker]: https://github.com/kennethenevoldsen/snip/issues
+[github discussions]: https://github.com/kennethenevoldsen/snip/discussions
+

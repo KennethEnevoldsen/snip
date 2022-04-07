@@ -1,5 +1,8 @@
 # package requirements
-# add here 
+
+## data handling plink bfile format
+pandas_plink>=2.2.9,<2.3.0
+
 
 # testing
 pytest
