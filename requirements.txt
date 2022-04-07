@@ -1,0 +1,18 @@
+# package requirements
+# add here 
+
+# testing
+pytest
+pytest-cov
+
+
+# documentation
+sphinx>=4.5.0
+furo
+sphinx-copybutton
+sphinxext-opengraph
+myst-parser
+
+# code style
+flake8
+black==22.3.0
