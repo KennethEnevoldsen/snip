@@ -53,7 +53,7 @@ jobs:
         python -m  pytest --cov=src/name --cov-report term-missing | tee pytest-coverage.txt
     - name: Pytest coverage comment
       id: coverage-comment
-      uses: MishaKav/pytest-coverage-comment@v1.1.28
+      uses: MishaKav/pytest-coverage-comment@v1.1.29
       with:
         pytest-coverage-path: ./pytest-coverage.txt
         github-token: ${{ secrets.GIST_DOCS_SCOPE }}
