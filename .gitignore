@@ -136,3 +136,7 @@ docs/_build/*
 
 # MacOS
 .DS_Store
+
+# Data files
+*.zarr
+poetry.lock
