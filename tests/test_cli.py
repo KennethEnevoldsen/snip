@@ -35,6 +35,11 @@ def test_convert(bed_path, zarr_path):
 
 def test_cli_convert(app, bed_path, zarr_path):
     result = runner.invoke(app, ["convert", f"{bed_path}", f"{zarr_path}"])  # noqa
+    print(bed_path)
+    print(zarr_path)
+    import os
+
+    print(os.listdir())
     assert zarr_path.is_dir()
 
 
