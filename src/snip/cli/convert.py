@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Optional, Union
+from typing import Optional
 
 from typer import Argument, Option
 
@@ -10,12 +10,12 @@ from ._util import app
 
 @app.command("convert")
 def convert_cli(
-    input_path: Union[str, Path] = Argument(
+    input_path: str = Argument(
         ...,
         help="Input file or directory",
         exists=True,
     ),
-    output_path: Union[str, Path] = Argument(
+    output_path: str = Argument(
         ...,
         help="Output file or directory",
         exists=True,
@@ -28,19 +28,21 @@ def convert_cli(
     ),
     overwrite: bool = False,
 ):
-    """Intended use snip convert path/to/plink_files save/location.zarr.
+    """Intended usage:
 
-    --format zarr.
+    .. code::
 
-    Where --format zarr can be left out, in which case it will be
+        snip convert path/to/plink_files save/location.zarr --format zarr
+
+    Where ``--format zarr`` can be left out, in which case it will be
     extracted from the save file extension.
     """
     convert(input_path, output_path, format, overwrite)
 
 
 def convert(
-    load_path: Union[str, Path],
-    save_path: Union[str, Path],
+    load_path: str,
+    save_path: str,
     format: Optional[str] = None,
     overwrite: bool = False,
 ):
