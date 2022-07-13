@@ -6,7 +6,7 @@
 [![python version](https://img.shields.io/badge/Python-%3E=3.8-blue)](https://github.com/kennethenevoldsen/snip)
 [![Code style: black](https://img.shields.io/badge/Code%20Style-Black-black)](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html)
 [![github actions pytest](https://github.com/kennethenevoldsen/snip/actions/workflows/pytest.yml/badge.svg)](https://github.com/kennethenevoldsen/snip/actions)
-![github coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/KennethEnevoldsen/c102b02c0430c5e834a7a39abd846130/raw/badge-snip-pytest-coverage.json)
+![github coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/KennethEnevoldsen/c102b02c0430c5e834a7a39abd846130/raw/badge-snip-coverage.json)
 
 
 A utility package handling Single Nucleotide polymorphism data in Python with the intended use of using in in e.g. PyTorch.
