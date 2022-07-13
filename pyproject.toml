@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "snip"
-version = "0.0.6"
+version = "0.0.8"
 description = "A utility package for analysing SNps wIth Python with the intended use of using in in e.g. PyTorch."
 authors = ["Kenneth Enevoldsen <kennethcenevoldsen@gmail.com>"]
 license = "MIT"
@@ -74,4 +74,4 @@ upload_to_release = true
 build_command = "poetry build"
 
 [tool.poetry.scripts]
-snip = "snip.cli:setup_cli"
+snip = "snip.cli._util:app"
