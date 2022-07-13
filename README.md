@@ -22,6 +22,30 @@ pip install git+https://github.com/KennethEnevoldsen/snip
 For more detailed instructions on installing see the [installation instructions](https://kennethenevoldsen.github.io/snip/installation).
 
 
+## 👩‍💻 Getting started
+
+To convert `.bed` files to `.zarr`
+```
+snip convert sample.bed sample.zarr
+```
+
+or equivalently:
+
+```
+python -m snip convert sample.bed sample.zarr
+```
+
+To see a list of possible commands:
+```
+snip --help
+```
+
+To find out more about each command:
+
+```
+snip convert --help
+```
+
 ## 📖 Documentation
 
 | Documentation              |                                                                     |

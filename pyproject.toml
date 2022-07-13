@@ -74,4 +74,4 @@ upload_to_release = true
 build_command = "poetry build"
 
 [tool.poetry.scripts]
-snip = "snip.cli._util:app"
+snip = "snip.cli._util:setup_cli"
