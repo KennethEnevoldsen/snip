@@ -12,7 +12,7 @@ jobs:
 
     strategy:
         matrix:
-            os: [macos-latest, windows-latest, ubuntu-latest]
+            os: [macos-latest, ubuntu-latest]
             python-version: ['3.9', '3.8', '3.7']
             exclude:
               - os: ubuntu-latest
@@ -21,17 +21,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install --editable .
     - name: Run and write pytest
       run: |
-        pip install --editable .
-        python -m  pytest --cov=src/snip --cov-report term-missing | tee pytest-coverage.txt
+        python -m  pytest --cov=src/name --cov-report term-missing
 
 
   pytest-coverage:
@@ -39,22 +39,24 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.9
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v4
       with:
         python-version: 3.9
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install --editable .
     - name: Run and write pytest
       run: |
-        pip install --editable .
-        python -m  pytest --cov=src/snip --cov-report term-missing | tee pytest-coverage.txt
+        set -o pipefail
+        python -m  pytest --cov=src/name --cov-report term-missing | tee pytest-coverage.txt
     - name: Pytest coverage comment
       id: coverage-comment
-      uses: MishaKav/pytest-coverage-comment@v1.1.24
+      uses: MishaKav/pytest-coverage-comment@v1.1.29
       with:
         pytest-coverage-path: ./pytest-coverage.txt
+        github-token: ${{ secrets.GIST_DOCS_SCOPE }}
 
     - name: Check the output coverage
       if: ${{ github.event_name == 'push' }}
@@ -62,7 +64,7 @@ jobs:
         echo "Coverage Report - ${{ steps.coverage-comment.outputs.coverage }}"
         echo "Coverage Color - ${{ steps.coverage-comment.outputs.color }}"
     - name: Create the Badge
-      uses: schneegans/dynamic-badges-action@v1.2.0
+      uses: schneegans/dynamic-badges-action@v1.4.0
       with:
         auth: ${{ secrets.GIST_DOCS_SCOPE }}
         gistID: c102b02c0430c5e834a7a39abd846130
