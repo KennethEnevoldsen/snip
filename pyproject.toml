@@ -38,6 +38,9 @@ furo = "^2022.6.21"
 sphinx-copybutton = "^0.5.0"
 sphinxext-opengraph = "^0.6.3"
 myst-parser = "^0.18.0"
+mypy = "^0.961"
+types-setuptools = "^62.6.1"
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -75,3 +78,7 @@ build_command = "poetry build"
 
 [tool.poetry.scripts]
 snip = "snip.cli._util:setup_cli"
+
+[tool.mypy]
+ignore_missing_imports = true
+no_implicit_optional = true

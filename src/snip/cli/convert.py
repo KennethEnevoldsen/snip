@@ -39,16 +39,16 @@ def convert_cli(
     extracted from the save file extension.
     """
 
-    output_path = Path(output_path)
-    if output_path.exists() and overwrite is False:
+    output_path_ = Path(output_path)
+    if output_path_.exists() and overwrite is False:
         print(
-            f"[yellow] ⚠ A file already exists[/yellow] at {str(output_path.resolve())}",
+            f"[yellow] ⚠ A file already exists[/yellow] at {str(output_path_.resolve())}",
         )
         overwrite = typer.confirm("are you sure you want to overwrite it?")
         if not overwrite:
             raise Abort()
 
-    save_path = convert(input_path, output_path, format, overwrite)
+    save_path = convert(input_path, output_path_, format, overwrite)
     print(
         f"[green]✔ Finished [/green]: Converted {input_path} to {save_path.suffix}. "
         + f"Saved at:\n{save_path.resolve()}",

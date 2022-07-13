@@ -36,7 +36,7 @@ class PLINKIterableDataset(IterableDataset):
         chromosome: Optional[int] = None,
         seed: int = 42,
         to_tensor: bool = True,
-    ) -> IterableDataset:
+    ) -> None:
 
         self.buffer_size = buffer_size
         self.shuffle = shuffle

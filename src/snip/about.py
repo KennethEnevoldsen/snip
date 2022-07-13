@@ -1,4 +1,4 @@
-import pkg_resources
+import pkg_resources  # type: ignore
 
 __title__ = "snip"
 __version__ = pkg_resources.get_distribution("snip").version
