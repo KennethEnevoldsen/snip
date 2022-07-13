@@ -1,31 +1,39 @@
-from typing import Union, Optional
 from pathlib import Path
+from typing import Optional, Union
 
-from ._util import app
-from typer import Option, Argument
+from typer import Argument, Option
 
 from snip.data.dataloaders import PLINKIterableDataset
+
+from ._util import app
 
 
 @app.command("convert")
 def convert_cli(
     input_path: Union[str, Path] = Argument(
-        ..., help="Input file or directory", exists=True
+        ...,
+        help="Input file or directory",
+        exists=True,
     ),
     output_path: Union[str, Path] = Argument(
-        ..., help="Output file or directory", exists=True
+        ...,
+        help="Output file or directory",
+        exists=True,
     ),
     format: Optional[str] = Option(
-        None, "--format", "-f", help="Format of output file"
+        None,
+        "--format",
+        "-f",
+        help="Format of output file",
     ),
     overwrite: bool = False,
 ):
-    """
-    Intended use
-    snip convert path/to/plink_files save/location.zarr --format zarr
+    """Intended use snip convert path/to/plink_files save/location.zarr.
 
-    Where --format zarr can be left out, in which case it will be extracted from the
-    save file extension.
+    --format zarr.
+
+    Where --format zarr can be left out, in which case it will be
+    extracted from the save file extension.
     """
     convert(input_path, output_path, format, overwrite)
 

@@ -1,7 +1,7 @@
 from pathlib import Path
 
 import pytest
-from pandas_plink import read_plink1_bin, get_data_folder
+from pandas_plink import get_data_folder, read_plink1_bin  # noqa
 
 from snip.cli.convert import convert
 

@@ -10,9 +10,9 @@ from xarray import DataArray
 
 
 class PLINKIterableDataset(IterableDataset):
-    """
-    Creates a PLINK iterable dataset, which load the .bed files along with its metadata
-    using XArray, which allow for loading the SNPs along with their metadata.
+    """Creates a PLINK iterable dataset, which load the .bed files along with
+    its metadata using XArray, which allow for loading the SNPs along with
+    their metadata.
 
     Args:
         plink_path (Optional[str], optional): Path to the .bed or .zarr file. Defaults
@@ -47,12 +47,11 @@ class PLINKIterableDataset(IterableDataset):
         self.set_chromosome(chromosome)
 
     def set_chromosome(self, chromosome: Optional[int]) -> None:
-        """
-        Set the chromosome to be loaded.
-        """
+        """Set the chromosome to be loaded."""
         if chromosome:
             self.genotype = self._genotype.where(
-                self._genotype.chrom == str(chromosome), drop=True
+                self._genotype.chrom == str(chromosome),
+                drop=True,
             )
         else:
             self.genotype = self._genotype
@@ -63,9 +62,8 @@ class PLINKIterableDataset(IterableDataset):
                 yield x
 
     def create_data_array_iter(self, batch_size: Optional[int] = None) -> Iterator:
-        """
-        An iterable version of the plink dataset. If shuffle is True, the data is
-        shuffled using a shufflebuffer.
+        """An iterable version of the plink dataset. If shuffle is True, the
+        data is shuffled using a shufflebuffer.
 
         Args:
             batch_size (Optional[int], optional): Defaults to None. If not None,
@@ -84,8 +82,7 @@ class PLINKIterableDataset(IterableDataset):
         return dataset_iter
 
     def batch_iter(self, batch_size: int) -> Iterator:
-        """
-        An iterator that returns batches of size batch_size.
+        """An iterator that returns batches of size batch_size.
 
         Args:
             batch_size (int): The batch size.
@@ -117,10 +114,12 @@ class PLINKIterableDataset(IterableDataset):
             yield x
 
     def to_disk(
-        self, path: str, chunks: int = 2**13, overwrite: bool = False
+        self,
+        path: str,
+        chunks: int = 2**13,
+        overwrite: bool = False,
     ) -> None:
-        """
-        Save the dataset to disk.
+        """Save the dataset to disk.
 
         Args:
             path (str): Path to save the dataset. Save format is determined by the
@@ -143,10 +142,12 @@ class PLINKIterableDataset(IterableDataset):
             raise ValueError("Unknown file extension, should be .bed or .zarr")
 
     def from_disk(
-        self, path: str, limit: Optional[int], rechunk: Optional[bool] = None
+        self,
+        path: str,
+        limit: Optional[int],
+        rechunk: Optional[bool] = None,
     ) -> None:
-        """
-        Load the dataset from disk.
+        """Load the dataset from disk.
 
         Args:
             path (str): Path to the dataset. Read format is determined by the
@@ -155,7 +156,6 @@ class PLINKIterableDataset(IterableDataset):
                 only the first limit number of rows will be loaded.
             rechunk (bool, optional): Defaults to False. If True, the dataset will
                 be rechunked into chunks of size 2**13.
-
         """
         ext = os.path.splitext(path)[-1]
         if ext == ".bed":
@@ -174,7 +174,7 @@ class PLINKIterableDataset(IterableDataset):
             self._genotype = self._genotype.chunk(2**13)
 
     def to_tensor(self, x: DataArray):
-        """Convert DataArray to tensor
+        """Convert DataArray to tensor.
 
         Args:
             x (DataArray): A DataArray object containing the genotype data.

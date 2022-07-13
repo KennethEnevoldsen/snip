@@ -19,7 +19,7 @@ def delete(user: str):
 
 def setup_cli() -> None:
     # Ensure that all app.commands are run
-    from .convert import convert_cli
+    from .convert import convert_cli  # noqa
 
     # Ensure that the help messages always display the correct prompt
     command = typer.main.get_command(app)

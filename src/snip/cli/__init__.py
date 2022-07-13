@@ -1,1 +1,1 @@
-from ._util import setup_cli
+from ._util import setup_cli  # noqa
