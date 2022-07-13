@@ -139,6 +139,9 @@ docs/_build/*
 
 # Data files
 *.zarr
+*.bim
+*.fam
+*.bed
 
 # Poetry
 poetry.lock
