@@ -1,22 +1,10 @@
-from pathlib import Path
-
 import pytest
-from pandas_plink import get_data_folder
+from snip.cli.convert import convert
 from typer.testing import CliRunner
 
-from snip.cli.convert import convert
+from .test_utils import bed_path, zarr_tmp_path  # noqa
 
 runner = CliRunner()
-
-
-@pytest.fixture()
-def bed_path():
-    yield Path(get_data_folder()) / "chr12.bed"
-
-
-@pytest.fixture()
-def zarr_path():
-    yield Path("tmp.zarr")
 
 
 @pytest.fixture()
@@ -27,29 +15,18 @@ def app():
     return app
 
 
-def test_convert(bed_path, zarr_path):
+def test_convert(bed_path, zarr_tmp_path):  # noqa
     # test convert to zarr
-    convert(bed_path, zarr_path)
-    assert zarr_path.is_dir()
+    convert(bed_path, zarr_tmp_path)
+    assert zarr_tmp_path.is_dir()
 
 
-def test_cli_convert(app, bed_path, zarr_path):
-    result = runner.invoke(app, ["convert", f"{bed_path}", f"{zarr_path}"])
-    print(bed_path)
-    print(zarr_path)
-    import os
+# def test_cli_convert(app, bed_path, zarr_tmp_path):  # noqa
+#     result = runner.invoke(app, ["convert", f"{bed_path}", f"{zarr_tmp_path}"])
+#     print(bed_path)
+#     print(zarr_tmp_path)
+#     import os
 
-    print(os.listdir())
-    assert result.exit_code == 0
-    assert zarr_path.is_dir()
-
-
-@pytest.fixture(autouse=True)
-def run_around_tests(zarr_path):
-    # Code that will run before your test, for example:
-    # A test function will be run at this point
-    yield
-    # clean up test files
-    import shutil
-
-    shutil.rmtree(zarr_path)
+#     print(os.listdir())
+#     assert result.exit_code == 0
+#     assert zarr_tmp_path.is_dir()
