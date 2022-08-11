@@ -122,7 +122,7 @@ jobs:
     ### Create badge    
     - name: Pytest coverage comment
       id: coverage-comment
-      uses: MishaKav/pytest-coverage-comment@v1.1.29
+      uses: MishaKav/pytest-coverage-comment@v1.1.32
       with:
         pytest-coverage-path: ./pytest-coverage.txt
         github-token: ${{ secrets.GIST_DOCS_SCOPE }}
