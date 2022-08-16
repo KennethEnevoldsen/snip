@@ -28,6 +28,12 @@ def convert_cli(
         "-f",
         help="Format of output file",
     ),
+    chromosome: Optional[int] = Option(
+        None,
+        "--chromosome",
+        "-c",
+        help="chromosome to filter the dataset by.",
+    ),
     overwrite: bool = False,
 ):
     """Intended usage:
@@ -59,6 +65,7 @@ def convert(
     load_path: Union[str, Path],
     save_path: Union[str, Path],
     format: Optional[str] = None,
+    chromosome: Optional[int] = None,
     overwrite: bool = False,
 ):
     load_path = Path(load_path)
@@ -72,7 +79,7 @@ def convert(
         format = format.strip(".")
 
     if format == "zarr":
-        ds = PLINKIterableDataset(load_path)
+        ds = PLINKIterableDataset(load_path, chromosome=chromosome)
         ds.to_disk(save_path, overwrite=overwrite)
     else:
         raise ValueError(f"Format {format} is not supported")

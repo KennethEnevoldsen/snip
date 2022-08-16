@@ -116,3 +116,9 @@ class TestPlinkIterableDataset:
         assert isinstance(X, DataArray)
         assert len(X.shape) == 2
         assert X.shape[0] == 2
+
+    def test_train_test_split(self, zarr_dataset: PLINKIterableDataset):
+        ds = zarr_dataset
+        samples = ds.genotype.shape[0]
+        train, test = ds.train_test_split(test_size=0.20)
+        assert samples == train.genotype.shape[0] + test.genotype.shape[0]
