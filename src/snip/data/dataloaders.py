@@ -1,8 +1,10 @@
 import os
 import random
+from copy import deepcopy
 from pathlib import Path
-from typing import Iterator, Optional, Union
+from typing import Iterator, Optional, Tuple, Union
 
+import numpy as np
 import torch
 import xarray as xr
 from pandas_plink import read_plink1_bin, write_plink1_bin
@@ -209,3 +211,59 @@ class PLINKIterableDataset(IterableDataset):
                 yield shufbuf.pop()
         except GeneratorExit:
             pass
+
+    def train_test_split(
+        self,
+        test_size: Union[float, int, None] = 0.20,
+        train_size: Union[float, int, None] = None,
+    ) -> Tuple[IterableDataset, IterableDataset]:
+        """Create a train test split of the iterable dataset.
+
+        Args:
+            test_size (Union[float, int, None], optional): The test size. Either
+                supplied as a percentage (float) or as a count (int). Defaults to 0.20.
+            train_size (Union[float, int, None], optional): The train size. Should not
+                be supplied if test_size is given. Either supplied as a percentage
+                (float) or as a count (int). Defaults to None.
+
+        Raises:
+            ValueError: If both test_size and train_size is given.
+
+        Returns:
+            Tuple[IterableDataset, IterableDataset]: The train and test set,
+                respectively.
+        """
+        samples = self.genotype.shape[0]
+
+        if test_size and train_size:
+            raise ValueError(
+                "You can only supply either test_size or train_size. "
+                + "The other is determined",
+            )
+
+        def __get_split_size(test_size, samples):
+            if isinstance(test_size, int):
+                n_test = test_size
+            if isinstance(test_size, float):
+                assert (
+                    test_size > 0 and test_size < 1
+                ), "if test size is a float it must be between zero and one."
+                n_test = samples // 100 * test_size
+            n_train = samples - n_test
+            return n_test, n_train
+
+        if test_size:
+            n_test, n_train = __get_split_size(test_size, samples)
+        if train_size:
+            n_train, n_test = __get_split_size(train_size, samples)
+
+        # create random mask
+        mask_array = np.zeros(samples)
+        mask_array[0:n_test] = 1
+        np.random.shuffle(mask_array)
+
+        test_dataset = deepcopy(self)
+        train_dataset = deepcopy(self)
+        test_genotype = test_dataset.genotype[mask_array == 1]
+        train_genotype = train_dataset.genotype[mask_array == 0]
+        return train_genotype, test_genotype
