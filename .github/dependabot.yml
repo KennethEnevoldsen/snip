@@ -4,10 +4,10 @@
 version: 2
 
 updates:
-  - package-ecosystem: "poetry"
+  - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "yearly"
+      interval: "monthly"
     allow:
       - dependency-type: "all"
     commit-message:
@@ -15,7 +15,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "yearly"
+      interval: "monthly"
     allow:
       - dependency-type: "all"
     commit-message:
