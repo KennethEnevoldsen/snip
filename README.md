@@ -22,6 +22,16 @@ pip install git+https://github.com/KennethEnevoldsen/snip
 For more detailed instructions on installing see the [installation instructions](https://kennethenevoldsen.github.io/snip/installation).
 
 
+## Development Setup
+
+To set up the project for development:
+```
+conda create -n snip python=3.9
+conda activate snip
+conda install poetry
+peotry install
+```
+
 ## 👩‍💻 Getting started
 
 To convert `.bed` files to `.zarr` simply run from your terminal:
@@ -46,7 +56,10 @@ To find out more about each command:
 snip convert --help
 ```
 
-## 📖 Documentation
+
+
+
+<!-- ## 📖 Documentation
 
 | Documentation              |                                                                     |
 | -------------------------- | ------------------------------------------------------------------- |
@@ -57,7 +70,7 @@ snip convert --help
 [usage guides]: https://kennethenevoldsen.github.io/snip/introduction.html
 [api references]: https://kennethenevoldsen.github.io/snip/
 [News and changelog]: https://kennethenevoldsen.github.io/snip/news.html
-[FAQ]: https://kennethenevoldsen.github.io/snip/faq.html
+[FAQ]: https://kennethenevoldsen.github.io/snip/faq.html -->
 
 ## 💬 Where to ask questions
 

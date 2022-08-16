@@ -1,6 +1,7 @@
 import os
 import random
-from typing import Iterator, Optional
+from pathlib import Path
+from typing import Iterator, Optional, Union
 
 import torch
 import xarray as xr
@@ -15,10 +16,9 @@ class PLINKIterableDataset(IterableDataset):
     their metadata.
 
     Args:
-        plink_path (Optional[str], optional): Path to the .bed or .zarr file. Defaults
-            to None which corresponds to: os.path.join("/home", "kce", "dsmwpred",
-            "data", "ukbb", "geno.bed"). If it is a .zarr file, it will load the
-            "genotype" DataArray from the loaded Xarray dataset.
+        plink_path (Union[str, Path]): Path to the .bed or .zarr file. If it is a
+            .zarr file, it will load the "genotype" DataArray from the loaded Xarray
+            dataset.
         buffer_size (int, optional): Defaults to 1024.
         chromosome (Optional[int], optional): Defaults to None,
             indicating all chromosomes.
@@ -29,7 +29,7 @@ class PLINKIterableDataset(IterableDataset):
 
     def __init__(
         self,
-        plink_path: str,
+        plink_path: Union[str, Path],
         buffer_size: int = 1024,
         shuffle: bool = True,
         limit: Optional[int] = None,
@@ -92,8 +92,8 @@ class PLINKIterableDataset(IterableDataset):
         """
         n, _ = self._genotype.shape
 
-        starts = range(0, n, self.buffer_size)
-        ends = range(self.buffer_size, n, self.buffer_size)
+        starts = range(0, n, batch_size)
+        ends = range(batch_size, n, batch_size)
 
         end = 0  # if batch_size > array.shape[1]
         for start, end in zip(starts, ends):
@@ -102,9 +102,9 @@ class PLINKIterableDataset(IterableDataset):
                 X = self.to_tensor(X)
             yield X
         if n > end:
+            X = self._genotype[end:n].compute()
             if self.convert_to_tensor:
                 X = self.to_tensor(X)
-            X = self._genotype[end:n].compute()
             yield X
 
     def __iter__(self) -> Iterator:
@@ -115,14 +115,14 @@ class PLINKIterableDataset(IterableDataset):
 
     def to_disk(
         self,
-        path: str,
+        path: Union[str, Path],
         chunks: int = 2**13,
         overwrite: bool = False,
     ) -> None:
         """Save the dataset to disk.
 
         Args:
-            path (str): Path to save the dataset. Save format is determined by the
+            path (Union[str, Path]): Path to save the dataset. Save format is determined by the
                 file extension. Options include ".bed" or ".zarr". Defaults to
                 ".zarr".
             chunks (int, optional): Defaults to 2**13. The chunk size to be passed to
@@ -143,14 +143,14 @@ class PLINKIterableDataset(IterableDataset):
 
     def from_disk(
         self,
-        path: str,
+        path: Union[str, Path],
         limit: Optional[int],
         rechunk: Optional[bool] = None,
     ) -> None:
         """Load the dataset from disk.
 
         Args:
-            path (str): Path to the dataset. Read format is determined by the
+            path (Union[str, Path]): Path to the dataset. Read format is determined by the
                 file extension. Options include ".bed" or ".zarr".
             limit (Optional[int], optional): Defaults to None. If not None,
                 only the first limit number of rows will be loaded.
