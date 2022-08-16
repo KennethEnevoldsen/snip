@@ -24,25 +24,25 @@ For more detailed instructions on installing see the [installation instructions]
 
 ## 👩‍💻 Getting started
 
-To convert `.bed` files to `.zarr`
-```
+To convert `.bed` files to `.zarr` simply run from your terminal:
+```bash
 snip convert sample.bed sample.zarr
 ```
 
 or equivalently:
 
-```
+```bash
 python -m snip convert sample.bed sample.zarr
 ```
 
 To see a list of possible commands:
-```
+```bash
 snip --help
 ```
 
 To find out more about each command:
 
-```
+```bash
 snip convert --help
 ```
 
