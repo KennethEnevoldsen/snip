@@ -248,22 +248,22 @@ class PLINKIterableDataset(IterableDataset):
                 assert (
                     test_size > 0 and test_size < 1
                 ), "if test size is a float it must be between zero and one."
-                n_test = samples // 100 * test_size
-            n_train = samples - n_test
-            return n_test, n_train
+                n_test = samples // (100 / (100 * test_size))
+            return n_test
 
         if test_size:
-            n_test, n_train = __get_split_size(test_size, samples)
+            n_test = __get_split_size(test_size, samples)
         if train_size:
-            n_train, n_test = __get_split_size(train_size, samples)
+            n_train = __get_split_size(train_size, samples)
+            n_test = samples - n_train
 
         # create random mask
         mask_array = np.zeros(samples)
-        mask_array[0:n_test] = 1
+        mask_array[0 : int(n_test)] = 1
         np.random.shuffle(mask_array)
 
-        test_dataset = deepcopy(self)
-        train_dataset = deepcopy(self)
-        test_genotype = test_dataset.genotype[mask_array == 1]
-        train_genotype = train_dataset.genotype[mask_array == 0]
-        return train_genotype, test_genotype
+        train = deepcopy(self)
+        test = deepcopy(self)
+        train.genotype = train.genotype[mask_array == 0]
+        test.genotype = test.genotype[mask_array == 1]
+        return train, test
