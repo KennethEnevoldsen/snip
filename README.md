@@ -1,5 +1,5 @@
 <a href="https://github.com/kennethenevoldsen/snip"><img src="https://github.com/KennethEnevoldsen/snip/blob/main/docs/_static/icon.png?raw=true" width="200" align="right" /></a>
-# Snip: A utility package handling Single Nucleotide polymorphism data in Python
+# Snip: A package for data handling and model training using Single Nucleotide polymorphism data
 
 
 [![PyPI version](https://badge.fury.io/py/snip.svg)](https://pypi.org/project/snip/)
@@ -9,7 +9,7 @@
 ![github coverage](https://img.shields.io/endpoint?url=https://gist.githubusercontent.com/KennethEnevoldsen/c102b02c0430c5e834a7a39abd846130/raw/badge-snip-coverage.json)
 
 
-A utility package handling Single Nucleotide polymorphism data in Python with the intended use of using in in e.g. PyTorch.
+A package for data handling and model training using Single Nucleotide polymorphism data. Implemented in Python and PyTorch.
 
 ## 🔧 Installation
 To get started using this package install it using pip by running the following line in your terminal:
@@ -56,21 +56,50 @@ To find out more about each command:
 snip convert --help
 ```
 
+## Slurm
+
+This project uses slurm.
+
+<br /> 
+
+<details>
+    <summary> Slurm quick guide </summary>
+
+**To run a job:**
+
+```bash
+sbatch {filename}.sh -A NLPPred
+```
+
+Where `A` stands for account and `NLPPred` is the account. 
+
+**Check the status of submitted queue:**
+```
+squeue -u {username}
+```
+**See available nodes:**
+```
+gnodes
+```
+
+**SSH to node:**
+```bash
+ssh {node id}
+```
+
+**Run an interactive window:**
+```
+srun --pty -c 4 --mem=16g bash -A NLPPred
+```
+Using 4 cores and 16gb memory.
+
+For more on slurm please check out [this site](https://docs.rc.fas.harvard.edu/kb/convenient-slurm-commands).
 
 
+</details>
 
-<!-- ## 📖 Documentation
+<br /> 
 
-| Documentation              |                                                                     |
-| -------------------------- | ------------------------------------------------------------------- |
-| 📰 **[News and changelog]** | New additions, changes and version history.                         |
-| 🎛 **[API References]**     | The reference for the package API. Including function documentation |
-| 🙋 **[FAQ]**                | Frequently asked question                                           |
-
-[usage guides]: https://kennethenevoldsen.github.io/snip/introduction.html
-[api references]: https://kennethenevoldsen.github.io/snip/
-[News and changelog]: https://kennethenevoldsen.github.io/snip/news.html
-[FAQ]: https://kennethenevoldsen.github.io/snip/faq.html -->
 
 ## 💬 Where to ask questions
 
