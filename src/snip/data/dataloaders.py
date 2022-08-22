@@ -16,26 +16,16 @@ from xarray import DataArray
 
 
 class PLINKIterableDataset(IterableDataset):
-    """Load a PLINK file as an iterable dataset.
+    """An iterable dataset for PLINK datasets.
 
-    A PLINK iterable dataset loads .bed or .zarr files along with
-    its metadata using XArray, which allow for loading the SNPs along with
-    their metadata.
-
-    Args:
-        path (Union[str, Path]): Path to the .bed or .zarr file. If it is a
-            .zarr file, it will load the "genotype" DataArray from the loaded Xarray
-            dataset.
-        buffer_size (int): Defaults to 1024.
-        chromosome (Optional[int]): Defaults to None,
-            indicating all chromosomes.
-        impute_missing (Optional[str]): Impute missing snps. Valid strategies include,
-            "mean", "replace with value" (replace missing with snp_replace_value).
-            "mode" (most common snp). Default to None in which case it does not impute
-            missing SNPs.
-
-    Returns:
-        IterableDataset: An iterable dataset. Containin the genotype data.
+    Attributes:
+        buffer_size
+        genotype
+        seed
+        shuffle
+        path
+        snp_imputation_method
+        convert_to_tensor
     """
 
     def __init__(
@@ -49,9 +39,37 @@ class PLINKIterableDataset(IterableDataset):
         to_tensor: bool = True,
         impute_missing: Optional[str] = None,
         snp_replace_value: Union[int, float] = -1,
-        verbose=False,
+        verbose: bool = False,
     ) -> None:
+        """Load a PLINK file as an iterable dataset.
 
+        A PLINK iterable dataset loads .bed or .zarr files along with
+        its metadata using XArray, which allow for loading the SNPs along with
+        their metadata.
+
+        Args:
+            path (Union[str, Path]): Path to the .bed or .zarr file. If it is a
+                .zarr file, it will load the "genotype" DataArray from the loaded Xarray
+                dataset.
+            buffer_size (int): Defaults to 1024.
+            shuffle (bool): Should it shuffle the dataset using a shuffle buffer.
+                Defaults to True.
+            limit (Optional[int]): Limit the dataset to use to n samples. Defaults to
+                None. In which case it does not limit the dataset.
+            chromosome (Optional[int]): Defaults to None,
+                indicating all chromosomes.
+            seed (int): Random seed to use. Default to 42.
+            to_tensor (bool): Should the iterable dataset use torch tensors? Defaults to
+                True.
+            impute_missing (Optional[str]): Impute missing snps. Valid strategies include,
+                "mean", "replace with value" (replace missing with snp_replace_value).
+                "mode" (most common snp). Default to None in which case it does not impute
+                missing SNPs.
+            snp_replace_value (Union[int, float]): If impute_missing =
+                "replace with value" is true, what should it replace it with? Default
+                to -1.
+            verbose (bool): toggles the verbosity of the class.
+        """
         self.buffer_size = buffer_size
         self.shuffle = shuffle
         self.seed = seed
@@ -85,8 +103,9 @@ class PLINKIterableDataset(IterableDataset):
                 yield x
 
     def create_data_array_iter(self, batch_size: Optional[int] = None) -> Iterator:
-        """An iterable version of the plink dataset. If shuffle is True, the
-        data is shuffled using a shufflebuffer.
+        """Create iterable of DataArrays.
+
+        If shuffle is True, the data is self.shuffle using a shufflebuffer.
 
         Args:
             batch_size (Optional[int]): Defaults to None. If not None,
@@ -95,7 +114,6 @@ class PLINKIterableDataset(IterableDataset):
         Returns:
             Iterator: An iterator of DataArray object containing the genotype data.
         """
-
         if self.impute_missing_method:
             self.impute_missing(self.impute_missing_method)
 
@@ -109,7 +127,7 @@ class PLINKIterableDataset(IterableDataset):
         return dataset_iter
 
     def batch_iter(self, batch_size: int) -> Iterator:
-        """An iterator that returns batches of size batch_size.
+        """Create an iterator that returns batches of size batch_size.
 
         Args:
             batch_size (int): The batch size.
@@ -143,6 +161,7 @@ class PLINKIterableDataset(IterableDataset):
             yield X
 
     def __iter__(self) -> Iterator:
+        """Create a iterator of the dataset."""
         dataset_iter = self.create_data_array_iter()
 
         for x in dataset_iter:
@@ -223,12 +242,12 @@ class PLINKIterableDataset(IterableDataset):
         return torch.from_numpy(x.compute().data)
 
     def shuffle_buffer(self, dataset_iter: Iterator) -> Iterator:
-        """Creates a shuffle buffer for the dataset.
+        """Create a shuffle buffer of an iterator.
 
         Args:
             dataset_iter (Iterator): An iterator to shuffle.
 
-        yield:
+        Yields:
             Union[torch.Tensor, DataArray]: An shuffled arrays
         """
         random.seed(self.seed)

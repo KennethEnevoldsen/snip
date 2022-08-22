@@ -35,6 +35,17 @@ repos:
       - id: flake8
         args: [--config, .flake8]
 
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.1.1
+    hooks:
+      - id: pydocstyle
+        files: ^src/
+        args:
+        - --ignore=D203,D204,D213,D215,D400,D401,D404,D406,D407,D408,D409,D413,D104
+      # ignore corresponds to google docstring conventions
+      # with the additions of: 
+      # D104: require docstring in __init__.py
+
   - repo: https://github.com/terrencepreilly/darglint
     rev: v1.8.1
     hooks:

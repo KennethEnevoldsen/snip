@@ -1,3 +1,5 @@
+"""CLI for converting between file formats."""
+
 from pathlib import Path
 from typing import Optional, Union
 
@@ -36,7 +38,9 @@ def convert_cli(
     ),
     overwrite: bool = False,
 ):
-    """Intended usage:
+    r"""CLI for converting between file types.
+
+    Intended usage:
 
     \b
     snip convert path/to/plink_files save/location.zarr --format zarr
@@ -51,7 +55,6 @@ def convert_cli(
         chromosome (Optional[int]): Chromosome to filter the dataset by.
         overwrite (bool): Should it overwrite the dataset.
     """
-
     output_path_ = Path(output_path)
     if output_path_.exists() and overwrite is False:
         print(
@@ -74,7 +77,19 @@ def convert(
     format: Optional[str] = None,
     chromosome: Optional[int] = None,
     overwrite: bool = False,
-):
+) -> Path:
+    """Convert between file types.
+
+    Args:
+        load_path (Union[str, Path]): Where to load the data from.
+        save_path (Union[str, Path]): Where to save the data to.
+        format (Optional[str]): The format of the data. Defaults to None.
+        chromosome (Optional[int]): The chromosome to filter by. Defaults to None.
+        overwrite (bool): Overwrite existing file at save path? Defaults to False.
+
+    Returns:
+        Path: The final output path.
+    """
     load_path = Path(load_path)
     save_path = Path(save_path)
 

@@ -1,3 +1,5 @@
+"""Package metadata."""
+
 import pkg_resources  # type: ignore
 
 __title__ = "snip"
