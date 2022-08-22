@@ -142,6 +142,7 @@ class TestPlinkIterableDataset:
 
         # test iter with limited buffer size
         ds.buffer_size = 10
+        ds.convert_to_tensor = True
         ds.impute_missing_method = impute_method
         X = next(iter(ds))
         assert torch.isnan(X).sum() == 0
