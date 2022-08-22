@@ -1,5 +1,7 @@
+"""Dataloaders for SNP formats."""
 import os
 import random
+from collections import Counter
 from copy import deepcopy
 from pathlib import Path
 from typing import Iterator, Optional, Tuple, Union
@@ -9,21 +11,28 @@ import torch
 import xarray as xr
 from pandas_plink import read_plink1_bin, write_plink1_bin
 from torch.utils.data import IterableDataset
+from wasabi import msg
 from xarray import DataArray
 
 
 class PLINKIterableDataset(IterableDataset):
-    """Creates a PLINK iterable dataset, which load the .bed files along with
+    """Load a PLINK file as an iterable dataset.
+
+    A PLINK iterable dataset loads .bed or .zarr files along with
     its metadata using XArray, which allow for loading the SNPs along with
     their metadata.
 
     Args:
-        plink_path (Union[str, Path]): Path to the .bed or .zarr file. If it is a
+        path (Union[str, Path]): Path to the .bed or .zarr file. If it is a
             .zarr file, it will load the "genotype" DataArray from the loaded Xarray
             dataset.
-        buffer_size (int, optional): Defaults to 1024.
-        chromosome (Optional[int], optional): Defaults to None,
+        buffer_size (int): Defaults to 1024.
+        chromosome (Optional[int]): Defaults to None,
             indicating all chromosomes.
+        impute_missing (Optional[str]): Impute missing snps. Valid strategies include,
+            "mean", "replace with value" (replace missing with snp_replace_value).
+            "mode" (most common snp). Default to None in which case it does not impute
+            missing SNPs.
 
     Returns:
         IterableDataset: An iterable dataset. Containin the genotype data.
@@ -31,25 +40,37 @@ class PLINKIterableDataset(IterableDataset):
 
     def __init__(
         self,
-        plink_path: Union[str, Path],
+        path: Union[str, Path],
         buffer_size: int = 1024,
         shuffle: bool = True,
         limit: Optional[int] = None,
         chromosome: Optional[int] = None,
         seed: int = 42,
         to_tensor: bool = True,
+        impute_missing: Optional[str] = None,
+        snp_replace_value: Union[int, float] = -1,
+        verbose=False,
     ) -> None:
 
         self.buffer_size = buffer_size
         self.shuffle = shuffle
         self.seed = seed
         self.convert_to_tensor = to_tensor
+        self.impute_missing_method = impute_missing
+        self.snp_replace_value = snp_replace_value
+        self.path = path
+        self.limit = limit
+        self.verbose = verbose
 
-        self.from_disk(plink_path, limit=limit)
+        self.__from_disk(path, limit=limit)
         self.set_chromosome(chromosome)
 
     def set_chromosome(self, chromosome: Optional[int]) -> None:
-        """Set the chromosome to be loaded."""
+        """Filter the dataset according to chromosome.
+
+        Args:
+            chromosome (Optional[int]): The number of chromosome til filter.
+        """
         if chromosome:
             self.genotype = self._genotype.where(
                 self._genotype.chrom == str(chromosome),
@@ -68,12 +89,16 @@ class PLINKIterableDataset(IterableDataset):
         data is shuffled using a shufflebuffer.
 
         Args:
-            batch_size (Optional[int], optional): Defaults to None. If not None,
+            batch_size (Optional[int]): Defaults to None. If not None,
                 the data is returned in batches of size batch_size.
 
-        Yields:
-            DataArray: A DataArray object containing the genotype data.
+        Returns:
+            Iterator: An iterator of DataArray object containing the genotype data.
         """
+
+        if self.impute_missing_method:
+            self.impute_missing(self.impute_missing_method)
+
         if batch_size:
             dataset_iter = self.batch_iter(batch_size)
         else:
@@ -92,19 +117,27 @@ class PLINKIterableDataset(IterableDataset):
         Yields:
             DataArray: A DataArray object containing the genotype data.
         """
-        n, _ = self._genotype.shape
+        n, _ = self.genotype.shape
 
         starts = range(0, n, batch_size)
         ends = range(batch_size, n, batch_size)
 
+        if self.impute_missing_method:
+            replacement_value = self.genotype.coords[
+                f"{self.impute_missing_method}_snp"
+            ]
+
         end = 0  # if batch_size > array.shape[1]
         for start, end in zip(starts, ends):
-            X = self._genotype[start:end].compute()
+            X = self.genotype[start:end].compute()  # shape: batch size, snps
+            if self.impute_missing_method:
+                X.data = np.where(np.isnan(X.data), replacement_value, X.data)
+
             if self.convert_to_tensor:
                 X = self.to_tensor(X)
             yield X
         if n > end:
-            X = self._genotype[end:n].compute()
+            X = self.genotype[end:n].compute()
             if self.convert_to_tensor:
                 X = self.to_tensor(X)
             yield X
@@ -119,18 +152,21 @@ class PLINKIterableDataset(IterableDataset):
         self,
         path: Union[str, Path],
         chunks: int = 2**13,
-        overwrite: bool = False,
+        overwrite: bool = True,
     ) -> None:
         """Save the dataset to disk.
 
         Args:
-            path (Union[str, Path]): Path to save the dataset. Save format is determined by the
-                file extension. Options include ".bed" or ".zarr". Defaults to
+            path (Union[str, Path]): Path to save the dataset. Save format is determined
+                by the file extension. Options include ".bed" or ".zarr". Defaults to
                 ".zarr".
-            chunks (int, optional): Defaults to 2**13. The chunk size to be passed to
+            chunks (int): Defaults to 2**13. The chunk size to be passed to
                 Xarray.chunk, Defaults to 2**13.
+            overwrite (bool): Should it overwrite? Default to True.
         """
         ext = os.path.splitext(path)[-1]
+        if self.verbose:
+            msg.info("Saving to disk at location: {path}")
         if ext == ".bed":
             write_plink1_bin(self.genotype, path)
         elif ext == ".zarr":
@@ -143,10 +179,10 @@ class PLINKIterableDataset(IterableDataset):
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
 
-    def from_disk(
+    def __from_disk(
         self,
         path: Union[str, Path],
-        limit: Optional[int],
+        limit: Optional[int] = None,
         rechunk: Optional[bool] = None,
     ) -> None:
         """Load the dataset from disk.
@@ -154,9 +190,9 @@ class PLINKIterableDataset(IterableDataset):
         Args:
             path (Union[str, Path]): Path to the dataset. Read format is determined by the
                 file extension. Options include ".bed" or ".zarr".
-            limit (Optional[int], optional): Defaults to None. If not None,
+            limit (Optional[int]): Defaults to None. If not None,
                 only the first limit number of rows will be loaded.
-            rechunk (bool, optional): Defaults to False. If True, the dataset will
+            rechunk (bool): Defaults to False. If True, the dataset will
                 be rechunked into chunks of size 2**13.
         """
         ext = os.path.splitext(path)[-1]
@@ -175,11 +211,14 @@ class PLINKIterableDataset(IterableDataset):
         elif rechunk:
             self._genotype = self._genotype.chunk(2**13)
 
-    def to_tensor(self, x: DataArray):
+    def to_tensor(self, x: DataArray) -> torch.Tensor:
         """Convert DataArray to tensor.
 
         Args:
             x (DataArray): A DataArray object containing the genotype data.
+
+        Returns:
+            torch.Tensor: The converted array as a torch tensor.
         """
         return torch.from_numpy(x.compute().data)
 
@@ -187,7 +226,10 @@ class PLINKIterableDataset(IterableDataset):
         """Creates a shuffle buffer for the dataset.
 
         Args:
-            dataset_iter (Iterator): An iterator of the dataset
+            dataset_iter (Iterator): An iterator to shuffle.
+
+        yield:
+            Union[torch.Tensor, DataArray]: An shuffled arrays
         """
         random.seed(self.seed)
 
@@ -220,9 +262,9 @@ class PLINKIterableDataset(IterableDataset):
         """Create a train test split of the iterable dataset.
 
         Args:
-            test_size (Union[float, int, None], optional): The test size. Either
+            test_size (Union[float, int, None]): The test size. Either
                 supplied as a percentage (float) or as a count (int). Defaults to 0.20.
-            train_size (Union[float, int, None], optional): The train size. Should not
+            train_size (Union[float, int, None]): The train size. Should not
                 be supplied if test_size is given. Either supplied as a percentage
                 (float) or as a count (int). Defaults to None.
 
@@ -267,3 +309,37 @@ class PLINKIterableDataset(IterableDataset):
         train.genotype = train.genotype[mask_array == 0]
         test.genotype = test.genotype[mask_array == 1]
         return train, test
+
+    def impute_missing(self, method: str = "mean", save_after_imputation: bool = False):
+        """Impute missing snps.
+
+        Args:
+            method (str): Method for imputing missing snps. Options include
+                "mean" and "mode" (most common). Defaults to "mean".
+            save_after_imputation (bool): Save after imputation to self.path
+                (the path it was loaded from). Defaults to False.
+        """
+        imputated_snps = False
+        if method == "mean" and "mean_snp" not in self.genotype.coords:
+            imputated_snps = True
+            if self.verbose:
+                msg.info("Computing mean SNP")
+            mean_snp = self.genotype.mean(axis=0, skipna=True).compute()
+            mean_snp = mean_snp.fillna(0)  # if all of one snp is NA
+            self.genotype = self.genotype.assign_coords(mean_snp=mean_snp)
+        if method == "mode" and "mode_snp" not in self.genotype.coords:
+            imputated_snps = True
+            if self.verbose:
+                msg.info("Computing most common SNP")
+            most_common = np.array(
+                [
+                    Counter(snps.compute().data).most_common(1)[0][0]
+                    for snps in self.genotype.data.T
+                ],
+            )
+            most_common = np.nan_to_num(most_common, nan=0)  # if all of one snp is NA
+            self.genotype = self.genotype.assign_coords(
+                {"mode_snp": ("variant", most_common)},
+            )
+        if save_after_imputation and imputated_snps:
+            self.to_disk(self.path, overwrite=True)

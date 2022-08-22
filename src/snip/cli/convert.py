@@ -43,6 +43,13 @@ def convert_cli(
 
     Where ``--format zarr`` can be left out, in which case it will be
     extracted from the save file extension.
+
+    Args:
+        input_path (str): Input file or directory.
+        output_path (str): Output file or directory.
+        format (Optional[str]): Format of output file.
+        chromosome (Optional[int]): Chromosome to filter the dataset by.
+        overwrite (bool): Should it overwrite the dataset.
     """
 
     output_path_ = Path(output_path)
@@ -79,7 +86,7 @@ def convert(
         format = format.strip(".")
 
     if format == "zarr":
-        ds = PLINKIterableDataset(load_path, chromosome=chromosome)
+        ds = PLINKIterableDataset(load_path, chromosome=chromosome, verbose=False)
         ds.to_disk(save_path, overwrite=overwrite)
     else:
         raise ValueError(f"Format {format} is not supported")
