@@ -122,3 +122,27 @@ class TestPlinkIterableDataset:
         samples = ds.genotype.shape[0]
         train, test = ds.train_test_split(test_size=0.20)
         assert samples == train.genotype.shape[0] + test.genotype.shape[0]
+
+    @pytest.mark.parametrize(
+        "impute_method",
+        [("mean"), ("mode")],
+    )
+    def test_impute_missing_mean(
+        self,
+        zarr_dataset: PLINKIterableDataset,
+        impute_method: str,
+    ):
+        ds = zarr_dataset
+        ds.impute_missing(impute_method, save_after_imputation=False)
+        coords = ds.genotype.coords
+
+        # test that it is assigned with correct shape
+        assert f"{impute_method}_snp" in coords
+        assert coords[f"{impute_method}_snp"].shape == coords["snp"].shape
+
+        # test iter with limited buffer size
+        ds.buffer_size = 10
+        ds.convert_to_tensor = True
+        ds.impute_missing_method = impute_method
+        X = next(iter(ds))
+        assert torch.isnan(X).sum() == 0
