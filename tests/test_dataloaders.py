@@ -74,6 +74,12 @@ class TestPlinkIterableDataset:
             raise ValueError("Dataset format {from_format} not available.")
         assert isinstance(ds._genotype, DataArray)
 
+    def test_from_disk_multiple_files(self, zarr_path: Path):
+        ds1 = PLINKIterableDataset(zarr_path)
+        ds2 = PLINKIterableDataset([zarr_path] * 2)
+        assert ds1.genotype.shape[1] == ds2.genotype.shape[1]
+        assert ds1.genotype.shape[0] * 2 == ds2.genotype.shape[0]
+
     def test_set_chromosome(
         self,
         zarr_dataset: PLINKIterableDataset,
@@ -133,7 +139,7 @@ class TestPlinkIterableDataset:
         impute_method: str,
     ):
         ds = zarr_dataset
-        ds.impute_missing(impute_method, save_after_imputation=False)
+        ds.impute_missing(impute_method, save_to=None)
         coords = ds.genotype.coords
 
         # test that it is assigned with correct shape
@@ -146,3 +152,12 @@ class TestPlinkIterableDataset:
         ds.impute_missing_method = impute_method
         X = next(iter(ds))
         assert torch.isnan(X).sum() == 0
+
+    def test_split_into_strides(self, zarr_dataset: PLINKIterableDataset):
+        ds = zarr_dataset
+        datasets = ds.split_into_strides(stride=10)
+
+        # test that it is assigned with correct shape
+        for dataset in datasets:
+            assert dataset.genotype.shape[1] == 10
+            assert dataset.genotype.shape[0] == ds.genotype.shape[0]
