@@ -198,8 +198,22 @@ class PLINKIterableDataset(IterableDataset):
         elif ext == ".zarr":
             genotype = self.genotype.chunk(chunks)
             ds = xr.Dataset(dict(genotype=genotype))
+            # due to:
+            # https://github.com/pydata/xarray/issues/3476
+            # normalize object dtypes to string dtypes
+            if self.verbose:
+                msg.warn(
+                    "Normalizing object dtypes to string dtypes, for more see "
+                    + "https://github.com/pydata/xarray/issues/3476",
+                )
+            for v in list(ds.coords.keys()):
+                if ds.coords[v].dtype == object:
+                    ds.coords[v] = ds.coords[v].astype("unicode")
+            for v in list(ds.variables.keys()):
+                if ds[v].dtype == object:
+                    ds[v] = ds[v].astype("unicode")
             if overwrite:
-                ds.to_zarr(path, mode="w", consolidated=True, compute=True)
+                ds.to_zarr(str(path), mode="w", consolidated=True, compute=True)
             else:
                 ds.to_zarr(path, consolidated=True, compute=True)
         else:
@@ -317,8 +331,10 @@ class PLINKIterableDataset(IterableDataset):
         if test_size and train_size:
             raise ValueError(
                 "You can only supply either test_size or train_size. "
-                + "The other is determined",
+                + "The other is determined.",
             )
+        if test_size is None and train_size is None:
+            raise ValueError("You must supply either test_size or train_size.")
 
         def __get_split_size(test_size, samples):
             if isinstance(test_size, int):

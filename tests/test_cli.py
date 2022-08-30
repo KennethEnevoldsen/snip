@@ -10,7 +10,7 @@ runner = CliRunner()
 
 @pytest.fixture()
 def app():
-    from snip.cli._util import app  # , setup_cli
+    from snip.cli.setup import app  # , setup_cli
 
     # setup_cli()
     return app

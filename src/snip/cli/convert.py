@@ -9,7 +9,7 @@ from typer import Abort, Argument, Option
 
 from snip.data.dataloaders import PLINKIterableDataset
 
-from ._util import app
+from .setup import app
 
 
 @app.command("convert")
