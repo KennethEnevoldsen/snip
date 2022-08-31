@@ -54,7 +54,7 @@ class TestPlinkIterableDataset:
         else:
             raise ValueError("Dataset format {from_format} not available.")
 
-        ds.to_disk(data_path / f"test.{to_format}", overwrite=True)
+        ds.to_disk(data_path / f"test.{to_format}", mode="w")
 
     @pytest.mark.parametrize(
         "from_format",
@@ -139,7 +139,7 @@ class TestPlinkIterableDataset:
         impute_method: str,
     ):
         ds = zarr_dataset
-        ds.impute_missing(impute_method, save_to=None)
+        ds.impute_missing(impute_method)
         coords = ds.genotype.coords
 
         # test that it is assigned with correct shape

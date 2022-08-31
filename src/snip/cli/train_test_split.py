@@ -100,8 +100,8 @@ def train_test_split_cli(
     if _input_path.suffix == ".zarr":
         ds = PLINKIterableDataset(_input_path, verbose=False)
         ds.train_test_split(test_size=_test_size, train_size=_train_size)
-        ds.to_disk(_train_path, overwrite=overwrite)
-        ds.to_disk(_test_path, overwrite=overwrite)
+        ds.to_disk(_train_path, mode="w")
+        ds.to_disk(_test_path, mode="w")
     else:
         raise ValueError(f"Format {_input_path.suffix} is not supported")
 

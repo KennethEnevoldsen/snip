@@ -67,7 +67,7 @@ def create_test_data_cli(
 
     if format == ".zarr":
         ds = PLINKIterableDataset(load_path, verbose=False)
-        ds.to_disk(save_path, overwrite=overwrite)
+        ds.to_disk(save_path, mode="w")
     else:
         raise ValueError(f"Format {format} is not supported")
 

@@ -163,6 +163,9 @@ class PLINKIterableDataset(IterableDataset):
             yield X
         if n > end:
             X = self.genotype[end:n].compute()
+            if self.impute_missing_method:
+                X.data = np.where(np.isnan(X.data), replacement_value, X.data)
+
             if self.convert_to_tensor:
                 X = self.to_tensor(X)
             yield X
@@ -174,21 +177,32 @@ class PLINKIterableDataset(IterableDataset):
         for x in dataset_iter:
             yield x
 
+    def update_on_disk(self) -> None:
+        """Update the file on disk."""
+        if isinstance(self.path, list):
+            raise ValueError("Can't derive save path, as self.path is a list")
+        if Path(self.path).suffix == ".zarr":
+            self.to_disk(self.path, mode="r+")
+        else:
+            self.to_disk(self.path, mode="w")
+
     def to_disk(
         self,
         path: Union[str, Path],
         chunks: int = 2**13,
-        overwrite: bool = True,
+        mode: Optional[str] = None,
     ) -> None:
         """Save the dataset to disk.
 
         Args:
-            path (Union[str, Path]): Path to save the dataset. Save format is determined
+            path (Union[str, Path, None]): Path to save the dataset. Save format is determined
                 by the file extension. Options include ".bed" or ".zarr". Defaults to
                 ".zarr".
             chunks (int): Defaults to 2**13. The chunk size to be passed to
                 Xarray.chunk, Defaults to 2**13.
-            overwrite (bool): Should it overwrite? Default to True.
+            mode (Optional[str]): Defaults to None. The mode to use when saving the
+                dataset. Use "w" to overwrite the dataset. "r+" to modify exisiting
+                dataset.
         """
         ext = os.path.splitext(path)[-1]
         if self.verbose:
@@ -197,27 +211,27 @@ class PLINKIterableDataset(IterableDataset):
             write_plink1_bin(self.genotype, path)
         elif ext == ".zarr":
             genotype = self.genotype.chunk(chunks)
-            ds = xr.Dataset(dict(genotype=genotype))
-            # due to:
-            # https://github.com/pydata/xarray/issues/3476
-            # normalize object dtypes to string dtypes
-            if self.verbose:
-                msg.warn(
-                    "Normalizing object dtypes to string dtypes, for more see "
-                    + "https://github.com/pydata/xarray/issues/3476",
-                )
-            for v in list(ds.coords.keys()):
-                if ds.coords[v].dtype == object:
-                    ds.coords[v] = ds.coords[v].astype("unicode")
-            for v in list(ds.variables.keys()):
-                if ds[v].dtype == object:
-                    ds[v] = ds[v].astype("unicode")
-            if overwrite:
-                ds.to_zarr(str(path), mode="w", consolidated=True, compute=True)
-            else:
-                ds.to_zarr(path, consolidated=True, compute=True)
+            self.__to_zarr(path, genotype, mode=mode, verbose=self.verbose)
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
+
+    @staticmethod
+    def __to_zarr(
+        path: Union[str, Path],
+        genotype: DataArray,
+        mode: Optional[str],
+        verbose: bool,
+    ) -> None:
+        if verbose:
+            msg.warn(
+                "Normalizing object dtypes to string dtypes, for more see "
+                + "https://github.com/pydata/xarray/issues/3476",
+            )
+        for v in list(genotype.coords.keys()):
+            if genotype.coords[v].dtype == object:
+                genotype.coords[v] = genotype.coords[v].astype("unicode")
+        ds = xr.Dataset(dict(genotype=genotype))
+        ds.to_zarr(str(path), mode=mode, consolidated=True, compute=True)
 
     def __from_disk(
         self,
@@ -363,29 +377,78 @@ class PLINKIterableDataset(IterableDataset):
         test.genotype = test.genotype[mask_array == 1]
         return train, test
 
+    def is_missing_imputed(self, method: Optional[str] = None) -> bool:
+        """Check if missing snps in the dataset is imputed.
+
+        Args:
+            method (Optional[str]): The imputation method. Defaults to None. In which
+                case, the method is determined from self.impute_missing_method.
+
+        Returns:
+            bool: True if missing snps in the dataset is imputed.
+        """
+        if method is None:
+            method = self.impute_missing_method
+
+        if method == "mean" and "mean_snp" in self.genotype.coords:
+            return True
+        if method == "mode" and "mode_snp" in self.genotype.coords:
+            return True
+        if method == "replace with value":
+            return True
+        return False
+
+    def impute_missing_from(
+        self,
+        dataset: "PLINKIterableDataset",
+        method: Optional[str] = None,
+    ):
+        """Impute missing snps based on another dataset. Important for
+        computing missing values on the test and validation set.
+
+        Args:
+            dataset (PLINKIterableDataset): Another plink dataset
+            method (Optional[str], optional): Method for imputing snp. Defaults to None.
+                Where it is used the method defined in the __init__.
+        """
+        if method is None:
+            method = self.impute_missing_method
+        if not dataset.is_missing_imputed(method):
+            raise ValueError(
+                "The dataset to impute from must be imputed. "
+                + "Use dataset.impute_missing() to impute.",
+            )
+
+        if method == "mean":
+            self.genotype.assign_coords(mean_snp=dataset.genotype.coords["mean_snp"])
+        elif method == "mode":
+            self.genotype.assign_coords(mode_snp=dataset.genotype.coords["mode_snp"])
+        elif method == "replace with value":
+            self.snp_replace_value = dataset.snp_replace_value
+
     def impute_missing(
         self,
-        method: str = "mean",
-        save_to: Union[str, Path, None] = None,
+        method: Optional[str] = None,
     ):
         """Impute missing snps.
 
         Args:
-            method (str): Method for imputing missing snps. Options include
+            method (Optional[str]): Method for imputing missing snps. Options include
                 "mean" and "mode" (most common). Defaults to "mean".
-            save_to (Union[str, Path, None]): Path to save the imputed dataset.
         """
+        if self.is_missing_imputed(method):
+            return
 
-        imputated_snps = False
+        if method is None:
+            method = self.impute_missing_method
+
         if method == "mean" and "mean_snp" not in self.genotype.coords:
-            imputated_snps = True
             if self.verbose:
                 msg.info("Computing mean SNP")
             mean_snp = self.genotype.mean(axis=0, skipna=True).compute()
             mean_snp = mean_snp.fillna(0)  # if all of one snp is NA
             self.genotype = self.genotype.assign_coords(mean_snp=mean_snp)
         if method == "mode" and "mode_snp" not in self.genotype.coords:
-            imputated_snps = True
             if self.verbose:
                 msg.info("Computing most common SNP")
             most_common = np.array(
@@ -398,8 +461,6 @@ class PLINKIterableDataset(IterableDataset):
             self.genotype = self.genotype.assign_coords(
                 {"mode_snp": ("variant", most_common)},
             )
-        if save_to is not None and imputated_snps:
-            self.to_disk(save_to, overwrite=True)
 
     def split_into_strides(self, stride: int) -> List["PLINKIterableDataset"]:
         """Splits the dataset into multiple datasets.
@@ -425,3 +486,34 @@ class PLINKIterableDataset(IterableDataset):
                 ),
             )
         return datasets
+
+    @staticmethod
+    def from_array(
+        arr: Union[torch.Tensor, DataArray],
+        metadata_from: Union[DataArray, "PLINKIterableDataset"],
+    ) -> "PLINKIterableDataset":
+        """Create a PLINKIterableDataset from an array.
+
+        Args:
+            arr (Union[torch.Tensor, DataArray]): The array to create the dataset from.
+            metadata_from (Optional[DataArray, PLINKIterableDataset]): The metadata to
+                use for the dataset.
+
+        raises:
+            ValueError: If the metadata is not supplied and the array is not a
+                DataArray.
+
+        Returns:
+            PLINKIterableDataset: The dataset.
+        """
+        if not isinstance(arr, DataArray):
+            if metadata_from is None:
+                raise ValueError(
+                    "You must supply metadata if you are not supplying a DataArray.",
+                )
+            # convert to xarray
+            arr = arr.numpy()
+            if isinstance(metadata_from, PLINKIterableDataset):
+                metadata_from = metadata_from.genotype
+            arr = xr.DataArray(arr, coords=metadata_from.coords)
+        return PLINKIterableDataset(path="", genotype=arr)
