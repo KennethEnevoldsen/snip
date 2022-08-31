@@ -10,9 +10,12 @@ runner = CliRunner()
 
 @pytest.fixture()
 def app():
-    from snip.cli.setup import app  # , setup_cli
+    # setup app
+    from snip.cli.convert import convert_cli  # noqa
+    from snip.cli.create_test_data import create_test_data_cli  # noqa
+    from snip.cli.setup import app
+    from snip.cli.train_test_split import train_test_split_cli  # noqa
 
-    # setup_cli()
     return app
 
 
@@ -24,11 +27,7 @@ def test_convert(bed_path, zarr_tmp_path):  # noqa
 
 def test_cli_convert(app, bed_path, zarr_tmp_path):  # noqa
     result = runner.invoke(app, ["convert", f"{bed_path}", f"{zarr_tmp_path}"])
-    print(bed_path)
-    print(zarr_tmp_path)
-    import os
 
-    print(os.listdir())
     assert result.exit_code == 0
     assert zarr_tmp_path.is_dir()
 
