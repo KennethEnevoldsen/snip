@@ -4,7 +4,7 @@ import random
 from collections import Counter
 from copy import deepcopy
 from pathlib import Path
-from typing import Iterator, Optional, Tuple, Union
+from typing import Iterator, List, Optional, Tuple, Union
 
 import numpy as np
 import torch
@@ -40,6 +40,7 @@ class PLINKIterableDataset(IterableDataset):
         impute_missing: Optional[str] = None,
         snp_replace_value: Union[int, float] = -1,
         verbose: bool = False,
+        genotype: Optional[DataArray] = None,
     ) -> None:
         """Load a PLINK file as an iterable dataset.
 
@@ -48,9 +49,9 @@ class PLINKIterableDataset(IterableDataset):
         their metadata.
 
         Args:
-            path (Union[str, Path]): Path to the .bed or .zarr file. If it is a
-                .zarr file, it will load the "genotype" DataArray from the loaded Xarray
-                dataset.
+            path (Union[str, Path]): Path to the .bed or .zarr
+                file. If it is a .zarr file, it will load the "genotype" DataArray from
+                the loaded Xarray dataset.
             buffer_size (int): Defaults to 1024.
             shuffle (bool): Should it shuffle the dataset using a shuffle buffer.
                 Defaults to True.
@@ -69,6 +70,8 @@ class PLINKIterableDataset(IterableDataset):
                 "replace with value" is true, what should it replace it with? Default
                 to -1.
             verbose (bool): toggles the verbosity of the class.
+            genotype (Optional[DataArray]): If supplied the path is ignored and this
+                genotype array is used.
         """
         self.buffer_size = buffer_size
         self.shuffle = shuffle
@@ -79,8 +82,12 @@ class PLINKIterableDataset(IterableDataset):
         self.path = path
         self.limit = limit
         self.verbose = verbose
+        self.chromosome = chromosome
 
-        self.__from_disk(path, limit=limit)
+        if genotype is None:
+            self._genotype = self.__from_disk(path, limit=limit)
+        else:
+            self._genotype = genotype
         self.set_chromosome(chromosome)
 
     def set_chromosome(self, chromosome: Optional[int]) -> None:
@@ -156,6 +163,9 @@ class PLINKIterableDataset(IterableDataset):
             yield X
         if n > end:
             X = self.genotype[end:n].compute()
+            if self.impute_missing_method:
+                X.data = np.where(np.isnan(X.data), replacement_value, X.data)
+
             if self.convert_to_tensor:
                 X = self.to_tensor(X)
             yield X
@@ -167,21 +177,32 @@ class PLINKIterableDataset(IterableDataset):
         for x in dataset_iter:
             yield x
 
+    def update_on_disk(self) -> None:
+        """Update the file on disk."""
+        if not self.path:
+            raise ValueError("Can't derive save path, as self.path is None or empty")
+        if Path(self.path).suffix == ".zarr":
+            self.to_disk(self.path, mode="a")
+        else:
+            self.to_disk(self.path, mode="w")
+
     def to_disk(
         self,
         path: Union[str, Path],
         chunks: int = 2**13,
-        overwrite: bool = True,
+        mode: Optional[str] = None,
     ) -> None:
         """Save the dataset to disk.
 
         Args:
-            path (Union[str, Path]): Path to save the dataset. Save format is determined
+            path (Union[str, Path, None]): Path to save the dataset. Save format is determined
                 by the file extension. Options include ".bed" or ".zarr". Defaults to
                 ".zarr".
             chunks (int): Defaults to 2**13. The chunk size to be passed to
                 Xarray.chunk, Defaults to 2**13.
-            overwrite (bool): Should it overwrite? Default to True.
+            mode (Optional[str]): Defaults to None. The mode to use when saving the
+                dataset. Use "w" to overwrite the dataset. "a" to modify exisiting
+                dataset.
         """
         ext = os.path.splitext(path)[-1]
         if self.verbose:
@@ -190,45 +211,63 @@ class PLINKIterableDataset(IterableDataset):
             write_plink1_bin(self.genotype, path)
         elif ext == ".zarr":
             genotype = self.genotype.chunk(chunks)
-            ds = xr.Dataset(dict(genotype=genotype))
-            if overwrite:
-                ds.to_zarr(path, mode="w", consolidated=True, compute=True)
-            else:
-                ds.to_zarr(path, consolidated=True, compute=True)
+            self.__to_zarr(path, genotype, mode=mode, verbose=self.verbose)
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
+
+    @staticmethod
+    def __to_zarr(
+        path: Union[str, Path],
+        genotype: DataArray,
+        mode: Optional[str],
+        verbose: bool,
+    ) -> None:
+        if verbose:
+            msg.warn(
+                "Normalizing object dtypes to string dtypes, for more see "
+                + "https://github.com/pydata/xarray/issues/3476",
+            )
+        for v in list(genotype.coords.keys()):
+            if genotype.coords[v].dtype == object:
+                genotype.coords[v] = genotype.coords[v].astype("unicode")
+        ds = xr.Dataset(dict(genotype=genotype))
+        ds.to_zarr(str(path), mode=mode, consolidated=True, compute=True)
 
     def __from_disk(
         self,
         path: Union[str, Path],
         limit: Optional[int] = None,
         rechunk: Optional[bool] = None,
-    ) -> None:
+    ) -> DataArray:
         """Load the dataset from disk.
 
         Args:
-            path (Union[str, Path]): Path to the dataset. Read format is determined by the
-                file extension. Options include ".bed" or ".zarr".
+            path (Union[str, Path]): Path to the dataset. Read format is determined by
+                the file extension. Options include ".bed" or ".zarr".
             limit (Optional[int]): Defaults to None. If not None,
                 only the first limit number of rows will be loaded.
             rechunk (bool): Defaults to False. If True, the dataset will
                 be rechunked into chunks of size 2**13.
+
+        Returns:
+            DataArray: A DataArray object containing the genotype data.
         """
         ext = os.path.splitext(path)[-1]
         if ext == ".bed":
-            self._genotype = read_plink1_bin(str(path))
+            genotype = read_plink1_bin(str(path))
         elif ext == ".zarr":
             zarr_ds = xr.open_zarr(path)
-            self._genotype = zarr_ds.genotype
+            genotype = zarr_ds.genotype
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
+        if rechunk is None and ext == ".zarr":
+            genotype = genotype.chunk(2**13)
 
         if limit:
-            self._genotype = self._genotype[:limit]
-        if rechunk is None and ext == ".zarr":
-            self._genotype = self._genotype.chunk(2**13)
+            genotype = genotype[:limit]
         elif rechunk:
-            self._genotype = self._genotype.chunk(2**13)
+            genotype = genotype.chunk(2**13)
+        return genotype
 
     def to_tensor(self, x: DataArray) -> torch.Tensor:
         """Convert DataArray to tensor.
@@ -299,8 +338,10 @@ class PLINKIterableDataset(IterableDataset):
         if test_size and train_size:
             raise ValueError(
                 "You can only supply either test_size or train_size. "
-                + "The other is determined",
+                + "The other is determined.",
             )
+        if test_size is None and train_size is None:
+            raise ValueError("You must supply either test_size or train_size.")
 
         def __get_split_size(test_size, samples):
             if isinstance(test_size, int):
@@ -329,25 +370,78 @@ class PLINKIterableDataset(IterableDataset):
         test.genotype = test.genotype[mask_array == 1]
         return train, test
 
-    def impute_missing(self, method: str = "mean", save_after_imputation: bool = False):
+    def is_missing_imputed(self, method: Optional[str] = None) -> bool:
+        """Check if missing snps in the dataset is imputed.
+
+        Args:
+            method (Optional[str]): The imputation method. Defaults to None. In which
+                case, the method is determined from self.impute_missing_method.
+
+        Returns:
+            bool: True if missing snps in the dataset is imputed.
+        """
+        if method is None:
+            method = self.impute_missing_method
+
+        if method == "mean" and "mean_snp" in self.genotype.coords:
+            return True
+        if method == "mode" and "mode_snp" in self.genotype.coords:
+            return True
+        if method == "replace with value":
+            return True
+        return False
+
+    def impute_missing_from(
+        self,
+        dataset: "PLINKIterableDataset",
+        method: Optional[str] = None,
+    ):
+        """Impute missing snps based on another dataset. Important for
+        computing missing values on the test and validation set.
+
+        Args:
+            dataset (PLINKIterableDataset): Another plink dataset
+            method (Optional[str], optional): Method for imputing snp. Defaults to None.
+                Where it is used the method defined in the __init__.
+        """
+        if method is None:
+            method = self.impute_missing_method
+        if not dataset.is_missing_imputed(method):
+            raise ValueError(
+                "The dataset to impute from must be imputed. "
+                + "Use dataset.impute_missing() to impute.",
+            )
+
+        if method == "mean":
+            self.genotype.assign_coords(mean_snp=dataset.genotype.coords["mean_snp"])
+        elif method == "mode":
+            self.genotype.assign_coords(mode_snp=dataset.genotype.coords["mode_snp"])
+        elif method == "replace with value":
+            self.snp_replace_value = dataset.snp_replace_value
+
+    def impute_missing(
+        self,
+        method: Optional[str] = None,
+    ):
         """Impute missing snps.
 
         Args:
-            method (str): Method for imputing missing snps. Options include
+            method (Optional[str]): Method for imputing missing snps. Options include
                 "mean" and "mode" (most common). Defaults to "mean".
-            save_after_imputation (bool): Save after imputation to self.path
-                (the path it was loaded from). Defaults to False.
         """
-        imputated_snps = False
+        if self.is_missing_imputed(method):
+            return
+
+        if method is None:
+            method = self.impute_missing_method
+
         if method == "mean" and "mean_snp" not in self.genotype.coords:
-            imputated_snps = True
             if self.verbose:
                 msg.info("Computing mean SNP")
             mean_snp = self.genotype.mean(axis=0, skipna=True).compute()
             mean_snp = mean_snp.fillna(0)  # if all of one snp is NA
             self.genotype = self.genotype.assign_coords(mean_snp=mean_snp)
         if method == "mode" and "mode_snp" not in self.genotype.coords:
-            imputated_snps = True
             if self.verbose:
                 msg.info("Computing most common SNP")
             most_common = np.array(
@@ -360,5 +454,135 @@ class PLINKIterableDataset(IterableDataset):
             self.genotype = self.genotype.assign_coords(
                 {"mode_snp": ("variant", most_common)},
             )
-        if save_after_imputation and imputated_snps:
-            self.to_disk(self.path, overwrite=True)
+
+    def split_into_strides(
+        self,
+        stride: int,
+        drop_last: bool = True,
+    ) -> List["PLINKIterableDataset"]:
+        """Splits the dataset into multiple datasets.
+
+        Each dataset contains {stides} SNPs
+
+        Args:
+            stride (int): The number of SNPs to split the dataset into.
+            drop_last (bool): If True, the last dataset will be smaller than the others.
+                Defaults to True.
+
+        Returns:
+            List[PLINKIterableDataset]: List of datasets
+        """
+        if self.verbose:
+            msg.info(f"Splitting dataset into {stride} strides")
+        datasets = []
+        for i in range(0, self.genotype.shape[1], stride):
+            datasets.append(
+                PLINKIterableDataset(
+                    self.path,
+                    chromosome=self.chromosome,
+                    genotype=self.genotype.isel(variant=slice(i, i + stride)),
+                    verbose=self.verbose,
+                ),
+            )
+        if drop_last:
+            datasets = datasets[:-1]
+        return datasets
+
+    @staticmethod
+    def from_array(
+        arr: Union[torch.Tensor, DataArray],
+        metadata_from: Union[DataArray, "PLINKIterableDataset"],
+    ) -> "PLINKIterableDataset":
+        """Create a PLINKIterableDataset from an array.
+
+        Args:
+            arr (Union[torch.Tensor, DataArray]): The array to create the dataset from.
+            metadata_from (Optional[DataArray, PLINKIterableDataset]): The metadata to
+                use for the dataset.
+
+        raises:
+            ValueError: If the metadata is not supplied and the array is not a
+                DataArray.
+
+        Returns:
+            PLINKIterableDataset: The dataset.
+        """
+        if not isinstance(arr, DataArray):
+            if metadata_from is None:
+                raise ValueError(
+                    "You must supply metadata if you are not supplying a DataArray.",
+                )
+            # convert to xarray
+            arr = arr.numpy()
+            if isinstance(metadata_from, PLINKIterableDataset):
+                metadata_from = metadata_from.genotype
+            if arr.shape == metadata_from.shape:
+                arr = xr.DataArray(arr, coords=metadata_from.coords)
+            else:
+                coords = {
+                    "variant": np.arange(0, arr.shape[1]),  # create variant id
+                    "chrom": ("variant", np.repeat(1, arr.shape[1])),  # add chromosome
+                    "a0": ("variant", np.repeat("A", arr.shape[1])),  # add allele 1
+                    "a1": ("variant", np.repeat("B", arr.shape[1])),  # add allele 2
+                    "snp": (
+                        "variant",
+                        np.array([f"c{t}" for t in range(arr.shape[1])]),
+                    ),  # add SNP id
+                    "pos": ("variant", np.arange(0, arr.shape[1])),  # add position
+                }
+                # transfer coords frome the first dimension (sample)
+                for k in metadata_from.sample._coords:
+                    coords[k] = ("sample", metadata_from.sample[k].data)
+                arr = xr.DataArray(arr, dims=["sample", "variant"], coords=coords)
+        return PLINKIterableDataset(path="", genotype=arr)
+
+
+def combine_plinkdatasets(
+    datasets: List[PLINKIterableDataset],
+    along_dim: str = "sample",
+    rewrite_variants: Optional[bool] = None,
+) -> PLINKIterableDataset:
+    """Merge multiple PLINKIterableDatasets into one.
+
+    Args:
+        datasets (List[PLINKIterableDataset]): The datasets to merge.
+        along_dim (str): The dimension to merge along. Either variant or sample.
+        rewrite_variants (Optional[bool]): If True, the variant IDs will be rewritten.
+            Defaults to None. If None, the variant IDs will be rewritten if the
+            datasets have overlapping variant IDs.
+
+    Returns:
+        PLINKIterableDataset: The merged dataset.
+    """
+    if len(datasets) == 1:
+        return datasets[0]
+    dataset = datasets[0]
+    genotypes = [ds.genotype for ds in datasets]
+    if along_dim == "variant":
+        genotype = xr.concat(genotypes, dim="variant")
+
+    elif along_dim == "sample":
+        genotype = xr.concat(genotype, dim="sample")
+    else:
+        raise ValueError(f"Dimension {along_dim} not recognised.")
+    if rewrite_variants is None:
+        variants = genotype.variant.data
+        rewrite_variants = np.unique(variants).shape == variants.shape
+
+    if rewrite_variants:
+        coords = {
+            "variant": np.arange(0, genotype.shape[1]),  # create variant id
+            "chrom": ("variant", np.repeat(1, genotype.shape[1])),  # add chromosome
+            "a0": ("variant", np.repeat("A", genotype.shape[1])),  # add allele 1
+            "a1": ("variant", np.repeat("B", genotype.shape[1])),  # add allele 2
+            "snp": (
+                "variant",
+                np.array([f"c{t}" for t in range(genotype.shape[1])]),
+            ),  # add SNP id
+            "pos": ("variant", np.arange(0, genotype.shape[1])),  # add position
+        }
+        genotype.assign_coords(coords)
+
+    dataset.genotype = genotype
+    dataset.path = ""
+    return dataset

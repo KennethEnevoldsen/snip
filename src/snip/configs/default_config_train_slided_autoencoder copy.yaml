@@ -1,0 +1,20 @@
+# @package _global_
+defaults:
+  - project:
+      - name: local mlp
+  - data:
+      - train_path: data/test/sample_train.zarr
+      - validation_path: data/test/sample_validation.zarr
+  - training:
+      - devices: 1
+      - accelerator: mps
+      - precision: null
+      - default_root_dir: models/
+      - profiler: null
+      - max_epochs: null # Optional[int]: Number of epochs to train
+      - stride: 100 # if stride>input then there is an overlap
+      - input: 100 # 100 snps as input. Inpu should be equal to the input layer.
+      - auto_find_lr: true
+  - model:
+      - layers: [100, 75, 50, 75, 100]
+      - activation: linear # str: Options include linear and relu

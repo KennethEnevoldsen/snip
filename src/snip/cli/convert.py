@@ -9,7 +9,7 @@ from typer import Abort, Argument, Option
 
 from snip.data.dataloaders import PLINKIterableDataset
 
-from ._util import app
+from .setup import app
 
 
 @app.command("convert")
@@ -100,9 +100,12 @@ def convert(
         format = save_path.suffix
         format = format.strip(".")
 
+    mode = None
+    if overwrite:
+        mode = "w"
     if format == "zarr":
         ds = PLINKIterableDataset(load_path, chromosome=chromosome, verbose=False)
-        ds.to_disk(save_path, overwrite=overwrite)
+        ds.to_disk(save_path, mode=mode)
     else:
         raise ValueError(f"Format {format} is not supported")
 

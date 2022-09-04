@@ -7,16 +7,12 @@ NAME = "snip"
 app = typer.Typer(name=NAME, help=HELP)
 
 
-@app.command("delete")
-def delete(user: str):
-    """THIS is only as otherwise convert is no longer a command."""
-    typer.echo(f"Deleting user: {user}")
-
-
 def setup_cli() -> None:
     """Setups command line interface."""
     # Ensure that all app.commands are run
     from .convert import convert_cli  # noqa
+    from .create_test_data import create_test_data_cli  # noqa
+    from .train_test_split import train_test_split_cli  # noqa
 
     command = typer.main.get_command(app)
     command(prog_name=COMMAND)

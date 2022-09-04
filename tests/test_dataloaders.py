@@ -54,7 +54,7 @@ class TestPlinkIterableDataset:
         else:
             raise ValueError("Dataset format {from_format} not available.")
 
-        ds.to_disk(data_path / f"test.{to_format}", overwrite=True)
+        ds.to_disk(data_path / f"test.{to_format}", mode="w")
 
     @pytest.mark.parametrize(
         "from_format",
@@ -73,6 +73,15 @@ class TestPlinkIterableDataset:
         else:
             raise ValueError("Dataset format {from_format} not available.")
         assert isinstance(ds._genotype, DataArray)
+
+    def test_split_into_strides(self, zarr_dataset: PLINKIterableDataset):
+        ds = zarr_dataset
+        datasets = ds.split_into_strides(stride=10)
+
+        # test that it is assigned with correct shape
+        for dataset in datasets:
+            assert dataset.genotype.shape[1] == 10
+            assert dataset.genotype.shape[0] == ds.genotype.shape[0]
 
     def test_set_chromosome(
         self,
@@ -133,7 +142,7 @@ class TestPlinkIterableDataset:
         impute_method: str,
     ):
         ds = zarr_dataset
-        ds.impute_missing(impute_method, save_after_imputation=False)
+        ds.impute_missing(impute_method)
         coords = ds.genotype.coords
 
         # test that it is assigned with correct shape

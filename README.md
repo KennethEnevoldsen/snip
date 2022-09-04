@@ -34,6 +34,8 @@ peotry install
 
 ## 👩‍💻 Getting started
 
+
+### Convert
 To convert `.bed` files to `.zarr` simply run from your terminal:
 ```bash
 snip convert sample.bed sample.zarr
@@ -45,6 +47,10 @@ or equivalently:
 python -m snip convert sample.bed sample.zarr
 ```
 
+### 
+
+
+### Learn more
 To see a list of possible commands:
 ```bash
 snip --help
