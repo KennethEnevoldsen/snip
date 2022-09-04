@@ -93,3 +93,6 @@ snip = "snip.cli.setup:setup_cli"
 ignore_missing_imports = true
 no_implicit_optional = true
 allow_redefinition = true
+
+[tool.isort]
+known_third_party = ["wandb"]
