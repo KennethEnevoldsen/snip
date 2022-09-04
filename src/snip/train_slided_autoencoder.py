@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import Optional, Sequence, Tuple
 
 import hydra
+import wandb
 from omegaconf import DictConfig
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
@@ -14,7 +15,6 @@ from torch import nn
 from torch.utils.data import DataLoader
 from wasabi import msg
 
-import wandb
 from snip.data.dataloaders import PLINKIterableDataset, combine_plinkdatasets
 from snip.models import MLP, PlAEWrapper
 from snip.utils import flatten_nested_dict
