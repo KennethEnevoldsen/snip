@@ -30,7 +30,7 @@ class PLINKIterableDataset(IterableDataset):
 
     def __init__(
         self,
-        path: Union[str, Path, List[str], List[Path]],
+        path: Union[str, Path],
         buffer_size: int = 1024,
         shuffle: bool = True,
         limit: Optional[int] = None,
@@ -49,7 +49,7 @@ class PLINKIterableDataset(IterableDataset):
         their metadata.
 
         Args:
-            path (Union[str, Path, List[str], List[Path]]): Path to the .bed or .zarr
+            path (Union[str, Path]): Path to the .bed or .zarr
                 file. If it is a .zarr file, it will load the "genotype" DataArray from
                 the loaded Xarray dataset.
             buffer_size (int): Defaults to 1024.
@@ -179,10 +179,10 @@ class PLINKIterableDataset(IterableDataset):
 
     def update_on_disk(self) -> None:
         """Update the file on disk."""
-        if isinstance(self.path, list):
-            raise ValueError("Can't derive save path, as self.path is a list")
+        if not self.path:
+            raise ValueError("Can't derive save path, as self.path is None or empty")
         if Path(self.path).suffix == ".zarr":
-            self.to_disk(self.path, mode="r+")
+            self.to_disk(self.path, mode="a")
         else:
             self.to_disk(self.path, mode="w")
 
@@ -201,7 +201,7 @@ class PLINKIterableDataset(IterableDataset):
             chunks (int): Defaults to 2**13. The chunk size to be passed to
                 Xarray.chunk, Defaults to 2**13.
             mode (Optional[str]): Defaults to None. The mode to use when saving the
-                dataset. Use "w" to overwrite the dataset. "r+" to modify exisiting
+                dataset. Use "w" to overwrite the dataset. "a" to modify exisiting
                 dataset.
         """
         ext = os.path.splitext(path)[-1]
@@ -235,17 +235,15 @@ class PLINKIterableDataset(IterableDataset):
 
     def __from_disk(
         self,
-        path: Union[str, Path, List[str], List[Path]],
+        path: Union[str, Path],
         limit: Optional[int] = None,
         rechunk: Optional[bool] = None,
     ) -> DataArray:
         """Load the dataset from disk.
 
         Args:
-            path (Union[str, Path, List[str], List[Path]]): Path to the dataset. Read
-                format is determined by the file extension. Options include ".bed" or
-                ".zarr". If a list of paths is supplied, the datasets are concatenated
-                together.
+            path (Union[str, Path]): Path to the dataset. Read format is determined by
+                the file extension. Options include ".bed" or ".zarr".
             limit (Optional[int]): Defaults to None. If not None,
                 only the first limit number of rows will be loaded.
             rechunk (bool): Defaults to False. If True, the dataset will
@@ -254,21 +252,16 @@ class PLINKIterableDataset(IterableDataset):
         Returns:
             DataArray: A DataArray object containing the genotype data.
         """
-        if isinstance(path, list):
-            datasets = [self.__from_disk(p, limit=limit) for p in path]
-            genotype = xr.concat(datasets, dim="sample")
-            ext = os.path.splitext(path[0])[-1]  # get the extension of the first path
+        ext = os.path.splitext(path)[-1]
+        if ext == ".bed":
+            genotype = read_plink1_bin(str(path))
+        elif ext == ".zarr":
+            zarr_ds = xr.open_zarr(path)
+            genotype = zarr_ds.genotype
         else:
-            ext = os.path.splitext(path)[-1]
-            if ext == ".bed":
-                genotype = read_plink1_bin(str(path))
-            elif ext == ".zarr":
-                zarr_ds = xr.open_zarr(path)
-                genotype = zarr_ds.genotype
-            else:
-                raise ValueError("Unknown file extension, should be .bed or .zarr")
-            if rechunk is None and ext == ".zarr":
-                genotype = genotype.chunk(2**13)
+            raise ValueError("Unknown file extension, should be .bed or .zarr")
+        if rechunk is None and ext == ".zarr":
+            genotype = genotype.chunk(2**13)
 
         if limit:
             genotype = genotype[:limit]
@@ -462,13 +455,18 @@ class PLINKIterableDataset(IterableDataset):
                 {"mode_snp": ("variant", most_common)},
             )
 
-    def split_into_strides(self, stride: int) -> List["PLINKIterableDataset"]:
+    def split_into_strides(
+        self,
+        stride: int,
+        drop_last: bool = True,
+    ) -> List["PLINKIterableDataset"]:
         """Splits the dataset into multiple datasets.
 
         Each dataset contains {stides} SNPs
 
         Args:
             strides: The number of SNPs to split the dataset into
+            drop_last: If True, the last dataset will be smaller than the others.
 
         Returns:
             List[PLINKIterableDataset]: List of datasets
@@ -476,7 +474,7 @@ class PLINKIterableDataset(IterableDataset):
         if self.verbose:
             msg.info(f"Splitting dataset into {stride} strides")
         datasets = []
-        for i in range(0, self.genotype.shape[0], stride):
+        for i in range(0, self.genotype.shape[1], stride):
             datasets.append(
                 PLINKIterableDataset(
                     self.path,
@@ -485,6 +483,8 @@ class PLINKIterableDataset(IterableDataset):
                     verbose=self.verbose,
                 ),
             )
+        if drop_last:
+            datasets = datasets[:-1]
         return datasets
 
     @staticmethod
@@ -515,5 +515,70 @@ class PLINKIterableDataset(IterableDataset):
             arr = arr.numpy()
             if isinstance(metadata_from, PLINKIterableDataset):
                 metadata_from = metadata_from.genotype
-            arr = xr.DataArray(arr, coords=metadata_from.coords)
+            if arr.shape == metadata_from.shape:
+                arr = xr.DataArray(arr, coords=metadata_from.coords)
+            else:
+                coords = {
+                    "variant": np.arange(0, arr.shape[1]),  # create variant id
+                    "chrom": ("variant", np.repeat(1, arr.shape[1])),  # add chromosome
+                    "a0": ("variant", np.repeat("A", arr.shape[1])),  # add allele 1
+                    "a1": ("variant", np.repeat("B", arr.shape[1])),  # add allele 2
+                    "snp": (
+                        "variant",
+                        np.array([f"c{t}" for t in range(arr.shape[1])]),
+                    ),  # add SNP id
+                    "pos": ("variant", np.arange(0, arr.shape[1])),  # add position
+                }
+                # transfer coords frome the first dimension (sample)
+                for k in metadata_from.sample._coords:
+                    coords[k] = ("sample", metadata_from.sample[k].data)
+                arr = xr.DataArray(arr, dims=["sample", "variant"], coords=coords)
         return PLINKIterableDataset(path="", genotype=arr)
+
+
+def combine_plinkdatasets(
+    datasets: List[PLINKIterableDataset],
+    along_dim: str = "sample",
+    rewrite_variants: Optional[bool] = None,
+) -> PLINKIterableDataset:
+    """Merge multiple PLINKIterableDatasets into one.
+
+    Args:
+        datasets (List[PLINKIterableDataset]): The datasets to merge.
+        along_dim (str): The dimension to merge along. Either variant or sample.
+        rewrite_variants (Optional[bool]): If True, the variant IDs will be rewritten.
+            Defaults to None. If None, the variant IDs will be rewritten if the
+            datasets have overlapping variant IDs.
+    """
+    if len(datasets) == 1:
+        return datasets[0]
+    dataset = datasets[0]
+    genotypes = [ds.genotype for ds in datasets]
+    if along_dim == "variant":
+        genotype = xr.concat(genotypes, dim="variant")
+
+    elif along_dim == "sample":
+        genotype = xr.concat(genotype, dim="sample")
+    else:
+        raise ValueError(f"Dimension {along_dim} not recognised.")
+    if rewrite_variants is None:
+        variants = genotype.variant.data
+        rewrite_variants = np.unique(variants).shape == variants.shape
+
+    if rewrite_variants:
+        coords = {
+            "variant": np.arange(0, genotype.shape[1]),  # create variant id
+            "chrom": ("variant", np.repeat(1, genotype.shape[1])),  # add chromosome
+            "a0": ("variant", np.repeat("A", genotype.shape[1])),  # add allele 1
+            "a1": ("variant", np.repeat("B", genotype.shape[1])),  # add allele 2
+            "snp": (
+                "variant",
+                np.array([f"c{t}" for t in range(genotype.shape[1])]),
+            ),  # add SNP id
+            "pos": ("variant", np.arange(0, genotype.shape[1])),  # add position
+        }
+        genotype.assign_coords(coords)
+
+    dataset.genotype = genotype
+    dataset.path = ""
+    return dataset
