@@ -143,8 +143,5 @@ docs/_build/*
 *.fam
 *.bed
 
-# Poetry
-poetry.lock
-
 # wandb
 wandb/*
