@@ -35,6 +35,7 @@ training:
   learning_rate: 0.001 # float: will be ignored if auto_lr_find is true.
 
 model:
+  architecture: "mlp"
   input_size: 100 # int
   encode_layers: [75, 50]
   decode_layers: [75, 100]
