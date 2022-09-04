@@ -19,7 +19,7 @@ from snip.data.dataloaders import PLINKIterableDataset, combine_plinkdatasets
 from snip.models import MLP, PlAEWrapper
 from snip.utils import flatten_nested_dict
 
-CONFIG_PATH = Path(__file__).parent / "config"
+CONFIG_PATH = Path(__file__).parent / "configs"
 
 # dask.config.set(scheduler='synchronous')
 # speeds up data loading:
@@ -29,30 +29,33 @@ CONFIG_PATH = Path(__file__).parent / "config"
 def create_autoencoder(cfg: Namespace) -> nn.Module:
     """Create a autoencoder."""
 
-    assert (
-        cfg.data.width == cfg.model.input_size
-    ), "training data width  must match the input size of the model."
-    assert (
-        cfg.data.width == cfg.model.decode_layers[-1]
-    ), "last layer of the decoder must match input size of the model."
+    if cfg.model.architecture.lower() == "mlp":
+        assert (
+            cfg.data.width == cfg.model.input_size
+        ), "training data width  must match the input size of the model."
+        assert (
+            cfg.data.width == cfg.model.decode_layers[-1]
+        ), "last layer of the decoder must match input size of the model."
 
-    encoder = MLP(
-        layers=cfg.model.encode_layers,
-        input_size=cfg.model.input_size,
-        activation=cfg.model.activation,
-    )
-    decoder = MLP(
-        layers=cfg.model.decode_layers,
-        input_size=cfg.model.encode_layers[-1],
-        activation=cfg.model.activation,
-    )
-    # wrap in PlWrapper
-    model = PlAEWrapper(
-        encoder=encoder,
-        decoder=decoder,
-        optimizer=cfg.training.optimizer,
-        learning_rate=cfg.training.learning_rate,
-    )
+        encoder = MLP(
+            layers=cfg.model.encode_layers,
+            input_size=cfg.model.input_size,
+            activation=cfg.model.activation,
+        )
+        decoder = MLP(
+            layers=cfg.model.decode_layers,
+            input_size=cfg.model.encode_layers[-1],
+            activation=cfg.model.activation,
+        )
+        # wrap in PlWrapper
+        model = PlAEWrapper(
+            encoder=encoder,
+            decoder=decoder,
+            optimizer=cfg.training.optimizer,
+            learning_rate=cfg.training.learning_rate,
+        )
+    else:
+        raise NotImplementedError("Model not implemented")
     return model
 
 
@@ -135,7 +138,7 @@ def create_trainer(cfg) -> Trainer:
 
 @hydra.main(
     config_path=CONFIG_PATH,
-    config_name="default_config",
+    config_name="default_config_train_slided_autoencoder",
     version_base="1.2",
 )
 def main(cfg: DictConfig) -> None:
