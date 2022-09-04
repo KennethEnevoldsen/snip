@@ -29,6 +29,7 @@ class MLP(pl.LightningModule):
         Args:
             layers (List[int]): List of layer sizes.
             activation (Callable): Activation function. Defaults to nn.functional.relu.
+            input_size (int): Size of the input.
         """
         super().__init__()
         self.layers_size = [input_size] + layers

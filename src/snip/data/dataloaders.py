@@ -465,8 +465,9 @@ class PLINKIterableDataset(IterableDataset):
         Each dataset contains {stides} SNPs
 
         Args:
-            strides: The number of SNPs to split the dataset into
-            drop_last: If True, the last dataset will be smaller than the others.
+            stride (int): The number of SNPs to split the dataset into.
+            drop_last (bool): If True, the last dataset will be smaller than the others.
+                Defaults to True.
 
         Returns:
             List[PLINKIterableDataset]: List of datasets
@@ -549,6 +550,9 @@ def combine_plinkdatasets(
         rewrite_variants (Optional[bool]): If True, the variant IDs will be rewritten.
             Defaults to None. If None, the variant IDs will be rewritten if the
             datasets have overlapping variant IDs.
+
+    Returns:
+        PLINKIterableDataset: The merged dataset.
     """
     if len(datasets) == 1:
         return datasets[0]

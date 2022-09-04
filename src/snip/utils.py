@@ -8,14 +8,16 @@ def flatten_nested_dict(
 ) -> Dict:
     """Recursively flatten an infinitely nested config. E.g. {"level1":
 
-    {"level2": "level3": {"level4": 5}}}} becomes.
+    {"level2": "level3": {"level4": 5}}}} becomes:
 
     {"level1.level2.level3.level4": 5}.
+
     Args:
-        d (Dict, MutableMapping): Dict to flatten.
+        d (Union[Dict, MutableMapping]): Dict to flatten.
         parent_key (str): The parent key for the current dict, e.g. "level1" for the
-            first iteration.
+            first iteration. Defaults to "".
         sep (str): How to separate each level in the dict. Defaults to ".".
+
     Returns:
         Dict: The flattened dict.
     """
