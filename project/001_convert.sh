@@ -4,6 +4,8 @@
 #SBATCH -c 16
 #SBATCH --output ./project/reports/slurm-output/%x-%u-%j.out
 #SBATCH -A NLPPred
+#SBATCH --mail-type=END
+#SBATCH --mail-user=slurm-notifications-aaaahkuvjxiplokhffpn6qphzu@chcaa.slack.com
 
 # snip convert /home/kce/dsmwpred/data/ukbb/geno.bed data/processed/chrom_6.zarr --format zarr --chromosome 6 --overwrite
 # snip convert /home/kce/dsmwpred/data/ukbb/geno.bed data/processed/chrom_21.zarr --format zarr --chromosome 21 --overwrite

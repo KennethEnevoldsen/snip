@@ -1,1 +1,45 @@
-Mapping files:   0%|          | 0/3 [00:00<?, ?it/s]Mapping files:  33%|███▎      | 1/3 [00:00<00:01,  1.68it/s]Mapping files:  67%|██████▋   | 2/3 [00:01<00:00,  2.00it/s]
+Mapping files:   0%|          | 0/3 [00:00<?, ?it/s]Mapping files:  33%|███▎      | 1/3 [00:00<00:01,  1.68it/s]Mapping files:  67%|██████▋   | 2/3 [00:01<00:00,  2.00it/s]Mapping files: 100%|██████████| 3/3 [01:03<00:00, 29.02s/it]Mapping files: 100%|██████████| 3/3 [01:04<00:00, 21.43s/it]
+Traceback (most recent call last):
+  File "/home/kce/miniconda3/envs/snip/bin/snip", line 5, in <module>
+    setup_cli()
+  File "/faststorage/project/NLPPred/github/snip/src/snip/cli/setup.py", line 18, in setup_cli
+    command(prog_name=COMMAND)
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/typer/core.py", line 778, in main
+    return _main(
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/typer/core.py", line 216, in _main
+    rv = self.invoke(ctx)
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/typer/main.py", line 683, in wrapper
+    return callback(**use_params)  # type: ignore
+  File "/faststorage/project/NLPPred/github/snip/src/snip/cli/convert.py", line 67, in convert_cli
+    save_path = convert(input_path, output_path_, format, overwrite)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/cli/convert.py", line 108, in convert
+    ds.to_disk(save_path, mode=mode)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py", line 214, in to_disk
+    self.__to_zarr(path, genotype, mode=mode, verbose=self.verbose)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py", line 234, in __to_zarr
+    ds.to_zarr(str(path), mode=mode, consolidated=True, compute=True)
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/xarray/core/dataset.py", line 2060, in to_zarr
+    return to_zarr(  # type: ignore
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/xarray/backends/api.py", line 1597, in to_zarr
+    zstore = backends.ZarrStore.open_group(
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/xarray/backends/zarr.py", line 406, in open_group
+    zarr_group = zarr.open_group(store, **open_kwargs)
+  File "/home/kce/miniconda3/envs/snip/lib/python3.9/site-packages/zarr/hierarchy.py", line 1197, in open_group
+    raise ContainsGroupError(path)
+zarr.errors.ContainsGroupError: path '' contains a group
+✔ Finished : Train data created at:
+/faststorage/project/NLPPred/github/snip/data/processed/chrom_22_train.zarr
+✔ Finished : Test data created at:
+/faststorage/project/NLPPred/github/snip/data/processed/chrom_22_test.zarr
+✔ Finished : Train data created at:
+/faststorage/project/NLPPred/github/snip/data/processed/chrom_22_train.zarr
+✔ Finished : Test data created at:
+/faststorage/project/NLPPred/github/snip/data/processed/chrom_22_val.zarr
