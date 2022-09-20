@@ -7,14 +7,14 @@ project:
 
 data:
   train_path: "data/processed/chrom_22_train.zarr"
-  validation_path: "data/processed/chrom_22_val.zarr"
+  validation_path: "data/processed/chrom_22_validation.zarr"
   test_path: "data/processed/chrom_22_test.zarr" # Optional[str]: Can be null
   result_path: "data/compressed/"
   interim_path: "data/interim/" # temporary data path
   # training data args
   stride: 100 # if stride>input then there is an overlap
   width: 100 # int: number of snps. Inpu should be equal to the input layer. Note: should be equal to model input_size
-  batch_size: 100 # int
+  batch_size: 1024 # int
   impute_missing: "mean"  # Optional[str]: method for imputing missing snps.
 
 training:

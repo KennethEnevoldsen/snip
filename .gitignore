@@ -145,3 +145,6 @@ docs/_build/*
 
 # wandb
 wandb/*
+
+Hydra
+outputs/*

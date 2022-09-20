@@ -231,7 +231,7 @@ class PLINKIterableDataset(IterableDataset):
             if genotype.coords[v].dtype == object:
                 genotype.coords[v] = genotype.coords[v].astype("unicode")
         ds = xr.Dataset(dict(genotype=genotype))
-        ds.to_zarr(str(path), mode=mode, consolidated=True, compute=True)
+        ds.to_zarr(str(path), mode=mode, compute=True)
 
     def __from_disk(
         self,

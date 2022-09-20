@@ -201,6 +201,11 @@ def main(cfg: DictConfig) -> None:
             continue
         compressed_snps_paths = list(interim_path.glob(f"{split}_*.zarr"))
         genotypes = [PLINKIterableDataset(path) for path in compressed_snps_paths]
+
+        if cfg.project.verbose:
+            msg.info(f"Merging {split}, consisting of {len(genotypes)} files")
+
+        assert len(genotypes) > 0, "invalid number of genotypes"
         dataset = combine_plinkdatasets(
             genotypes,
             along_dim="variant",
