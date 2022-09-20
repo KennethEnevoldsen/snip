@@ -92,7 +92,7 @@ class PlAEWrapper(pl.LightningModule):
         loss = self.loss(x_hat, x)
 
         # check loss is not nan
-        if torch.isnan(loss):
+        if torch.isnan(loss):  # pylint: disable=no-member
             raise ValueError("Loss is nan")
 
         # log metrics
