@@ -1,3 +1,4 @@
+"""Test for the train_slided_autoencoder.py script."""
 import shutil
 from pathlib import Path
 
