@@ -51,6 +51,7 @@ types-setuptools = ">=62.6.1,<62.7.0"
 notebook = "^6.4.12"
 isort = ">=5.10.1,<5.11.0"
 darglint = "^1.8.1"
+pylint = "^2.15.3"
 
 
 [build-system]
