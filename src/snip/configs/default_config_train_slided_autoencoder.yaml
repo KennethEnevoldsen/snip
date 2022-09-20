@@ -1,6 +1,6 @@
 project:
   name: "local mlp"
-  wandb_mode: "run" # Which mode to run WandB in. Takes "run", "dryrun", "offline" and "disabled"
+  wandb_mode: "dryrun" # Which mode to run WandB in. Takes "run", "dryrun", "offline" and "disabled"
   seed: 42
   run_name_prefix: "" # str: prefix of wandb run name
   verbose: true # bool
@@ -19,7 +19,7 @@ data:
 
 training:
   # pytorch lightning trainer args:
-  accelerator: "gpu" # "mps" | "gpu" | "cpu"
+  accelerator: null # "mps" | "gpu" | "cpu"
   devices: 1 # int: number of devices
   log_step: 10 # int
   precision: 32 # 64 | 32 | 16 | "bf16"

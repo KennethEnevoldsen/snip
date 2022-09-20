@@ -152,3 +152,6 @@ outputs/*
 
 # tmp files
 check_speed.py
+
+# poetry
+poetry.lock

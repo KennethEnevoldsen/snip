@@ -150,13 +150,13 @@ class PLINKIterableDataset(IterableDataset):
         if self.impute_missing_method:
             replacement_value = self.genotype.coords[
                 f"{self.impute_missing_method}_snp"
-            ]
+            ].compute()
 
         end = 0  # if batch_size > array.shape[1]
         for start, end in zip(starts, ends):
             X = self.genotype[start:end].compute()  # shape: batch size, snps
             if self.impute_missing_method:
-                X.data = np.where(np.isnan(X.data), replacement_value, X.data)
+                X.data = np.where(np.isnan(X.data), replacement_value.data, X.data)
 
             if self.convert_to_tensor:
                 X = self.to_tensor(X)
@@ -164,7 +164,7 @@ class PLINKIterableDataset(IterableDataset):
         if n > end:
             X = self.genotype[end:n].compute()
             if self.impute_missing_method:
-                X.data = np.where(np.isnan(X.data), replacement_value, X.data)
+                X.data = np.where(np.isnan(X.data), replacement_value.data, X.data)
 
             if self.convert_to_tensor:
                 X = self.to_tensor(X)
@@ -384,9 +384,10 @@ class PLINKIterableDataset(IterableDataset):
             method = self.impute_missing_method
 
         if method == "mean" and "mean_snp" in self.genotype.coords:
-            return True
+            # check if mean_snp is not nan
+            return not np.isnan(self.genotype.coords["mean_snp"]).any()
         if method == "mode" and "mode_snp" in self.genotype.coords:
-            return True
+            return not np.isnan(self.genotype.coords["mean_snp"]).any()
         if method == "replace with value":
             return True
         return False
@@ -418,6 +419,8 @@ class PLINKIterableDataset(IterableDataset):
             self.genotype.assign_coords(mode_snp=dataset.genotype.coords["mode_snp"])
         elif method == "replace with value":
             self.snp_replace_value = dataset.snp_replace_value
+        else:
+            raise ValueError("Unknown imputation method.")
 
     def impute_missing(
         self,
@@ -429,19 +432,19 @@ class PLINKIterableDataset(IterableDataset):
             method (Optional[str]): Method for imputing missing snps. Options include
                 "mean" and "mode" (most common). Defaults to "mean".
         """
-        if self.is_missing_imputed(method):
-            return
-
         if method is None:
             method = self.impute_missing_method
 
-        if method == "mean" and "mean_snp" not in self.genotype.coords:
+        if self.is_missing_imputed(method):
+            return
+
+        if method == "mean":
             if self.verbose:
                 msg.info("Computing mean SNP")
             mean_snp = self.genotype.mean(axis=0, skipna=True).compute()
             mean_snp = mean_snp.fillna(0)  # if all of one snp is NA
             self.genotype = self.genotype.assign_coords(mean_snp=mean_snp)
-        if method == "mode" and "mode_snp" not in self.genotype.coords:
+        if method == "mode":
             if self.verbose:
                 msg.info("Computing most common SNP")
             most_common = np.array(
@@ -482,6 +485,7 @@ class PLINKIterableDataset(IterableDataset):
                     chromosome=self.chromosome,
                     genotype=self.genotype.isel(variant=slice(i, i + stride)),
                     verbose=self.verbose,
+                    impute_missing=self.impute_missing_method,
                 ),
             )
         if drop_last:

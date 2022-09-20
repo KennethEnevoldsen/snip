@@ -66,6 +66,7 @@ def create_datasets(
     Sequence[PLINKIterableDataset],
     Sequence[Optional[PLINKIterableDataset]],
 ]:
+    """Create datasets for training, validation and test."""
     train = PLINKIterableDataset(
         cfg.data.train_path,
         impute_missing=cfg.data.impute_missing,
@@ -142,6 +143,7 @@ def create_trainer(cfg) -> Trainer:
     version_base="1.2",
 )
 def main(cfg: DictConfig) -> None:
+    """Train and apply model based on config."""
     wandb.init(
         project=cfg.project.name,
         reinit=True,
@@ -218,4 +220,4 @@ def main(cfg: DictConfig) -> None:
 
 
 if __name__ == "__main__":
-    main()
+    main()  # pylint: disable=no-value-for-parameter
