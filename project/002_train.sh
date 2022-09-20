@@ -9,4 +9,4 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=slurm-notifications-aaaahkuvjxiplokhffpn6qphzu@chcaa.slack.com
 
-python src/snip/train_slided_autoencoder.py --config-name default_config_train_slided_autoencoder.yaml
+python src/snip/train_slided_autoencoder.py accelerator=gpu --config-name default_config_train_slided_autoencoder.yaml
