@@ -148,3 +148,7 @@ wandb/*
 
 # Hydra
 outputs/*
+
+
+# tmp files
+check_speed.py
