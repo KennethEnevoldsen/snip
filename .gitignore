@@ -149,9 +149,8 @@ wandb/*
 # Hydra
 outputs/*
 
+# poetry
+poetry.lock
 
 # tmp files
 check_speed.py
-
-# poetry
-poetry.lock
