@@ -5,6 +5,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional, Sequence, Tuple
 
+import dask
 import hydra
 import wandb
 from omegaconf import DictConfig
@@ -21,7 +22,8 @@ from snip.utils import flatten_nested_dict
 
 CONFIG_PATH = Path(__file__).parent / "configs"
 
-# dask.config.set(scheduler='synchronous')
+
+dask.config.set(scheduler="synchronous")
 # speeds up data loading:
 # https://discuss.pytorch.org/t/problems-using-dataloader-for-dask-xarray-netcdf-data/108270/3
 
@@ -109,9 +111,12 @@ def create_datasets(
 
 def create_trainer(cfg) -> Trainer:
     wandb_logger = WandbLogger()
-    callbacks = [ModelCheckpoint(monitor="val_loss", mode="min")]
+    callbacks = [ModelCheckpoint(monitor="Validation loss", mode="min")]
     if cfg.training.patience:
-        early_stopping = EarlyStopping("val_loss", patience=cfg.training.patience)
+        early_stopping = EarlyStopping(
+            "Validation loss",
+            patience=cfg.training.patience,
+        )
         if callbacks is None:
             callbacks = []
         callbacks.append(early_stopping)
@@ -128,6 +133,7 @@ def create_trainer(cfg) -> Trainer:
         devices=cfg.training.devices,
         profiler=cfg.training.profiler,
         max_epochs=cfg.training.max_epochs,
+        max_steps=cfg.training.max_steps,
         default_root_dir=default_root_dir,
         weights_save_path=weight_save_path,
         precision=cfg.training.precision,
@@ -144,6 +150,7 @@ def create_trainer(cfg) -> Trainer:
 )
 def main(cfg: DictConfig) -> None:
     """Train and apply model based on config."""
+
     wandb.init(
         project=cfg.project.name,
         reinit=True,
@@ -162,24 +169,43 @@ def main(cfg: DictConfig) -> None:
 
     datasets = create_datasets(cfg)
     wandb.log({"N models": len(datasets)})
-    model = create_autoencoder(cfg)
     trainer = create_trainer(cfg)
 
     # train the local MLPs
     for i, dataset_splits in enumerate(zip(*datasets)):
+        model = create_autoencoder(cfg)
         wandb.log({"Model number": i})
 
         train, validation, test = dataset_splits
 
-        train_loader = DataLoader(train, batch_size=cfg.data.batch_size)
-        val_loader = DataLoader(validation, batch_size=cfg.data.batch_size)
+        train_loader = DataLoader(
+            train,
+            batch_size=cfg.data.batch_size,
+            num_workers=cfg.data.num_workers,
+        )
+        val_loader = DataLoader(
+            validation,
+            batch_size=cfg.data.batch_size,
+            num_workers=cfg.data.num_workers,
+        )
         if test:
-            test_loader = DataLoader(test, batch_size=cfg.data.batch_size)
+            test_loader = DataLoader(
+                test,
+                batch_size=cfg.data.batch_size,
+                num_workers=cfg.data.num_workers,
+            )
 
         # attach loaders to the model to allow for auto lr find
         model.train_loader, model.val_loader = train_loader, val_loader
 
         # train
+        if cfg.training.auto_lr_find:  # and i == 0:
+            lr_finder = trainer.tuner.lr_find(model)
+            wandb.config.update(
+                {"learning_rate": lr_finder.suggestion()},
+                allow_val_change=True,
+            )
+
         trainer.fit(model, train_dataloaders=train_loader, val_dataloaders=val_loader)
 
         # # apply
