@@ -1,0 +1,37 @@
+wandb: Currently logged in as: kenevoldsen. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.13.3
+wandb: Run data is saved locally in /faststorage/project/NLPPred/github/snip/wandb/run-20220927_162447-n0jax4um
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run iconic-wind-19
+wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/local%20mlp
+wandb: 🚀 View run at https://wandb.ai/kenevoldsen/local%20mlp/runs/n0jax4um
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+Using bfloat16 Automatic Mixed Precision (AMP)
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/trainer/connectors/callback_connector.py:57: LightningDeprecationWarning: Setting `Trainer(weights_save_path=)` has been deprecated in v1.6 and will be removed in v1.8. Please pass ``dirpath`` directly to the `ModelCheckpoint` callback
+  rank_zero_deprecation(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+Error executing job with overrides: ['training.accelerator=gpu', 'project.wandb_mode=run']
+Traceback (most recent call last):
+  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder.py", line 173, in main
+    model = create_autoencoder(cfg)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder.py", line 33, in create_autoencoder
+    assert (
+AssertionError: training data width  must match the input size of the model.
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: - 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: \ 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: | 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: / 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: - 0.001 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: \ 0.001 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: | 0.001 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: / 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: - 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: \ 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: | 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: / 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: - 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: \ 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: | 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: / 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: N models ▁
+wandb: 
+wandb: Run summary:
+wandb: N models 3
+wandb: 
+wandb: Synced iconic-wind-19: https://wandb.ai/kenevoldsen/local%20mlp/runs/n0jax4um
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20220927_162447-n0jax4um/logs
