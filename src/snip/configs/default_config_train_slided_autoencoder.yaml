@@ -23,7 +23,7 @@ training:
   accelerator: null # "mps" | "gpu" | "cpu"
   devices: 1 # int: number of devices
   log_step: 10 # int
-  precision: "bf16" # 64 | 32 | 16 | "bf16"
+  precision: "16" # 64 | 32 | 16 | "bf16"
   default_root_dir: "models/"
   profiler: null
   val_check_interval: null # Optional[int]: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.val_check_interval

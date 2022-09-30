@@ -1,0 +1,82 @@
+wandb: Currently logged in as: kenevoldsen. Use `wandb login --relogin` to force relogin
+wandb: Tracking run with wandb version 0.13.3
+wandb: Run data is saved locally in /faststorage/project/NLPPred/github/snip/wandb/run-20220930_123158-cbyvnuwo
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run stellar-aardvark-20
+wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/local%20mlp
+wandb: 🚀 View run at https://wandb.ai/kenevoldsen/local%20mlp/runs/cbyvnuwo
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/loggers/wandb.py:352: UserWarning: There is a wandb run already in progress and newly created instances of `WandbLogger` will reuse this run. If this is not desired, call `wandb.finish()` before instantiating `WandbLogger`.
+  rank_zero_warn(
+Using bfloat16 Automatic Mixed Precision (AMP)
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/trainer/connectors/callback_connector.py:57: LightningDeprecationWarning: Setting `Trainer(weights_save_path=)` has been deprecated in v1.6 and will be removed in v1.8. Please pass ``dirpath`` directly to the `ModelCheckpoint` callback
+  rank_zero_deprecation(
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+IPU available: False, using: 0 IPUs
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+Error executing job with overrides: ['training.accelerator=gpu', 'project.wandb_mode=run']
+Traceback (most recent call last):
+  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder.py", line 203, in main
+    lr_finder = trainer.tuner.lr_find(model)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/tuner/tuning.py", line 199, in lr_find
+    result = self.trainer.tune(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1052, in tune
+    result = self.tuner._tune(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/tuner/tuning.py", line 70, in _tune
+    result["lr_find"] = lr_find(self.trainer, model, **lr_find_kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/tuner/lr_finder.py", line 244, in lr_find
+    trainer.tuner._run(model)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/tuner/tuning.py", line 80, in _run
+    self.trainer._run(*args, **kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1166, in _run
+    results = self._run_stage()
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1252, in _run_stage
+    return self._run_train()
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1274, in _run_train
+    self._run_sanity_check()
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1343, in _run_sanity_check
+    val_loop.run()
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/loops/dataloader/evaluation_loop.py", line 155, in advance
+    dl_outputs = self.epoch_loop.run(self._data_fetcher, dl_max_batches, kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/loops/loop.py", line 200, in run
+    self.advance(*args, **kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 143, in advance
+    output = self._evaluation_step(**kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/loops/epoch/evaluation_epoch_loop.py", line 240, in _evaluation_step
+    output = self.trainer._call_strategy_hook(hook_name, *kwargs.values())
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/trainer/trainer.py", line 1704, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/strategies/strategy.py", line 368, in validation_step
+    with self.precision_plugin.val_step_context():
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/contextlib.py", line 119, in __enter__
+    return next(self.gen)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/plugins/precision/precision_plugin.py", line 231, in val_step_context
+    with self.forward_context():
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/contextlib.py", line 119, in __enter__
+    return next(self.gen)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/plugins/precision/native_amp.py", line 108, in forward_context
+    with self.autocast_context_manager():
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pytorch_lightning/plugins/precision/native_amp.py", line 102, in autocast_context_manager
+    return new_autocast(self.device, dtype=torch.bfloat16 if self.precision == "bf16" else torch.half)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/torch/amp/autocast_mode.py", line 221, in __init__
+    raise RuntimeError('Current CUDA Device does not support bfloat16. Please switch dtype to float16.')
+RuntimeError: Current CUDA Device does not support bfloat16. Please switch dtype to float16.
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: - 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: \ 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: | 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: / 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: - 0.001 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: \ 0.001 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: | 0.001 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: / 0.017 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: - 0.017 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: \ 0.017 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: | 0.017 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: / 0.017 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: - 0.017 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: \ 0.017 MB of 0.017 MB uploaded (0.000 MB deduped)wandb: | 0.017 MB of 0.017 MB uploaded (0.000 MB deduped)wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: Model number ▁
+wandb:     N models ▁
+wandb: 
+wandb: Run summary:
+wandb: Model number 0
+wandb:     N models 3
+wandb: 
+wandb: Synced stellar-aardvark-20: https://wandb.ai/kenevoldsen/local%20mlp/runs/cbyvnuwo
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20220930_123158-cbyvnuwo/logs
