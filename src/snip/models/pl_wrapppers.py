@@ -100,6 +100,28 @@ class PlAEWrapper(pl.LightningModule):
         self.log("Training step/sec", time.time() - s)
         return loss
 
+    def validation_step(
+        self,
+        val_batch,
+        batch_idx,  # pylint: disable=unused-argument  # noqa E501
+    ):
+        """A single validation step."""
+        s = time.time()
+        x = val_batch
+
+        x_hat = self.forward(x)
+
+        # calculate metrics
+        loss = self.loss(x_hat, x)
+
+        # check loss is not nan
+        if torch.isnan(loss):
+            raise ValueError("Loss is nan")
+
+        # log metrics
+        self.log("Validation loss", loss)
+        self.log("Validation step/sec", time.time() - s)
+
     def train_dataloader(self) -> DataLoader:
         """Extract the train dataloader."""
         return self.train_loader
