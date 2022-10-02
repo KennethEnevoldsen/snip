@@ -152,5 +152,5 @@ outputs/*
 # poetry
 poetry.lock
 
-# tmp files
-check_speed.py
+# models
+**/models/*
