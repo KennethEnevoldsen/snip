@@ -2,7 +2,7 @@ project:
   name: "local mlp"
   wandb_mode: "dryrun" # Which mode to run WandB in. Takes "run", "dryrun", "offline" and "disabled"
   seed: 42
-  run_name_prefix: "" # str: prefix of wandb run name
+  run_name_prefix: "" # str: prefix of wandb run names
   verbose: true # bool
 
 data:
@@ -29,7 +29,7 @@ training:
   val_check_interval: null # Optional[int]: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.val_check_interval
   max_epochs: null # Optional[int]: Number of epochs to train
   auto_lr_find: true # bool: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.auto_lr_find
-  patience: 10, # Optional[int]: early stopping patience
+  patience: 10  # Optional[int]: early stopping patience
   check_val_every_n_epoch: 1 # Optional[int] https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.check_val_every_n_epoch
   max_steps: -1 # int: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.max_steps
   # other args
