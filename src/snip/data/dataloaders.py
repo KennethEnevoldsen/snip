@@ -170,6 +170,19 @@ class PLINKIterableDataset(IterableDataset):
                 X = self.to_tensor(X)
             yield X
 
+    def get_X(self) -> DataArray:
+        """Extract the dataset as a array, useful for e.g. sklearn
+        pipelines."""
+
+        X = self.genotype
+        # extract the data
+        if self.impute_missing_method:
+            replacement_value = self.genotype.coords[
+                f"{self.impute_missing_method}_snp"
+            ].compute()
+            X_ = np.where(np.isnan(X.data), replacement_value.data, X.data)
+        return X_
+
     def __iter__(self) -> Iterator:
         """Create a iterator of the dataset."""
         dataset_iter = self.create_data_array_iter()
@@ -414,9 +427,13 @@ class PLINKIterableDataset(IterableDataset):
             )
 
         if method == "mean":
-            self.genotype.assign_coords(mean_snp=dataset.genotype.coords["mean_snp"])
+            self.genotype = self.genotype.assign_coords(
+                mean_snp=dataset.genotype.coords["mean_snp"],
+            )
         elif method == "mode":
-            self.genotype.assign_coords(mode_snp=dataset.genotype.coords["mode_snp"])
+            self.genotype = self.genotype.assign_coords(
+                mode_snp=dataset.genotype.coords["mode_snp"],
+            )
         elif method == "replace with value":
             self.snp_replace_value = dataset.snp_replace_value
         else:
@@ -494,13 +511,13 @@ class PLINKIterableDataset(IterableDataset):
 
     @staticmethod
     def from_array(
-        arr: Union[torch.Tensor, DataArray],
+        arr: Union[torch.Tensor, DataArray, np.ndarray],
         metadata_from: Union[DataArray, "PLINKIterableDataset"],
     ) -> "PLINKIterableDataset":
         """Create a PLINKIterableDataset from an array.
 
         Args:
-            arr (Union[torch.Tensor, DataArray]): The array to create the dataset from.
+            arr (Union[torch.Tensor, DataArray, np.ndarray]): The array to create the dataset from.
             metadata_from (Optional[DataArray, PLINKIterableDataset]): The metadata to
                 use for the dataset.
 
@@ -516,8 +533,14 @@ class PLINKIterableDataset(IterableDataset):
                 raise ValueError(
                     "You must supply metadata if you are not supplying a DataArray.",
                 )
-            # convert to xarray
-            arr = arr.numpy()
+            # convert to np.array
+            if isinstance(arr, torch.Tensor):
+                arr = arr.numpy()
+            elif not isinstance(arr, np.ndarray):
+                raise ValueError(
+                    "The array must be a torch.Tensor, np.ndarray, or "
+                    + f"xarray.DataArray. Got {type(arr)}.",
+                )
             if isinstance(metadata_from, PLINKIterableDataset):
                 metadata_from = metadata_from.genotype
             if arr.shape == metadata_from.shape:
