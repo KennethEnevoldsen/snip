@@ -31,7 +31,7 @@ training:
   auto_lr_find: true # bool: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.auto_lr_find
   patience: 10, # Optional[int]: early stopping patience
   check_val_every_n_epoch: 1 # Optional[int] https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.check_val_every_n_epoch
-  max_steps: 100 # int: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.max_steps
+  max_steps: -1 # int: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.max_steps
   # other args
   optimizer: "adam" # str:
   learning_rate: 0.002 # float: will be ignored if auto_lr_find is true.
