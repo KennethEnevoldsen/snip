@@ -1,5 +1,6 @@
 """A script for training and evaluating a slided autoencoder."""
 
+import shutil
 from argparse import Namespace
 from datetime import datetime
 from pathlib import Path
@@ -164,8 +165,8 @@ def main(cfg: DictConfig) -> None:
         + f"{datetime.today().strftime('%Y-%m-%d')}"
     )
 
-    interim_path = Path(cfg.data.interim_path)
-    result_path = Path(cfg.data.result_path)
+    interim_path = Path(cfg.data.interim_path) / wandb.config.run_name
+    result_path = Path(cfg.data.result_path) / wandb.config.run_name
 
     datasets = create_datasets(cfg)
     wandb.log({"N models": len(datasets)})
@@ -240,6 +241,9 @@ def main(cfg: DictConfig) -> None:
             rewrite_variants=True,
         )
         dataset.to_disk(result_path / f"c_snps_{split}.zarr", mode="w")
+
+    # remove interim files
+    shutil.rmtree(interim_path)
 
     # evaluate
     # raise NotImplementedError
