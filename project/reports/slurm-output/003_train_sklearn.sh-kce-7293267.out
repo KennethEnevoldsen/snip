@@ -1,0 +1,40 @@
+wandb: Tracking run with wandb version 0.13.3
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+Error executing job with overrides: []
+multiprocessing.pool.RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/multiprocessing/pool.py", line 125, in worker
+    result = (True, func(*args, **kwds))
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/multiprocessing/pool.py", line 51, in starmapstar
+    return list(itertools.starmap(args[0], args[1]))
+  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder_sklearn.py", line 132, in train
+    train, validation, test = dataset_splits
+ValueError: too many values to unpack (expected 3)
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder_sklearn.py", line 187, in main
+    pool.starmap(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/multiprocessing/pool.py", line 372, in starmap
+    return self._map_async(func, iterable, starmapstar, chunksize).get()
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/multiprocessing/pool.py", line 771, in get
+    raise self._value
+ValueError: too many values to unpack (expected 3)
+
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: Waiting for W&B process to finish... (failed 1).
+wandb: - 0.000 MB of 0.000 MB uploaded (0.000 MB deduped)wandb: \ 0.000 MB of 0.000 MB uploaded (0.000 MB deduped)wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: N models ▁
+wandb: 
+wandb: Run summary:
+wandb: N models 3
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /faststorage/project/NLPPred/github/snip/wandb/offline-run-20221001_000656-37aj39w6
+wandb: Find logs at: ./wandb/offline-run-20221001_000656-37aj39w6/logs
