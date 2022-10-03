@@ -15,30 +15,11 @@ data:
   # training data args
   stride: 512 # if stride>input then there is an overlap
   width: 512 # int: number of snps. Inpu should be equal to the input layer. Note: should be equal to model input_size
-  batch_size: 2048 # int
   impute_missing: "mean"  # Optional[str]: method for imputing missing snps.
   num_workers: 1 # int: number of workers for dataloader
-
-training:
-  # pytorch lightning trainer args:
-  accelerator: null # "mps" | "gpu" | "cpu"
-  devices: 1 # int: number of devices
-  log_step: 10 # int
-  precision: "bf16" # 64 | 32 | 16 | "bf16"
-  default_root_dir: "models/"
-  profiler: null
-  val_check_interval: null # Optional[int]: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.val_check_interval
-  max_epochs: 200 # Optional[int]: Number of epochs to train
-  auto_lr_find: true # bool: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.auto_lr_find
-  patience: 10, # Optional[int]: early stopping patience
-  check_val_every_n_epoch: 1 # Optional[int] https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.check_val_every_n_epoch
-  max_steps: -1 # int: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.max_steps
-  # other args
-  optimizer: "adam" # str:
-  learning_rate: 0.002 # float: will be ignored if auto_lr_find is true.
 
 model:
   architecture: "mlp"
   hidden_layer_sizes: [300, 256, 300] # input + output is estimated from data
-  activation: "relu" # str: Options include linear and relu
+  activation: "relu" # str: Options include identity and relu: https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html
   solver: "adam" # str: Options include adam and sgd

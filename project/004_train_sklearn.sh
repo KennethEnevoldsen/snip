@@ -7,4 +7,5 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=slurm-notifications-aaaahkuvjxiplokhffpn6qphzu@chcaa.slack.com
  
-python src/snip/train_slided_autoencoder.py training.accelerator=cpu project.wandb_mode=run
+python src/snip/train_slided_autoencoder.py training.accelerator=cpu project.wandb_mode=run data.result_path=data/compressed/relu
+python src/snip/train_slided_autoencoder.py training.accelerator=cpu project.wandb_mode=run data.result_path=data/compressed/linear model.activation=identity

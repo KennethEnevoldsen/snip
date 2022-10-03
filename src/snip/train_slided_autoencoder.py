@@ -169,7 +169,7 @@ def main(cfg: DictConfig) -> None:
     result_path = Path(cfg.data.result_path) / wandb.config.run_name
 
     datasets = create_datasets(cfg)
-    wandb.log({"N models": len(datasets)})
+    wandb.log({"N models": len(datasets[0])})
     trainer = create_trainer(cfg)
 
     # train the local MLPs
