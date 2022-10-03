@@ -6,7 +6,6 @@ from snip.models import MLP
 
 
 def test_MLP():
-
     model = MLP(layers=[10, 6], input_size=10)
 
     x = torch.randn(3, 10)
