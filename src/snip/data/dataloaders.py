@@ -175,8 +175,7 @@ class PLINKIterableDataset(IterableDataset):  # pylint: disable=abstract-method
             yield X
 
     def get_X(self) -> DataArray:
-        """Extract the dataset as a array, useful for e.g. sklearn
-        pipelines."""
+        """Extract the dataset as a array, useful for e.g. sklearn."""
 
         X = self.genotype
         # extract the data
