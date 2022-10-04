@@ -1,5 +1,7 @@
 """A script for training and evaluating a slided autoencoder."""
 
+import multiprocessing as mp
+import shutil
 from argparse import Namespace
 from datetime import datetime
 from pathlib import Path
@@ -110,6 +112,7 @@ def create_datasets(
 
 
 def create_trainer(cfg) -> Trainer:
+    """Create a pytorch lightning trainer."""
     wandb_logger = WandbLogger()
     callbacks = [ModelCheckpoint(monitor="Validation loss", mode="min")]
     if cfg.training.patience:
@@ -164,12 +167,16 @@ def main(cfg: DictConfig) -> None:
         + f"{datetime.today().strftime('%Y-%m-%d')}"
     )
 
-    interim_path = Path(cfg.data.interim_path)
-    result_path = Path(cfg.data.result_path)
+    interim_path = Path(cfg.data.interim_path) / wandb.config.run_name
+    result_path = Path(cfg.data.result_path) / wandb.config.run_name
 
     datasets = create_datasets(cfg)
-    wandb.log({"N models": len(datasets)})
+    wandb.log({"N models": len(datasets[0])})
     trainer = create_trainer(cfg)
+
+    assert (
+        cfg.data.num_workers == 1
+    ), "num_workers must be 1, see https://github.com/KennethEnevoldsen/snip/issues/54"
 
     # train the local MLPs
     for i, dataset_splits in enumerate(zip(*datasets)):
@@ -182,17 +189,23 @@ def main(cfg: DictConfig) -> None:
             train,
             batch_size=cfg.data.batch_size,
             num_workers=cfg.data.num_workers,
+            shuffle=False,
+            multiprocessing_context=mp.get_context("fork"),
         )
         val_loader = DataLoader(
             validation,
             batch_size=cfg.data.batch_size,
             num_workers=cfg.data.num_workers,
+            shuffle=False,
+            multiprocessing_context=mp.get_context("fork"),
         )
         if test:
             test_loader = DataLoader(
                 test,
                 batch_size=cfg.data.batch_size,
                 num_workers=cfg.data.num_workers,
+                shuffle=False,
+                multiprocessing_context=mp.get_context("fork"),
             )
 
         # attach loaders to the model to allow for auto lr find
@@ -240,6 +253,9 @@ def main(cfg: DictConfig) -> None:
             rewrite_variants=True,
         )
         dataset.to_disk(result_path / f"c_snps_{split}.zarr", mode="w")
+
+    # remove interim files
+    shutil.rmtree(interim_path)
 
     # evaluate
     # raise NotImplementedError

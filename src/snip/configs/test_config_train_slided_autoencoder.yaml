@@ -16,6 +16,7 @@ data:
   width: 100 # int: number of snps. Inpu should be equal to the input layer. Note: should be equal to model input_size
   batch_size: 100 # int
   impute_missing: "mean"  # Optional[str]: method for imputing missing snps.
+  num_workers: 1 # int: number of workers for dataloader
 
 training:
   # pytorch lightning trainer args:
@@ -23,7 +24,7 @@ training:
   devices: 1 # int: number of devices
   log_step: 10 # int
   precision: 32 # 64 | 32 | 16 | "bf16"
-  default_root_dir: "test/models/"
+  default_root_dir: "tests/models/"
   profiler: null
   val_check_interval: null # Optional[int]: https://pytorch-lightning.readthedocs.io/en/stable/common/trainer.html?highlight=val_check_interval#pytorch_lightning.trainer.Trainer.params.val_check_interval
   max_epochs: null # Optional[int]: Number of epochs to train
@@ -33,6 +34,7 @@ training:
   # other args
   optimizer: "adam" # str:
   learning_rate: 0.001 # float: will be ignored if auto_lr_find is true.
+  max_steps: 100 
 
 model:
   architecture: "mlp"

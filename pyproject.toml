@@ -26,7 +26,7 @@ zarr = ">=2.11.0,<2.12.0"
 torch = ">=1.10.2,<1.13.0"
 pytest = "^7.1.2"
 update = "^0.0.1"
-pytorch-lightning = "^1.6.5"
+pytorch-lightning = "^1.7.7"
 wandb = ">0.12.21,<0.14.0"
 seaborn = "^0.11.2"
 setuptools = "59.5.0"  # due to https://github.com/pytorch/pytorch/issues/69894

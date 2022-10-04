@@ -14,8 +14,10 @@ from torch.utils.data import IterableDataset
 from wasabi import msg
 from xarray import DataArray
 
+from .write_sped import read_sped, write_sped
 
-class PLINKIterableDataset(IterableDataset):
+
+class PLINKIterableDataset(IterableDataset):  # pylint: disable=abstract-method
     """An iterable dataset for PLINK datasets.
 
     Attributes:
@@ -62,10 +64,12 @@ class PLINKIterableDataset(IterableDataset):
             seed (int): Random seed to use. Default to 42.
             to_tensor (bool): Should the iterable dataset use torch tensors? Defaults to
                 True.
-            impute_missing (Optional[str]): Impute missing snps. Valid strategies include,
-                "mean", "replace with value" (replace missing with snp_replace_value).
-                "mode" (most common snp). Default to None in which case it does not impute
-                missing SNPs.
+            impute_missing (Optional[str]): Impute missing snps. Valid strategies
+                include,
+                "mean",
+                "replace with value" (replace missing with snp_replace_value).
+                "mode" (most common snp).
+                Default to None in which case it does not impute missing SNPs.
             snp_replace_value (Union[int, float]): If impute_missing =
                 "replace with value" is true, what should it replace it with? Default
                 to -1.
@@ -170,6 +174,18 @@ class PLINKIterableDataset(IterableDataset):
                 X = self.to_tensor(X)
             yield X
 
+    def get_X(self) -> DataArray:
+        """Extract the dataset as a array, useful for e.g. sklearn."""
+
+        X = self.genotype
+        # extract the data
+        if self.impute_missing_method:
+            replacement_value = self.genotype.coords[
+                f"{self.impute_missing_method}_snp"
+            ].compute()
+            X_ = np.where(np.isnan(X.data), replacement_value.data, X.data)
+        return X_
+
     def __iter__(self) -> Iterator:
         """Create a iterator of the dataset."""
         dataset_iter = self.create_data_array_iter()
@@ -195,9 +211,9 @@ class PLINKIterableDataset(IterableDataset):
         """Save the dataset to disk.
 
         Args:
-            path (Union[str, Path, None]): Path to save the dataset. Save format is determined
-                by the file extension. Options include ".bed" or ".zarr". Defaults to
-                ".zarr".
+            path (Union[str, Path, None]): Path to save the dataset. Save format is
+                determined by the file extension. Options include ".bed" or ".zarr".
+                Defaults to ".zarr".
             chunks (int): Defaults to 2**13. The chunk size to be passed to
                 Xarray.chunk, Defaults to 2**13.
             mode (Optional[str]): Defaults to None. The mode to use when saving the
@@ -212,6 +228,12 @@ class PLINKIterableDataset(IterableDataset):
         elif ext == ".zarr":
             genotype = self.genotype.chunk(chunks)
             self.__to_zarr(path, genotype, mode=mode, verbose=self.verbose)
+        elif ext == ".sped":
+            if mode != "w" and Path(path).exists():
+                raise ValueError(
+                    "File already exists. Use mode='w' to overwrite existing file.",
+                )
+            write_sped(self.genotype, path)
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
 
@@ -258,8 +280,10 @@ class PLINKIterableDataset(IterableDataset):
         elif ext == ".zarr":
             zarr_ds = xr.open_zarr(path)
             genotype = zarr_ds.genotype
+        elif ext == ".sped":
+            genotype = read_sped(path)
         else:
-            raise ValueError("Unknown file extension, should be .bed or .zarr")
+            raise ValueError("Unknown file extension, should be .bed, .zarr or .sped")
         if rechunk is None and ext == ".zarr":
             genotype = genotype.chunk(2**13)
 
@@ -278,7 +302,7 @@ class PLINKIterableDataset(IterableDataset):
         Returns:
             torch.Tensor: The converted array as a torch tensor.
         """
-        return torch.from_numpy(x.compute().data)
+        return torch.from_numpy(x.compute().data)  # pylint: disable=no-member
 
     def shuffle_buffer(self, dataset_iter: Iterator) -> Iterator:
         """Create a shuffle buffer of an iterator.
@@ -293,7 +317,7 @@ class PLINKIterableDataset(IterableDataset):
 
         shufbuf = []
         try:
-            for i in range(self.buffer_size):
+            for _ in range(self.buffer_size):
                 shufbuf.append(next(dataset_iter))
         except StopIteration:
             self.buffer_size = len(shufbuf)
@@ -414,9 +438,13 @@ class PLINKIterableDataset(IterableDataset):
             )
 
         if method == "mean":
-            self.genotype.assign_coords(mean_snp=dataset.genotype.coords["mean_snp"])
+            self.genotype = self.genotype.assign_coords(
+                mean_snp=dataset.genotype.coords["mean_snp"],
+            )
         elif method == "mode":
-            self.genotype.assign_coords(mode_snp=dataset.genotype.coords["mode_snp"])
+            self.genotype = self.genotype.assign_coords(
+                mode_snp=dataset.genotype.coords["mode_snp"],
+            )
         elif method == "replace with value":
             self.snp_replace_value = dataset.snp_replace_value
         else:
@@ -481,7 +509,7 @@ class PLINKIterableDataset(IterableDataset):
         for i in range(0, self.genotype.shape[1], stride):
             datasets.append(
                 PLINKIterableDataset(
-                    self.path,
+                    path=self.path,
                     chromosome=self.chromosome,
                     genotype=self.genotype.isel(variant=slice(i, i + stride)),
                     verbose=self.verbose,
@@ -494,13 +522,14 @@ class PLINKIterableDataset(IterableDataset):
 
     @staticmethod
     def from_array(
-        arr: Union[torch.Tensor, DataArray],
+        arr: Union[torch.Tensor, DataArray, np.ndarray],
         metadata_from: Union[DataArray, "PLINKIterableDataset"],
     ) -> "PLINKIterableDataset":
         """Create a PLINKIterableDataset from an array.
 
         Args:
-            arr (Union[torch.Tensor, DataArray]): The array to create the dataset from.
+            arr (Union[torch.Tensor, DataArray, np.ndarray]): The array to create the
+                dataset from.
             metadata_from (Optional[DataArray, PLINKIterableDataset]): The metadata to
                 use for the dataset.
 
@@ -516,8 +545,14 @@ class PLINKIterableDataset(IterableDataset):
                 raise ValueError(
                     "You must supply metadata if you are not supplying a DataArray.",
                 )
-            # convert to xarray
-            arr = arr.numpy()
+            # convert to np.array
+            if isinstance(arr, torch.Tensor):
+                arr = arr.numpy()
+            elif not isinstance(arr, np.ndarray):
+                raise ValueError(
+                    "The array must be a torch.Tensor, np.ndarray, or "
+                    + f"xarray.DataArray. Got {type(arr)}.",
+                )
             if isinstance(metadata_from, PLINKIterableDataset):
                 metadata_from = metadata_from.genotype
             if arr.shape == metadata_from.shape:

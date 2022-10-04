@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "src/snip/train_slided_autoencoder.py", line 8, in <module>
-    import hydra
-ModuleNotFoundError: No module named 'hydra'

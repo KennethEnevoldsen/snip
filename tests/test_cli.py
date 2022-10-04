@@ -1,3 +1,6 @@
+"""Tests for the command line interface."""
+import shutil
+
 import pytest
 from typer.testing import CliRunner
 
@@ -20,12 +23,13 @@ def app():
 
 
 def test_convert(bed_path, zarr_tmp_path):  # noqa
-    # test convert to zarr
+    """Test the convert function."""
     convert(bed_path, zarr_tmp_path)
     assert zarr_tmp_path.is_dir()
 
 
 def test_cli_convert(app, bed_path, zarr_tmp_path):  # noqa
+    """Test the CLI convert command."""
     result = runner.invoke(app, ["convert", f"{bed_path}", f"{zarr_tmp_path}"])
 
     assert result.exit_code == 0
@@ -34,12 +38,11 @@ def test_cli_convert(app, bed_path, zarr_tmp_path):  # noqa
 
 @pytest.fixture(autouse=True)
 def run_around_tests(zarr_tmp_path):  # noqa
-    # Code that will run before your test, for example:
-    # if test data is empty create it
+    """Code that will run before tests."""
+    # Before tests
 
     # A test function will be run at this point
     yield
+    # After tests
     # clean up test files
-    import shutil
-
     shutil.rmtree(zarr_tmp_path)

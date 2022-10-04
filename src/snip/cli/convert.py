@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Optional, Union
 
 import typer
-from rich import print
+from rich import print  # pylint: disable=redefined-builtin
 from typer import Abort, Argument, Option
 
 from snip.data.dataloaders import PLINKIterableDataset
@@ -24,9 +24,9 @@ def convert_cli(
         help="Output file or directory",
         exists=True,
     ),
-    format: Optional[str] = Option(
+    file_format: Optional[str] = Option(
         None,
-        "--format",
+        "--file_format",
         "-f",
         help="Format of output file",
     ),
@@ -51,20 +51,21 @@ def convert_cli(
     Args:
         input_path (str): Input file or directory.
         output_path (str): Output file or directory.
-        format (Optional[str]): Format of output file.
+        file_format (Optional[str]): Format of output file.
         chromosome (Optional[int]): Chromosome to filter the dataset by.
         overwrite (bool): Should it overwrite the dataset.
     """
     output_path_ = Path(output_path)
     if output_path_.exists() and overwrite is False:
         print(
-            f"[yellow] ⚠ A file already exists[/yellow] at {str(output_path_.resolve())}",
+            "[yellow] ⚠ A file already exists[/yellow] at"
+            + f" {str(output_path_.resolve())}",
         )
         overwrite = typer.confirm("are you sure you want to overwrite it?")
         if not overwrite:
             raise Abort()
 
-    save_path = convert(input_path, output_path_, format, overwrite)
+    save_path = convert(input_path, output_path_, file_format, overwrite)
     print(
         f"[green]✔ Finished [/green]: Converted {input_path} to {save_path.suffix}. "
         + f"Saved at:\n{save_path.resolve()}",
@@ -74,7 +75,7 @@ def convert_cli(
 def convert(
     load_path: Union[str, Path],
     save_path: Union[str, Path],
-    format: Optional[str] = None,
+    file_format: Optional[str] = None,
     chromosome: Optional[int] = None,
     overwrite: bool = False,
 ) -> Path:
@@ -83,7 +84,7 @@ def convert(
     Args:
         load_path (Union[str, Path]): Where to load the data from.
         save_path (Union[str, Path]): Where to save the data to.
-        format (Optional[str]): The format of the data. Defaults to None.
+        file_format (Optional[str]): The format of the data. Defaults to None.
         chromosome (Optional[int]): The chromosome to filter by. Defaults to None.
         overwrite (bool): Overwrite existing file at save path? Defaults to False.
 
@@ -96,17 +97,17 @@ def convert(
     # ensure filepaths exist
     save_path.parent.mkdir(parents=True, exist_ok=True)
 
-    if format is None:
-        format = save_path.suffix
-        format = format.strip(".")
+    if file_format is None:
+        file_format = save_path.suffix
+        file_format = file_format.strip(".")
 
     mode = None
     if overwrite:
         mode = "w"
-    if format == "zarr":
+    if file_format in ["zarr", "sped", "bed"]:
         ds = PLINKIterableDataset(load_path, chromosome=chromosome, verbose=False)
         ds.to_disk(save_path, mode=mode)
     else:
-        raise ValueError(f"Format {format} is not supported")
+        raise ValueError(f"Format {file_format} is not supported")
 
     return save_path
