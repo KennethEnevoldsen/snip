@@ -1,26 +1,0 @@
-wandb: Currently logged in as: kenevoldsen. Use `wandb login --relogin` to force relogin
-wandb: Tracking run with wandb version 0.13.3
-wandb: Run data is saved locally in /faststorage/project/NLPPred/github/snip/wandb/run-20221001_133017-2xe6sjgd
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run breezy-plant-1
-wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/local%20mlp%20sklearn
-wandb: 🚀 View run at https://wandb.ai/kenevoldsen/local%20mlp%20sklearn/runs/2xe6sjgd
-[38;5;4mℹ Training 19 models[0m
-[38;5;4mℹ Training autoencoder 12[0m
-[38;5;4mℹ Training autoencoder 11[0m
-[38;5;4mℹ Training autoencoder 13[0m
-[38;5;4mℹ Merging train, consisting of 19 files[0m
-[38;5;4mℹ Merging validation, consisting of 19 files[0m
-[38;5;4mℹ Merging test, consisting of 19 files[0m
-wandb: Waiting for W&B process to finish... (success).
-wandb: - 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: \ 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: | 0.001 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: / 0.001 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: - 0.001 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: \ 0.003 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: | 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: / 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: - 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: \ 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: | 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: / 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: - 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: \ 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb: | 0.013 MB of 0.013 MB uploaded (0.000 MB deduped)wandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb: N models ▁
-wandb: 
-wandb: Run summary:
-wandb: N models 19
-wandb: 
-wandb: Synced breezy-plant-1: https://wandb.ai/kenevoldsen/local%20mlp%20sklearn/runs/2xe6sjgd
-wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20221001_133017-2xe6sjgd/logs

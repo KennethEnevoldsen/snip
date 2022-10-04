@@ -1,28 +1,0 @@
-wandb: Currently logged in as: kenevoldsen. Use `wandb login --relogin` to force relogin
-wandb: Tracking run with wandb version 0.13.3
-wandb: Run data is saved locally in /faststorage/project/NLPPred/github/snip/wandb/run-20220922_214835-3n18van4
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run hardy-sound-18
-wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/local%20mlp
-wandb: 🚀 View run at https://wandb.ai/kenevoldsen/local%20mlp/runs/3n18van4
-Error executing job with overrides: ['training.accelerator=gpu', 'project.wandb_mode=run']
-Traceback (most recent call last):
-  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder.py", line 167, in main
-    model = create_autoencoder(cfg)
-  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder.py", line 33, in create_autoencoder
-    assert (
-AssertionError: training data width  must match the input size of the model.
-
-Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
-wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
-wandb: - 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: \ 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: | 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: / 0.001 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: - 0.001 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: \ 0.001 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: | 0.001 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: / 0.012 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: - 0.012 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: \ 0.012 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: | 0.012 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: / 0.012 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: - 0.012 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: \ 0.012 MB of 0.012 MB uploaded (0.000 MB deduped)wandb: | 0.012 MB of 0.012 MB uploaded (0.000 MB deduped)wandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb: N models ▁
-wandb: 
-wandb: Run summary:
-wandb: N models 3
-wandb: 
-wandb: Synced hardy-sound-18: https://wandb.ai/kenevoldsen/local%20mlp/runs/3n18van4
-wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-wandb: Find logs at: ./wandb/run-20220922_214835-3n18van4/logs

@@ -35,9 +35,14 @@ def create_encoder(clf):
         bottleneck = np.argmin([layer.shape[1] for layer in clf.coefs_])
         # extract activation function
         if clf.activation == "relu":
-            activation = lambda x: np.maximum(0, x)
+
+            def activation(x):
+                return np.maximum(0, x)
+
         elif clf.activation == "identity":
-            activation = lambda x: x
+
+            def activation(x):
+                return x
 
         for weight, bias in zip(
             clf.coefs_[: bottleneck + 1],
