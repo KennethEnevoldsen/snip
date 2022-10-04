@@ -142,6 +142,7 @@ docs/_build/*
 *.bim
 *.fam
 *.bed
+*.sped
 
 # wandb
 wandb/*

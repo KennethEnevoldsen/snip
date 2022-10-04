@@ -64,7 +64,7 @@ class PlAEWrapper(pl.LightningModule):
         """Encode the data in the dataloader."""
         self.encoder.eval()
         with torch.no_grad():
-            x = torch.cat([d for d in dataloader])  # pylint: disable=no-member
+            x = torch.cat([d for d in dataloader])
             compressed = self.encoder(x)
         self.encoder.train()
         return compressed
@@ -80,7 +80,7 @@ class PlAEWrapper(pl.LightningModule):
     def training_step(
         self,
         train_batch,
-        batch_idx,  # pylint: disable=unused-argument  # noqa E501
+        batch_idx,  # noqa E501
     ):
         """A single training step."""
         s = time.time()
@@ -92,7 +92,7 @@ class PlAEWrapper(pl.LightningModule):
         loss = self.loss(x_hat, x)
 
         # check loss is not nan
-        if torch.isnan(loss):  # pylint: disable=no-member
+        if torch.isnan(loss):
             raise ValueError("Loss is nan")
 
         # log metrics
@@ -103,7 +103,7 @@ class PlAEWrapper(pl.LightningModule):
     def validation_step(
         self,
         val_batch,
-        batch_idx,  # pylint: disable=unused-argument  # noqa E501
+        batch_idx,  # noqa E501
     ):
         """A single validation step."""
         s = time.time()

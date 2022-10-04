@@ -34,6 +34,8 @@ class TestPlinkIterableDataset:
     @pytest.fixture(scope="class")
     def zarr_dataset(self, zarr_path):  # noqa
         ds = PLINKIterableDataset(zarr_path)
+        assert ds.genotype.shape[0] != 0
+        assert ds.genotype.shape[1] != 0
         return ds
 
     @pytest.mark.parametrize(
@@ -74,6 +76,9 @@ class TestPlinkIterableDataset:
         else:
             raise ValueError("Dataset format {from_format} not available.")
         assert isinstance(ds._genotype, DataArray)
+        assert isinstance(ds.genotype, DataArray)
+        assert ds.genotype.shape[0] != 0
+        assert ds.genotype.shape[1] != 0
 
     def test_split_into_strides(self, zarr_dataset: PLINKIterableDataset):
         ds = zarr_dataset
@@ -86,11 +91,11 @@ class TestPlinkIterableDataset:
 
     def test_set_chromosome(
         self,
-        zarr_dataset: PLINKIterableDataset,
+        zarr_path: Path,
     ):
-        ds = zarr_dataset
-        ds.set_chromosome(chromosome=12)
-        assert np.unique(ds.genotype.chrom.compute()) == "12"
+        ds = PLINKIterableDataset(zarr_path)
+        ds.set_chromosome(chromosome=1)
+        assert np.unique(ds.genotype.chrom.compute()) == "1"
 
     def test_tensor_iter(
         self,
@@ -162,10 +167,39 @@ class TestPlinkIterableDataset:
         zarr_dataset: PLINKIterableDataset,
     ):
         """Test that we can read and write sped files."""
+        # copy
         ds = zarr_dataset
         test_data = Path(__file__).parent / "data" / "test.sped"
         ds.to_disk(test_data)
-        ds.from_disk(test_data)
+        # read sped
+        ds_ = PLINKIterableDataset(path=test_data)
+
+        # test that it is assigned with correct shape
+        assert ds_.genotype.shape == ds.genotype.shape
+        # check that coords are the same
+        coords = [
+            "a0",
+            "a1",
+            "chrom",
+            "cm",
+            "father",
+            "fid",
+            "gender",
+            "iid",
+            "mother",
+            "pos",
+            "sample",
+            "snp",
+            "trait",
+            "variant",
+        ]
+        for coord in coords:
+            assert coord in ds_.genotype.coords
+            assert coord in ds.genotype.coords
+            assert np.all(ds_.genotype.coords[coord] == ds.genotype.coords[coord])
+
+        # check values are the same, allow for nan
+        assert np.allclose(ds_.genotype.values, ds.genotype.values, equal_nan=True)
 
     def test_dataloader_integration(
         self,
