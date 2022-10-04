@@ -1,5 +1,6 @@
 """A script for training and evaluating a slided autoencoder."""
 
+import multiprocessing as mp
 import shutil
 from argparse import Namespace
 from datetime import datetime
@@ -111,6 +112,7 @@ def create_datasets(
 
 
 def create_trainer(cfg) -> Trainer:
+    """Create a pytorch lightning trainer."""
     wandb_logger = WandbLogger()
     callbacks = [ModelCheckpoint(monitor="Validation loss", mode="min")]
     if cfg.training.patience:
@@ -172,6 +174,10 @@ def main(cfg: DictConfig) -> None:
     wandb.log({"N models": len(datasets[0])})
     trainer = create_trainer(cfg)
 
+    assert (
+        cfg.data.num_workers == 1
+    ), "num_workers must be 1, see https://github.com/KennethEnevoldsen/snip/issues/54"
+
     # train the local MLPs
     for i, dataset_splits in enumerate(zip(*datasets)):
         model = create_autoencoder(cfg)
@@ -183,17 +189,23 @@ def main(cfg: DictConfig) -> None:
             train,
             batch_size=cfg.data.batch_size,
             num_workers=cfg.data.num_workers,
+            shuffle=False,
+            multiprocessing_context=mp.get_context("fork"),
         )
         val_loader = DataLoader(
             validation,
             batch_size=cfg.data.batch_size,
             num_workers=cfg.data.num_workers,
+            shuffle=False,
+            multiprocessing_context=mp.get_context("fork"),
         )
         if test:
             test_loader = DataLoader(
                 test,
                 batch_size=cfg.data.batch_size,
                 num_workers=cfg.data.num_workers,
+                shuffle=False,
+                multiprocessing_context=mp.get_context("fork"),
             )
 
         # attach loaders to the model to allow for auto lr find
