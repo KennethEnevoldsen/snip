@@ -178,7 +178,7 @@ def main(cfg: DictConfig) -> None:
     )
 
     wandb.config.run_name = (
-        f"{cfg.project.run_name_prefix}_{wandb.run.name}_"
+        f"{cfg.project.run_name_prefix}{wandb.run.name}_"
         + f"{datetime.today().strftime('%Y-%m-%d')}"
     )
 
