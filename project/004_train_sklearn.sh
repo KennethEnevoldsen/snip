@@ -7,5 +7,5 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=slurm-notifications-aaaahkuvjxiplokhffpn6qphzu@chcaa.slack.com
  
-python src/snip/train_slided_autoencoder_sklearn.py training.accelerator=cpu project.wandb_mode=run data.result_path=data/compressed/relu
-python src/snip/train_slided_autoencoder_sklearn.py training.accelerator=cpu project.wandb_mode=run data.result_path=data/compressed/linear model.activation=identity
+python src/snip/train_slided_autoencoder_sklearn.py project.wandb_mode=run data.result_path=data/compressed/relu project.run_name_prefix=relu512
+python src/snip/train_slided_autoencoder_sklearn.py project.wandb_mode=run data.result_path=data/compressed/linear model.activation=identity project.run_name_prefix=linear512

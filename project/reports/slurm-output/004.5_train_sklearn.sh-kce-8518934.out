@@ -1,0 +1,51 @@
+INFO:root:Running with overrides: ['data.stride=512', 'data.width=512', 'model.hidden_layer_sizes=[256]', 'project.run_name_prefix=actrelu_strid512_cf2_v2', 'model.activation=relu']
+wandb: Tracking run with wandb version 0.13.3
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py:284: RuntimeWarning: Failed to open Zarr store with consolidated metadata, falling back to try reading non-consolidated metadata. This is typically much slower for opening a dataset. To silence this warning, consider:
+1. Consolidating metadata in this existing store with zarr.consolidate_metadata().
+2. Explicitly setting consolidated=False, to avoid trying to read consolidate metadata, or
+3. Explicitly setting consolidated=True, to raise an error in this case instead of falling back to try reading non-consolidated metadata.
+  zarr_ds = xr.open_zarr(path)
+Traceback (most recent call last):
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/backends/zarr.py", line 384, in open_group
+    zarr_group = zarr.open_consolidated(store, **open_kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/zarr/convenience.py", line 1187, in open_consolidated
+    meta_store = ConsolidatedMetadataStore(store, metadata_key=metadata_key)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/zarr/storage.py", line 2644, in __init__
+    meta = json_loads(store[metadata_key])
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/zarr/storage.py", line 895, in __getitem__
+    raise KeyError(key)
+KeyError: '.zmetadata'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/faststorage/project/NLPPred/github/snip/project/004_train_sklearn_vary_size.py", line 38, in <module>
+    main(cfg)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/hydra/main.py", line 79, in decorated_main
+    return task_function(cfg_passthrough)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder_sklearn.py", line 188, in main
+    datasets = create_datasets(cfg)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder_sklearn.py", line 81, in create_datasets
+    train = PLINKIterableDataset(
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py", line 92, in __init__
+    self._genotype = self.__from_disk(path, limit=limit)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py", line 284, in __from_disk
+    zarr_ds = xr.open_zarr(path)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/backends/zarr.py", line 789, in open_zarr
+    ds = open_dataset(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/backends/api.py", line 531, in open_dataset
+    backend_ds = backend.open_dataset(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/backends/zarr.py", line 837, in open_dataset
+    store = ZarrStore.open_group(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/backends/zarr.py", line 401, in open_group
+    zarr_group = zarr.open_group(store, **open_kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/zarr/hierarchy.py", line 1182, in open_group
+    raise GroupNotFoundError(path)
+zarr.errors.GroupNotFoundError: group not found at path ''
+wandb: Waiting for W&B process to finish... (failed 1).
+wandb: - 0.000 MB of 0.000 MB uploaded (0.000 MB deduped)wandb: \ 0.000 MB of 0.000 MB uploaded (0.000 MB deduped)wandb:                                                                                
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /faststorage/project/NLPPred/github/snip/wandb/offline-run-20221026_131540-36685n2h
+wandb: Find logs at: ./wandb/offline-run-20221026_131540-36685n2h/logs

@@ -1,0 +1,6 @@
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted data/compressed/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/c_snps_train.sped
