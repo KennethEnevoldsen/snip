@@ -226,8 +226,7 @@ class PLINKIterableDataset(IterableDataset):  # pylint: disable=abstract-method
         if ext == ".bed":
             write_plink1_bin(self.genotype, path)
         elif ext == ".zarr":
-            genotype = self.genotype.chunk(chunks)
-            self.__to_zarr(path, genotype, mode=mode, verbose=self.verbose)
+            self.__to_zarr(path, mode=mode, verbose=self.verbose, chunks=chunks)
         elif ext == ".sped":
             if mode != "w" and Path(path).exists():
                 raise ValueError(
@@ -237,23 +236,27 @@ class PLINKIterableDataset(IterableDataset):  # pylint: disable=abstract-method
         else:
             raise ValueError("Unknown file extension, should be .bed or .zarr")
 
-    @staticmethod
     def __to_zarr(
+        self,
         path: Union[str, Path],
-        genotype: DataArray,
         mode: Optional[str],
         verbose: bool,
+        chunks: int,
     ) -> None:
+        self.genotype = self.genotype.chunk(chunks)
         if verbose:
             msg.warn(
                 "Normalizing object dtypes to string dtypes, for more see "
                 + "https://github.com/pydata/xarray/issues/3476",
             )
-        for v in list(genotype.coords.keys()):
-            if genotype.coords[v].dtype == object:
-                genotype.coords[v] = genotype.coords[v].astype("unicode")
-        ds = xr.Dataset(dict(genotype=genotype))
+        for v in list(self.genotype.coords.keys()):
+            if self.genotype.coords[v].dtype == object:
+                self.genotype.coords[v] = (
+                    self.genotype.coords[v].astype("unicode").compute()
+                )
+        ds = xr.Dataset(dict(genotype=self.genotype))
         ds.to_zarr(str(path), mode=mode, compute=True)
+        self.tmp_save_ds = ds
 
     def __from_disk(
         self,
