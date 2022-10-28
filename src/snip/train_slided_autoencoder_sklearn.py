@@ -151,13 +151,17 @@ def train(
     dataset_splits: Tuple[PLINKIterableDataset, ...],
     n: int,
     cfg: Namespace,
-):
+) -> tuple:
     """Train a autoencoder.
 
     Args:
         dataset_splits: A tuple of datasets for training, validation and test.
         n: The index of the dataset split.
         cfg: The configuration.
+
+    Returns:
+        tuple: A tuple of the index of the dataset split, the trained autoencoder and
+            the evaluation metrics.
     """
     # interim_path = Path(cfg.data.interim_path) / wandb.config.run_name
 
