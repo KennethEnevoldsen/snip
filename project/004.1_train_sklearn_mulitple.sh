@@ -6,5 +6,5 @@
 #SBATCH -A NLPPred
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=slurm-notifications-aaaahkuvjxiplokhffpn6qphzu@chcaa.slack.com
- 
-python project/004_train_sklearn_vary_size.py
+
+python project/004.1_train_sklearn_vary_size.py

@@ -7,4 +7,4 @@
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=slurm-notifications-aaaahkuvjxiplokhffpn6qphzu@chcaa.slack.com
  
-python /home/kce/NLPPred/github/snip/project/002_train_test_split.py
+python /home/kce/NLPPred/github/snip/project/002_train_test_split.py 

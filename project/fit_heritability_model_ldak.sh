@@ -10,7 +10,7 @@ sped_path=/home/kce/NLPPred/github/snip/data/compressed/c_snps_train
 # 1. get the individual IDs from the sped path
 cut -f 1,2 $sped_path.fam > $output_path/individuals_sped.txt
 # 2. get the individual IDs from the pheno path
-cut -f 1,2 $pheno_path.fam > $output_path/individuals_pheno.txt
+cut -f 1,2 $pheno_path > $output_path/individuals_pheno.txt
 # 3. get the intersection of the two
 comm -12 $output_path/individuals_sped.txt $output_path/individuals_pheno.txt > $output_path/individuals_overlap.txt
 # 4. get the number of common IDs

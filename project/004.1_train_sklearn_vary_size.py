@@ -12,7 +12,7 @@ logging.basicConfig(level=logging.INFO)
 
 # create configs
 activations = ["relu", "identity"]
-strides = [512, 256, 128, 64, 32]
+strides = [512]  # , 256, 128, 64, 32]
 compression_factor = [2, 1.5, 1.25, 1.0]
 for stride in strides:
     for cf in compression_factor:

@@ -1,0 +1,282 @@
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25None_2022-10-25/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25None_2022-10-25/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25None_20
+22-10-25/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.25None_2022-10-25/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25None_2022-10-25/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25None_2022-10-25/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25None_20
+22-10-25/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.25None_2022-10-25/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25None_2022-10-25/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25None_2022-10-25/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25None_20
+22-10-25/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.25None_2022-10-25/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25_v2None_2022-10-28/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25_v2None_2022-10-28/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25_v2None
+_2022-10-28/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.25_v2None_2022-10-28/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25_v2None_2022-10-28/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25_v2None_2022-10-28/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25_v2None
+_2022-10-28/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.25_v2None_2022-10-28/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25_v2None_2022-10-28/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25_v2None_2022-10-28/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.25_v2None
+_2022-10-28/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.25_v2None_2022-10-28/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5None_2022-10-25/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5None_2022-10-25/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5None_202
+2-10-25/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.5None_2022-10-25/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5None_2022-10-25/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5None_2022-10-25/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5None_202
+2-10-25/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.5None_2022-10-25/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5None_2022-10-25/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5None_2022-10-25/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5None_202
+2-10-25/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.5None_2022-10-25/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5_v2None_2022-10-28/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5_v2None_2022-10-28/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5_v2None_
+2022-10-28/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.5_v2None_2022-10-28/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5_v2None_2022-10-28/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5_v2None_2022-10-28/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5_v2None_
+2022-10-28/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.5_v2None_2022-10-28/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5_v2None_2022-10-28/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5_v2None_2022-10-28/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf1.5_v2None_
+2022-10-28/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+1.5_v2None_2022-10-28/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2None_2022-10-25/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2None_2022-10-25/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2None_2022-
+10-25/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+2None_2022-10-25/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2None_2022-10-25/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2None_2022-10-25/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2None_2022-
+10-25/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+2None_2022-10-25/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2None_2022-10-25/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2None_2022-10-25/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2None_2022-
+10-25/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+2None_2022-10-25/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2_v2None_2022-10-28/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2_v2None_2022-10-28/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2_v2None_20
+22-10-28/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+2_v2None_2022-10-28/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2_v2None_2022-10-28/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2_v2None_2022-10-28/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2_v2None_20
+22-10-28/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+2_v2None_2022-10-28/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2_v2None_2022-10-28/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2_v2None_2022-10-28/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid256_cf2_v2None_20
+22-10-28/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid256_cf
+2_v2None_2022-10-28/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_2022-10-25/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_2022-10-25/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py:119: FutureWarning: elementwise comparison failed; returning scalar instead, but in the future will perform elementwise comparison
+  return func(*(_execute_task(a, cache) for a in args))
+Traceback (most recent call last):
+  File "/home/kce/miniconda3/envs/snip2/bin/snip", line 6, in <module>
+    sys.exit(setup_cli())
+  File "/faststorage/project/NLPPred/github/snip/src/snip/cli/setup.py", line 18, in setup_cli
+    command(prog_name=COMMAND)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/typer/core.py", line 778, in main
+    return _main(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/typer/core.py", line 216, in _main
+    rv = self.invoke(ctx)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/click/core.py", line 1657, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/typer/main.py", line 683, in wrapper
+    return callback(**use_params)  # type: ignore
+  File "/faststorage/project/NLPPred/github/snip/src/snip/cli/convert.py", line 68, in convert_cli
+    save_path = convert(
+  File "/faststorage/project/NLPPred/github/snip/src/snip/cli/convert.py", line 108, in convert
+    file_format = file_format.strip(".")
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py", line 95, in __init__
+    self.set_chromosome(chromosome)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py", line 104, in set_chromosome
+    self.genotype = self._genotype.where(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/common.py", line 1078, in where
+    self = self.isel(**indexers)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/dataarray.py", line 1283, in isel
+    ds = self._to_temp_dataset()._isel_fancy(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/dataset.py", line 2433, in _isel_fancy
+    indexes, index_variables = isel_indexes(self.xindexes, valid_indexers)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/indexes.py", line 1357, in isel_indexes
+    return _apply_indexes(indexes, indexers, "isel")
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/indexes.py", line 1341, in _apply_indexes
+    new_index = getattr(index, func)(index_args)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/indexes.py", line 362, in isel
+    return self._replace(self.index[indxr])
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas/core/indexes/base.py", line 5377, in __getitem__
+    result = getitem(key)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/array/core.py", line 1702, in __array__
+    x = self.compute()
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/base.py", line 315, in compute
+    (result,) = compute(self, traverse=False, **kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/base.py", line 600, in compute
+    results = schedule(dsk, keys, **kwargs)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/threaded.py", line 89, in get
+    results = get_async(
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/local.py", line 511, in get_async
+    raise_exception(exc, tb)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/local.py", line 319, in reraise
+    raise exc
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/local.py", line 224, in execute_task
+    result = _execute_task(task, data)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py", line 119, in _execute_task
+    return func(*(_execute_task(a, cache) for a in args))
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py", line 119, in <genexpr>
+    return func(*(_execute_task(a, cache) for a in args))
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py", line 119, in _execute_task
+    return func(*(_execute_task(a, cache) for a in args))
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/optimization.py", line 990, in __call__
+    return core.get(self.dsk, self.outkey, dict(zip(self.inkeys, args)))
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py", line 149, in get
+    result = _execute_task(task, cache)
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py", line 119, in _execute_task
+    return func(*(_execute_task(a, cache) for a in args))
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py", line 119, in <genexpr>
+    return func(*(_execute_task(a, cache) for a in args))
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py", line 113, in _execute_task
+    return [_execute_task(a, cache) for a in arg]
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py", line 113, in <listcomp>
+    return [_execute_task(a, cache) for a in arg]
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/core.py", line 119, in _execute_task
+    return func(*(_execute_task(a, cache) for a in args))
+  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/dask/utils.py", line 1102, in __call__
+    return getattr(__obj, self.method)(*args, **kwargs)
+AttributeError: 'bool' object has no attribute 'copy'
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_2022-10-25/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_2022-10-25/c_snps_train.sped
