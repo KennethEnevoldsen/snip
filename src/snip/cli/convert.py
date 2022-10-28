@@ -65,7 +65,13 @@ def convert_cli(
         if not overwrite:
             raise Abort()
 
-    save_path = convert(input_path, output_path_, file_format, overwrite)
+    save_path = convert(
+        load_path=input_path,
+        save_path=output_path_,
+        file_format=file_format,
+        chromosome=chromosome,
+        overwrite=overwrite,
+    )
     print(
         f"[green]✔ Finished [/green]: Converted {input_path} to {save_path.suffix}. "
         + f"Saved at:\n{save_path.resolve()}",
