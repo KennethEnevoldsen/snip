@@ -94,8 +94,8 @@ class TestPlinkIterableDataset:
         zarr_path: Path,
     ):
         ds = PLINKIterableDataset(zarr_path)
-        ds.set_chromosome(chromosome=1)
-        assert np.unique(ds.genotype.chrom.compute()) == "1"
+        ds.set_chromosome(chromosome=12)
+        assert np.unique(ds.genotype.chrom.compute()) == "12"
 
     def test_tensor_iter(
         self,
@@ -170,7 +170,7 @@ class TestPlinkIterableDataset:
         # copy
         ds = zarr_dataset
         test_data = Path(__file__).parent / "data" / "test.sped"
-        ds.to_disk(test_data)
+        ds.to_disk(test_data, mode="w")
         # read sped
         ds_ = PLINKIterableDataset(path=test_data)
 
