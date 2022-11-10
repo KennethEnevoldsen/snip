@@ -110,6 +110,7 @@ def create_datasets(
     train = PLINKIterableDataset(
         cfg.data.train_path,
         impute_missing=cfg.data.impute_missing,
+        limit=cfg.data.limit,
     )
     if not train.is_missing_imputed():
         if cfg.project.verbose:
@@ -280,9 +281,6 @@ def main(cfg: DictConfig) -> None:
 
     # remove interim files
     shutil.rmtree(interim_path)
-
-    # evaluate
-    # raise NotImplementedError
 
 
 if __name__ == "__main__":

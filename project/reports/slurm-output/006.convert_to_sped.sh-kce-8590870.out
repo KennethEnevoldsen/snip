@@ -280,3 +280,357 @@ Traceback (most recent call last):
 AttributeError: 'bool' object has no attribute 'copy'
 Calling function:
 snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_2022-10-25/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_2022-10-25/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_202
+2-10-25/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.0None_2022-10-25/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_2022-10-25/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_2022-10-25/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0None_202
+2-10-25/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.0None_2022-10-25/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0_v2None_2022-10-28/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0_v2None_2022-10-28/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0_v2None_
+2022-10-28/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.0_v2None_2022-10-28/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0_v2None_2022-10-28/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0_v2None_2022-10-28/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0_v2None_
+2022-10-28/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.0_v2None_2022-10-28/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0_v2None_2022-10-28/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0_v2None_2022-10-28/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.0_v2None_
+2022-10-28/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.0_v2None_2022-10-28/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25None_2022-10-25/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25None_2022-10-25/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25None_20
+22-10-25/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.25None_2022-10-25/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25None_2022-10-25/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25None_2022-10-25/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25None_20
+22-10-25/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.25None_2022-10-25/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25None_2022-10-25/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25None_2022-10-25/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25None_20
+22-10-25/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.25None_2022-10-25/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25_v2None_2022-10-27/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25_v2None_2022-10-27/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25_v2None
+_2022-10-27/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.25_v2None_2022-10-27/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25_v2None_2022-10-27/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25_v2None_2022-10-27/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25_v2None
+_2022-10-27/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.25_v2None_2022-10-27/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25_v2None_2022-10-27/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25_v2None_2022-10-27/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.25_v2None
+_2022-10-27/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.25_v2None_2022-10-27/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5None_2022-10-24/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5None_2022-10-24/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5None_202
+2-10-24/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.5None_2022-10-24/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5None_2022-10-24/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5None_2022-10-24/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5None_202
+2-10-24/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.5None_2022-10-24/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5None_2022-10-24/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5None_2022-10-24/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5None_202
+2-10-24/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.5None_2022-10-24/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5_v2None_2022-10-27/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5_v2None_2022-10-27/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5_v2None_
+2022-10-27/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.5_v2None_2022-10-27/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5_v2None_2022-10-27/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5_v2None_2022-10-27/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5_v2None_
+2022-10-27/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.5_v2None_2022-10-27/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5_v2None_2022-10-27/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5_v2None_2022-10-27/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf1.5_v2None_
+2022-10-27/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+1.5_v2None_2022-10-27/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2None_2022-10-24/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2None_2022-10-24/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2None_2022-
+10-24/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+2None_2022-10-24/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2None_2022-10-24/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2None_2022-10-24/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2None_2022-
+10-24/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+2None_2022-10-24/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2None_2022-10-24/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2None_2022-10-24/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2None_2022-
+10-24/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+2None_2022-10-24/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-27/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-27/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_20
+22-10-27/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+2_v2None_2022-10-27/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-27/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-27/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_20
+22-10-27/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+2_v2None_2022-10-27/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-27/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-27/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_20
+22-10-27/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+2_v2None_2022-10-27/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-28/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-28/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_20
+22-10-28/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+2_v2None_2022-10-28/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-28/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-28/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_20
+22-10-28/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+2_v2None_2022-10-28/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-28/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_2022-10-28/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actidentity_strid512_cf2_v2None_20
+22-10-28/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actidentity_strid512_cf
+2_v2None_2022-10-28/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0None_2022-10-25/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0None_2022-10-25/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0None_2022-10
+-25/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0N
+one_2022-10-25/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0None_2022-10-25/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0None_2022-10-25/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0None_2022-10
+-25/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0N
+one_2022-10-25/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0None_2022-10-25/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0None_2022-10-25/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0None_2022-10
+-25/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0N
+one_2022-10-25/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0_v2None_2022-10-28/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0_v2None_2022-10-28/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0_v2None_2022
+-10-28/c_snps_train.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0_
+v2None_2022-10-28/c_snps_train.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0_v2None_2022-10-28/c_snps_validation.zarr /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0_v2None_2022-10-28/c_snps_validation.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0_v2None_2022
+-10-28/c_snps_validation.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.0_
+v2None_2022-10-28/c_snps_validation.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.25None_2022-10-25/c_snps_test.zarr /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.25None_2022-10-25/c_snps_test.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+✔ Finished : Converted 
+/home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.25None_2022-1
+0-25/c_snps_test.zarr to .sped. Saved at:
+/faststorage/project/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.25
+None_2022-10-25/c_snps_test.sped
+Calling function:
+snip convert /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.25None_2022-10-25/c_snps_train.zarr /home/kce/NLPPred/github/snip/data/compressed/actrelu_strid256_cf1.25None_2022-10-25/c_snps_train.sped
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(

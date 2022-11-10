@@ -1,0 +1,3 @@
+Mapping files:   0%|          | 0/3 [00:00<?, ?it/s]Mapping files:  33%|███▎      | 1/3 [00:00<00:01,  1.36it/s]Mapping files:  67%|██████▋   | 2/3 [00:01<00:00,  1.51it/s]Mapping files: 100%|██████████| 3/3 [01:10<00:00, 32.00s/it]Mapping files: 100%|██████████| 3/3 [01:11<00:00, 23.69s/it]
+✔ Finished : Converted /home/kce/dsmwpred/data/ukbb/geno.bed to .zarr. Saved at:
+/faststorage/project/NLPPred/github/snip/data/raw/ukbb_geno.zarr
