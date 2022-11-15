@@ -1,0 +1,38 @@
+wandb: Tracking run with wandb version 0.13.3
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+[38;5;4mℹ Missing values are not imputed. Imputing missing values.[0m
+[38;5;4mℹ Training 1866 models[0m
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+[38;5;4mℹ Merging train, consisting of 1866 files[0m
+[38;5;4mℹ Merging validation, consisting of 1866 files[0m
+[38;5;4mℹ Merging test, consisting of 1866 files[0m
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.000 MB of 0.000 MB uploaded (0.000 MB deduped)wandb: \ 0.000 MB of 0.000 MB uploaded (0.000 MB deduped)wandb: | 0.000 MB of 0.000 MB uploaded (0.000 MB deduped)wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:      Max(training reconstruction error) ▁
+wandb:    Max(validation reconstruction error) ▁
+wandb:     Mean(training reconstruction error) ▁
+wandb: Mean(valilidation reconstruction error) ▁
+wandb:      Min(training reconstruction error) ▁
+wandb:    Min(validation reconstruction error) ▁
+wandb:                                N models ▁
+wandb: 
+wandb: Run summary:
+wandb:      Max(training reconstruction error) 0.1748
+wandb:    Max(validation reconstruction error) 0.17569
+wandb:     Mean(training reconstruction error) 0.03856
+wandb: Mean(valilidation reconstruction error) 0.03861
+wandb:      Min(training reconstruction error) 0.00216
+wandb:    Min(validation reconstruction error) 0.00223
+wandb:                                N models 1866
+wandb: 
+wandb: You can sync this run to the cloud by running:
+wandb: wandb sync /faststorage/project/NLPPred/github/snip/wandb/offline-run-20221114_155259-fwzkpjlp
+wandb: Find logs at: ./wandb/offline-run-20221114_155259-fwzkpjlp/logs
