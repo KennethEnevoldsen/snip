@@ -1,0 +1,117 @@
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_512_c_snps_train.sped
+output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.quant
+Output path exists, skipping...
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_16_c_snps_train.sped
+output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.quant
+Output path exists, skipping...
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_512_c_snps_train.sped
+output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.quant
+Output path exists, skipping...
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_train.sped
+output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train.quant
+Output path exists, skipping...
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_512_c_snps_train.sped
+Output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.GCTA
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--calc-kins-direct /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.GCTA
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_512_c_snps_train
+--ignore-weights YES
+--power -1
+--SNP-data NO
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Calculating kinships directly
+
+Predictors will be centred then scaled by V^(-1.0000/2) (option "--power"), where V is the observed variance of the predictor; to instead scale based on expected variance use "--hwe-stand YES"
+
+Add "--kinship-gz YES" and/or "--kinship-raw YES" to save gzipped and/or text versions of the kinship matrix
+
+If memory is an issue, add "--single YES" (then calculations will performed using single precistion)
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_512_c_snps_train.fam
+
+Reading details for 311296 predictors from /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_512_c_snps_train.bim
+Warning, Predictor c01_0 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_256 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_512 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_768 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_1024 has a non-positive basepair (0) and will be ignored
+In total 1216 predictors have non-positive basepairs
+
+Data contain 20000 samples and 311296 predictors; will be using 20000 and 310080
+
+Warning, to perform the analysis will require approximately 3.0 Gb
+
+Calculating kinships for Chunk 1 of 63
+Warning, Predictor c01_1255 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_2511 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_3766 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_2513 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_1256 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3295 predictors are trivial
+
+Calculating kinships for Chunk 2 of 63
+Warning, Predictor c01_5020 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_7531 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_5021 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_6277 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_7532 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3329 predictors are trivial
+
+Calculating kinships for Chunk 3 of 63
+Warning, Predictor c01_12550 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_10040 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_13804 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_10041 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_13806 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3312 predictors are trivial
+
+Calculating kinships for Chunk 4 of 63
+Warning, Predictor c01_17569 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_16315 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_18825 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_15059 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_16316 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3360 predictors are trivial
+
+Calculating kinships for Chunk 5 of 63
+Warning, Predictor c01_22589 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_21334 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_20080 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_22591 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_21335 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3425 predictors are trivial
+
+Calculating kinships for Chunk 6 of 63
+Warning, Predictor c02_1777 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_524 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_3032 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_1778 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_525 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3324 predictors are trivial
+
+Calculating kinships for Chunk 7 of 63
+Warning, Predictor c02_9307 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_8053 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_9309 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_6798 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_9310 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3463 predictors are trivial
+
+Calculating kinships for Chunk 8 of 63
+Warning, Predictor c02_14326 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_11820 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_14327 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_10562 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_14328 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3405 predictors are trivial
+

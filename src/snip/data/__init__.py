@@ -1,1 +1,1 @@
-from .dataloaders import PLINKIterableDataset  # noqa
+from .dataloaders import PLINKIterableDataset, combine_plinkdatasets  # noqa

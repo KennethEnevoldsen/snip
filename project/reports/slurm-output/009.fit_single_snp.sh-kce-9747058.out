@@ -1,0 +1,1159 @@
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_512_c_snps_train.sped
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.quant
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_512_c_snps_train
+--SNP-data NO
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--mpheno 1
+--max-threads 8
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_512_c_snps_train.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 12862
+
+Reading details for 311296 predictors from /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_512_c_snps_train.bim
+Warning, Predictor c01_0 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_256 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_512 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_768 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_1024 has a non-positive basepair (0) and will be ignored
+In total 1216 predictors have non-positive basepairs
+
+Data contain 20000 samples and 311296 predictors; will be using 12862 and 310080
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+
+Performing single-SNP analysis for Chunk 1 of 63
+Warning, Predictor c01_1255 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_1884 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_2511 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_2 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_3141 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3303 predictors are trivial
+
+Performing single-SNP analysis for Chunk 2 of 63
+Warning, Predictor c01_8157 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_5020 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_6902 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_9412 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_7531 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3345 predictors are trivial
+
+Performing single-SNP analysis for Chunk 3 of 63
+Warning, Predictor c01_10040 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_11922 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_14432 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_11295 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_13179 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3316 predictors are trivial
+
+Performing single-SNP analysis for Chunk 4 of 63
+Warning, Predictor c01_15059 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_16942 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_18197 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_19451 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_18825 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3367 predictors are trivial
+
+Performing single-SNP analysis for Chunk 5 of 63
+Warning, Predictor c01_24471 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_20706 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_21961 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_23217 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_21334 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3431 predictors are trivial
+
+Performing single-SNP analysis for Chunk 6 of 63
+Warning, Predictor c02_1150 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_4288 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_524 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_4916 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_3660 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3330 predictors are trivial
+
+Performing single-SNP analysis for Chunk 7 of 63
+Warning, Predictor c02_9307 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_6170 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_6798 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_5543 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_8679 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3471 predictors are trivial
+
+Performing single-SNP analysis for Chunk 8 of 63
+Warning, Predictor c02_10562 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_12444 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_11189 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_14326 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_14955 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3410 predictors are trivial
+
+Performing single-SNP analysis for Chunk 9 of 63
+Warning, Predictor c02_16837 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_15583 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_19346 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_18722 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_17464 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3437 predictors are trivial
+
+Performing single-SNP analysis for Chunk 10 of 63
+Warning, Predictor c02_21228 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_20601 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_22483 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_23111 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_21856 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3420 predictors are trivial
+
+Performing single-SNP analysis for Chunk 11 of 63
+Warning, Predictor c03_533 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_4301 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_3042 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_1787 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_1162 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3444 predictors are trivial
+
+Performing single-SNP analysis for Chunk 12 of 63
+Warning, Predictor c03_5552 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_6807 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_7435 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_9944 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_6181 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3359 predictors are trivial
+
+Performing single-SNP analysis for Chunk 13 of 63
+Warning, Predictor c03_13082 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_10572 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_13709 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_11199 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_14337 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3424 predictors are trivial
+
+Performing single-SNP analysis for Chunk 14 of 63
+Warning, Predictor c03_18729 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_15591 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_16219 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_19984 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_18101 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3348 predictors are trivial
+
+Performing single-SNP analysis for Chunk 15 of 63
+Warning, Predictor c04_4011 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_246 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_874 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_2756 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_3384 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3404 predictors are trivial
+
+Performing single-SNP analysis for Chunk 16 of 63
+Warning, Predictor c04_8403 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_6521 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_5266 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_7776 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_4640 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3417 predictors are trivial
+
+Performing single-SNP analysis for Chunk 17 of 63
+Warning, Predictor c04_13423 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_9658 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_12795 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_10286 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_11541 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3366 predictors are trivial
+
+Performing single-SNP analysis for Chunk 18 of 63
+Warning, Predictor c04_19070 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_15933 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_14678 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_15305 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_17189 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3427 predictors are trivial
+
+Performing single-SNP analysis for Chunk 19 of 63
+Warning, Predictor c04_19697 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_357 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_3494 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_985 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_2239 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3381 predictors are trivial
+
+Performing single-SNP analysis for Chunk 20 of 63
+Warning, Predictor c05_9141 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_4749 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_5377 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_8514 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_6004 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3326 predictors are trivial
+
+Performing single-SNP analysis for Chunk 21 of 63
+Warning, Predictor c05_13533 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_11024 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_11651 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_9771 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_10396 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3327 predictors are trivial
+
+Performing single-SNP analysis for Chunk 22 of 63
+Warning, Predictor c05_17298 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_14788 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_18553 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_16043 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_17926 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3422 predictors are trivial
+
+Performing single-SNP analysis for Chunk 23 of 63
+Warning, Predictor c06_3374 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_1491 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_864 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_4001 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_2119 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3257 predictors are trivial
+
+Performing single-SNP analysis for Chunk 24 of 63
+Warning, Predictor c06_6511 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_9022 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_5884 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_7138 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_9650 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3096 predictors are trivial
+
+Performing single-SNP analysis for Chunk 25 of 63
+Warning, Predictor c06_14668 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_10904 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_11532 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_12786 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_14040 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3357 predictors are trivial
+
+Performing single-SNP analysis for Chunk 26 of 63
+Warning, Predictor c06_20315 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_16550 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_17178 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_15924 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_19061 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3403 predictors are trivial
+
+Performing single-SNP analysis for Chunk 27 of 63
+Warning, Predictor c06_20942 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_21570 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_554 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_3062 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_1181 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3408 predictors are trivial
+
+Performing single-SNP analysis for Chunk 28 of 63
+Warning, Predictor c07_3690 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_4945 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_5572 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_6200 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_6827 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3335 predictors are trivial
+
+Performing single-SNP analysis for Chunk 29 of 63
+Warning, Predictor c07_13102 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_9337 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_11219 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_11847 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_9965 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3354 predictors are trivial
+
+Performing single-SNP analysis for Chunk 30 of 63
+Warning, Predictor c08_969 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_13729 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_14984 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_16239 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_342 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3402 predictors are trivial
+
+Performing single-SNP analysis for Chunk 31 of 63
+Warning, Predictor c08_1597 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_3479 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_1602 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_4107 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_5989 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3340 predictors are trivial
+
+Performing single-SNP analysis for Chunk 32 of 63
+Warning, Predictor c08_10381 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_9754 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_7245 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_9127 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_6619 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3335 predictors are trivial
+
+Performing single-SNP analysis for Chunk 33 of 63
+Warning, Predictor c08_11636 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_13518 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_12264 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_12893 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_11637 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3385 predictors are trivial
+
+Performing single-SNP analysis for Chunk 34 of 63
+Warning, Predictor c09_528 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_3037 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_1155 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_2410 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_1783 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3350 predictors are trivial
+
+Performing single-SNP analysis for Chunk 35 of 63
+Warning, Predictor c09_9312 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_5547 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_6802 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_8057 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_6176 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3426 predictors are trivial
+
+Performing single-SNP analysis for Chunk 36 of 63
+Warning, Predictor c10_507 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_10567 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_11194 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_11822 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_1135 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3425 predictors are trivial
+
+Performing single-SNP analysis for Chunk 37 of 63
+Warning, Predictor c10_2390 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_1762 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_6155 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_4900 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_5528 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3393 predictors are trivial
+
+Performing single-SNP analysis for Chunk 38 of 63
+Warning, Predictor c10_6782 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_11174 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_9919 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_9293 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_7410 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3361 predictors are trivial
+
+Performing single-SNP analysis for Chunk 39 of 63
+Warning, Predictor c10_11802 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_14311 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_14939 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_12429 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_579 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3389 predictors are trivial
+
+Performing single-SNP analysis for Chunk 40 of 63
+Warning, Predictor c11_1205 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_3715 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_4970 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_2460 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_4343 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3397 predictors are trivial
+
+Performing single-SNP analysis for Chunk 41 of 63
+Warning, Predictor c11_8735 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_6852 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_8107 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_6225 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_10617 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3316 predictors are trivial
+
+Performing single-SNP analysis for Chunk 42 of 63
+Warning, Predictor c11_11244 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_11872 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_14383 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_13756 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_12501 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3456 predictors are trivial
+
+Performing single-SNP analysis for Chunk 43 of 63
+Warning, Predictor c12_904 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_2788 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_2159 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_1531 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_905 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3419 predictors are trivial
+
+Performing single-SNP analysis for Chunk 44 of 63
+Warning, Predictor c12_5924 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_6551 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_7806 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_9688 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_10317 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3431 predictors are trivial
+
+Performing single-SNP analysis for Chunk 45 of 63
+Warning, Predictor c12_14081 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_10944 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_12198 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_12826 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_11573 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3369 predictors are trivial
+
+Performing single-SNP analysis for Chunk 46 of 63
+Warning, Predictor c13_2997 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_1115 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_4880 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_2371 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_3625 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3383 predictors are trivial
+
+Performing single-SNP analysis for Chunk 47 of 63
+Warning, Predictor c13_6134 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_7391 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_8644 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_9272 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_8018 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3459 predictors are trivial
+
+Performing single-SNP analysis for Chunk 48 of 63
+Warning, Predictor c14_2284 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_3539 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_1657 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_4795 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_404 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3467 predictors are trivial
+
+Performing single-SNP analysis for Chunk 49 of 63
+Warning, Predictor c14_6049 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_8560 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_9815 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_9186 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_7304 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3307 predictors are trivial
+
+Performing single-SNP analysis for Chunk 50 of 63
+Warning, Predictor c15_457 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_4222 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_1086 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_3595 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_2967 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3357 predictors are trivial
+
+Performing single-SNP analysis for Chunk 51 of 63
+Warning, Predictor c15_7987 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_6732 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_6104 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_141 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_8614 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3392 predictors are trivial
+
+Performing single-SNP analysis for Chunk 52 of 63
+Warning, Predictor c16_5161 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_3278 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_2023 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_770 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_1396 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3343 predictors are trivial
+
+Performing single-SNP analysis for Chunk 53 of 63
+Warning, Predictor c16_8925 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_6416 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_7670 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_10180 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_9553 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3422 predictors are trivial
+
+Performing single-SNP analysis for Chunk 54 of 63
+Warning, Predictor c16_10808 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_1055 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_427 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_1683 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_431 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3378 predictors are trivial
+
+Performing single-SNP analysis for Chunk 55 of 63
+Warning, Predictor c17_8584 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_4819 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_7957 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_5447 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_6702 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3415 predictors are trivial
+
+Performing single-SNP analysis for Chunk 56 of 63
+Warning, Predictor c18_2992 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_9839 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_4247 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_1110 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_3620 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3445 predictors are trivial
+
+Performing single-SNP analysis for Chunk 57 of 63
+Warning, Predictor c18_8012 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_7386 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_56 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_5503 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_6757 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3441 predictors are trivial
+
+Performing single-SNP analysis for Chunk 58 of 63
+Warning, Predictor c19_3815 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_4443 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_5070 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_679 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_3188 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3363 predictors are trivial
+
+Performing single-SNP analysis for Chunk 59 of 63
+Warning, Predictor c19_6325 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_7580 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_6953 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_5699 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_1642 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3351 predictors are trivial
+
+Performing single-SNP analysis for Chunk 60 of 63
+Warning, Predictor c20_4779 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_3524 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_6662 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_2270 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_2271 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3413 predictors are trivial
+
+Performing single-SNP analysis for Chunk 61 of 63
+Warning, Predictor c20_7916 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c21_2490 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c21_1863 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c21_608 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_7291 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3365 predictors are trivial
+
+Performing single-SNP analysis for Chunk 62 of 63
+Warning, Predictor c22_1647 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_394 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_2274 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_397 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_4158 is trivial (takes at most one non-missing value) and will be ignored
+In total, 3400 predictors are trivial
+
+Performing single-SNP analysis for Chunk 63 of 63
+Warning, Predictor c22_4854 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_4784 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_4814 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_4794 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_4834 is trivial (takes at most one non-missing value) and will be ignored
+In total, 55 predictors are trivial
+
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.quant.assoc, with a summary version in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.quant.summaries, p-values in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.quant.pvalues and score file in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.quant.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_16_c_snps_train.sped
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.quant
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_16_c_snps_train
+--SNP-data NO
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--mpheno 1
+--max-threads 8
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_16_c_snps_train.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 12862
+
+Reading details for 314256 predictors from /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_16_c_snps_train.bim
+Warning, Predictor c01_0 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_8 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_16 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_24 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_32 has a non-positive basepair (0) and will be ignored
+In total 39282 predictors have non-positive basepairs
+
+Data contain 20000 samples and 314256 predictors; will be using 12862 and 274974
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+
+Performing single-SNP analysis for Chunk 1 of 55
+Warning, Predictor c01_1 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_1430 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_3575 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_2146 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_4294 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1528 predictors are trivial
+
+Performing single-SNP analysis for Chunk 2 of 55
+Warning, Predictor c01_7143 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_6433 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_10002 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_5718 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_7858 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1653 predictors are trivial
+
+Performing single-SNP analysis for Chunk 3 of 55
+Warning, Predictor c01_15001 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_14289 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_12146 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_15716 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_15004 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1653 predictors are trivial
+
+Performing single-SNP analysis for Chunk 4 of 55
+Warning, Predictor c01_17143 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_21429 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_22145 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_20002 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_19290 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1603 predictors are trivial
+
+Performing single-SNP analysis for Chunk 5 of 55
+Warning, Predictor c02_1044 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_22860 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_3188 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_24286 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c01_23577 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1586 predictors are trivial
+
+Performing single-SNP analysis for Chunk 6 of 55
+Warning, Predictor c02_6045 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_4618 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_3905 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_5330 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_6762 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1570 predictors are trivial
+
+Performing single-SNP analysis for Chunk 7 of 55
+Warning, Predictor c02_13186 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_13188 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_11045 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_13900 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_13902 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1638 predictors are trivial
+
+Performing single-SNP analysis for Chunk 8 of 55
+Warning, Predictor c02_15329 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_19617 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_18901 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_16759 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_16043 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1633 predictors are trivial
+
+Performing single-SNP analysis for Chunk 9 of 55
+Warning, Predictor c02_23900 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_22471 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_23187 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_24615 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c02_22478 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1554 predictors are trivial
+
+Performing single-SNP analysis for Chunk 10 of 55
+Warning, Predictor c03_2223 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_1511 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_1515 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_3655 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_2945 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1524 predictors are trivial
+
+Performing single-SNP analysis for Chunk 11 of 55
+Warning, Predictor c03_9366 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_7939 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_7225 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_10082 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_11509 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1569 predictors are trivial
+
+Performing single-SNP analysis for Chunk 12 of 55
+Warning, Predictor c03_15081 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_16510 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_15801 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_12939 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_14370 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1596 predictors are trivial
+
+Performing single-SNP analysis for Chunk 13 of 55
+Warning, Predictor c03_20081 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_20799 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_18653 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_1772 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c03_19366 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1538 predictors are trivial
+
+Performing single-SNP analysis for Chunk 14 of 55
+Warning, Predictor c04_4627 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_5345 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_3914 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_8199 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_6771 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1569 predictors are trivial
+
+Performing single-SNP analysis for Chunk 15 of 55
+Warning, Predictor c04_8913 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_12484 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_13914 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_10342 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_11057 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1565 predictors are trivial
+
+Performing single-SNP analysis for Chunk 16 of 55
+Warning, Predictor c04_17484 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_15341 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_14627 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_14631 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c04_15353 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1580 predictors are trivial
+
+Performing single-SNP analysis for Chunk 17 of 55
+Warning, Predictor c05_3113 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_2399 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_973 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_3828 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_261 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1569 predictors are trivial
+
+Performing single-SNP analysis for Chunk 18 of 55
+Warning, Predictor c05_10967 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_6686 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_8110 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_8825 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_9539 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1597 predictors are trivial
+
+Performing single-SNP analysis for Chunk 19 of 55
+Warning, Predictor c05_15253 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_16683 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_14540 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_15978 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_15255 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1592 predictors are trivial
+
+Performing single-SNP analysis for Chunk 20 of 55
+Warning, Predictor c05_18825 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_1253 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c05_18111 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_546 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_3397 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1570 predictors are trivial
+
+Performing single-SNP analysis for Chunk 21 of 55
+Warning, Predictor c06_4110 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_4826 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_4828 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_7683 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_6253 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1570 predictors are trivial
+
+Performing single-SNP analysis for Chunk 22 of 55
+Warning, Predictor c06_10539 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_11973 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_14826 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_12682 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_11255 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1611 predictors are trivial
+
+Performing single-SNP analysis for Chunk 23 of 55
+Warning, Predictor c06_15541 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_16258 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_18401 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_19115 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_20539 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1621 predictors are trivial
+
+Performing single-SNP analysis for Chunk 24 of 55
+Warning, Predictor c07_3941 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_2513 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_1798 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c06_21255 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_3230 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1576 predictors are trivial
+
+Performing single-SNP analysis for Chunk 25 of 55
+Warning, Predictor c07_9655 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_9658 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_8228 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_7515 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_5370 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1553 predictors are trivial
+
+Performing single-SNP analysis for Chunk 26 of 55
+Warning, Predictor c07_11084 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_12513 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_11799 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_13942 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_13230 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1606 predictors are trivial
+
+Performing single-SNP analysis for Chunk 27 of 55
+Warning, Predictor c07_16799 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c07_16085 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_178 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_2323 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_3036 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1560 predictors are trivial
+
+Performing single-SNP analysis for Chunk 28 of 55
+Warning, Predictor c08_5891 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_8749 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_5178 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_7323 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_9462 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1620 predictors are trivial
+
+Performing single-SNP analysis for Chunk 29 of 55
+Warning, Predictor c08_10891 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_13038 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_14463 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_11606 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c08_13748 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1577 predictors are trivial
+
+Performing single-SNP analysis for Chunk 30 of 55
+Warning, Predictor c09_285 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_3858 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_286 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_1721 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_4571 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1519 predictors are trivial
+
+Performing single-SNP analysis for Chunk 31 of 55
+Warning, Predictor c09_9571 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_7434 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_6716 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_8859 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_9572 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1545 predictors are trivial
+
+Performing single-SNP analysis for Chunk 32 of 55
+Warning, Predictor c10_2111 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_683 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_11002 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_1401 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c09_13860 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1520 predictors are trivial
+
+Performing single-SNP analysis for Chunk 33 of 55
+Warning, Predictor c10_2827 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_7114 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_7833 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_4263 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_4266 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1639 predictors are trivial
+
+Performing single-SNP analysis for Chunk 34 of 55
+Warning, Predictor c10_8541 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_11398 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_9969 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_9255 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_13547 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1612 predictors are trivial
+
+Performing single-SNP analysis for Chunk 35 of 55
+Warning, Predictor c10_14254 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_2773 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c10_14259 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_631 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_3487 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1505 predictors are trivial
+
+Performing single-SNP analysis for Chunk 36 of 55
+Warning, Predictor c11_7058 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_9201 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_4201 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_4917 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_5636 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1631 predictors are trivial
+
+Performing single-SNP analysis for Chunk 37 of 55
+Warning, Predictor c11_9915 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_14203 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_13490 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_10634 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c11_9916 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1619 predictors are trivial
+
+Performing single-SNP analysis for Chunk 38 of 55
+Warning, Predictor c12_101 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_4387 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_107 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_818 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_2963 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1558 predictors are trivial
+
+Performing single-SNP analysis for Chunk 39 of 55
+Warning, Predictor c12_10815 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_6532 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_7245 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_7958 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_8674 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1650 predictors are trivial
+
+Performing single-SNP analysis for Chunk 40 of 55
+Warning, Predictor c12_11530 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_12244 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_12959 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_179 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c12_11532 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1599 predictors are trivial
+
+Performing single-SNP analysis for Chunk 41 of 55
+Warning, Predictor c13_3030 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_6603 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_5887 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_2317 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_3748 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1570 predictors are trivial
+
+Performing single-SNP analysis for Chunk 42 of 55
+Warning, Predictor c13_9459 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_8036 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_8749 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c13_10177 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_50 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1582 predictors are trivial
+
+Performing single-SNP analysis for Chunk 43 of 55
+Warning, Predictor c14_7190 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_7905 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_4334 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_5047 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_3622 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1569 predictors are trivial
+
+Performing single-SNP analysis for Chunk 44 of 55
+Warning, Predictor c14_9333 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_10054 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_3467 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_2746 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c14_8620 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1588 predictors are trivial
+
+Performing single-SNP analysis for Chunk 45 of 55
+Warning, Predictor c15_9173 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_4897 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_7746 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_5603 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c15_7030 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1550 predictors are trivial
+
+Performing single-SNP analysis for Chunk 46 of 55
+Warning, Predictor c16_2169 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_4313 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_28 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_31 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_5023 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1525 predictors are trivial
+
+Performing single-SNP analysis for Chunk 47 of 55
+Warning, Predictor c16_5738 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_6452 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_7881 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_10739 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c16_7169 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1529 predictors are trivial
+
+Performing single-SNP analysis for Chunk 48 of 55
+Warning, Predictor c17_2564 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_421 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_5422 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_1137 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_5433 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1557 predictors are trivial
+
+Performing single-SNP analysis for Chunk 49 of 55
+Warning, Predictor c17_9706 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_6135 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_6850 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_999 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c17_7565 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1580 predictors are trivial
+
+Performing single-SNP analysis for Chunk 50 of 55
+Warning, Predictor c18_3855 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_5998 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_1713 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_6713 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_4570 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1608 predictors are trivial
+
+Performing single-SNP analysis for Chunk 51 of 55
+Warning, Predictor c18_7427 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_8863 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_2297 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c18_8141 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_161 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1575 predictors are trivial
+
+Performing single-SNP analysis for Chunk 52 of 55
+Warning, Predictor c19_3726 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_105 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_4443 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_8018 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c19_3729 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1476 predictors are trivial
+
+Performing single-SNP analysis for Chunk 53 of 55
+Warning, Predictor c20_3673 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_5815 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_819 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_2963 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_5102 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1553 predictors are trivial
+
+Performing single-SNP analysis for Chunk 54 of 55
+Warning, Predictor c20_6530 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c21_3346 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c20_7244 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c21_1917 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c21_1918 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1623 predictors are trivial
+
+Performing single-SNP analysis for Chunk 55 of 55
+Warning, Predictor c22_1481 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_63 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c21_4061 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c22_770 is trivial (takes at most one non-missing value) and will be ignored
+Warning, Predictor c21_4067 is trivial (takes at most one non-missing value) and will be ignored
+In total, 1539 predictors are trivial
+
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.quant.assoc, with a summary version in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.quant.summaries, p-values in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.quant.pvalues and score file in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.quant.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_512_c_snps_train.sped
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.quant
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_512_c_snps_train
+--SNP-data NO
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--mpheno 1
+--max-threads 8
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_512_c_snps_train.fam
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 12862
+
+Reading details for 311296 predictors from /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_512_c_snps_train.bim
+Warning, Predictor c01_0 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_256 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_512 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_768 has a non-positive basepair (0) and will be ignored
+Warning, Predictor c01_1024 has a non-positive basepair (0) and will be ignored
+In total 1216 predictors have non-positive basepairs
+
+Data contain 20000 samples and 311296 predictors; will be using 12862 and 310080
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+
+Performing single-SNP analysis for Chunk 1 of 63
+Performing single-SNP analysis for Chunk 2 of 63
+Performing single-SNP analysis for Chunk 3 of 63
+Performing single-SNP analysis for Chunk 4 of 63
+Performing single-SNP analysis for Chunk 5 of 63
+Performing single-SNP analysis for Chunk 6 of 63
+Performing single-SNP analysis for Chunk 7 of 63
+Performing single-SNP analysis for Chunk 8 of 63
+Performing single-SNP analysis for Chunk 9 of 63
+Performing single-SNP analysis for Chunk 10 of 63
+Performing single-SNP analysis for Chunk 11 of 63
+Performing single-SNP analysis for Chunk 12 of 63
+Performing single-SNP analysis for Chunk 13 of 63
+Performing single-SNP analysis for Chunk 14 of 63
+Performing single-SNP analysis for Chunk 15 of 63
+Performing single-SNP analysis for Chunk 16 of 63
+Performing single-SNP analysis for Chunk 17 of 63
+Performing single-SNP analysis for Chunk 18 of 63
+Performing single-SNP analysis for Chunk 19 of 63
+Performing single-SNP analysis for Chunk 20 of 63
+Performing single-SNP analysis for Chunk 21 of 63
+Performing single-SNP analysis for Chunk 22 of 63
+Performing single-SNP analysis for Chunk 23 of 63
+Performing single-SNP analysis for Chunk 24 of 63
+Performing single-SNP analysis for Chunk 25 of 63
+Performing single-SNP analysis for Chunk 26 of 63
+Performing single-SNP analysis for Chunk 27 of 63
+Performing single-SNP analysis for Chunk 28 of 63
+Performing single-SNP analysis for Chunk 29 of 63
+Performing single-SNP analysis for Chunk 30 of 63
+Performing single-SNP analysis for Chunk 31 of 63
+Performing single-SNP analysis for Chunk 32 of 63
+Performing single-SNP analysis for Chunk 33 of 63
+Performing single-SNP analysis for Chunk 34 of 63
+Performing single-SNP analysis for Chunk 35 of 63
+Performing single-SNP analysis for Chunk 36 of 63
+Performing single-SNP analysis for Chunk 37 of 63
+Performing single-SNP analysis for Chunk 38 of 63
+Performing single-SNP analysis for Chunk 39 of 63
+Performing single-SNP analysis for Chunk 40 of 63
+Performing single-SNP analysis for Chunk 41 of 63
+Performing single-SNP analysis for Chunk 42 of 63
+Performing single-SNP analysis for Chunk 43 of 63
+Performing single-SNP analysis for Chunk 44 of 63
+Performing single-SNP analysis for Chunk 45 of 63
+Performing single-SNP analysis for Chunk 46 of 63
+Performing single-SNP analysis for Chunk 47 of 63
+Performing single-SNP analysis for Chunk 48 of 63
+Performing single-SNP analysis for Chunk 49 of 63
+Performing single-SNP analysis for Chunk 50 of 63
+Performing single-SNP analysis for Chunk 51 of 63
+Performing single-SNP analysis for Chunk 52 of 63
+Performing single-SNP analysis for Chunk 53 of 63
+Performing single-SNP analysis for Chunk 54 of 63
+Performing single-SNP analysis for Chunk 55 of 63
+Performing single-SNP analysis for Chunk 56 of 63
+Performing single-SNP analysis for Chunk 57 of 63
+Performing single-SNP analysis for Chunk 58 of 63
+Performing single-SNP analysis for Chunk 59 of 63
+Performing single-SNP analysis for Chunk 60 of 63
+Performing single-SNP analysis for Chunk 61 of 63
+Performing single-SNP analysis for Chunk 62 of 63
+Performing single-SNP analysis for Chunk 63 of 63
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.quant.assoc, with a summary version in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.quant.summaries, p-values in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.quant.pvalues and score file in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.quant.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_16_c_snps_train.sped
+Output path exists, skipping...

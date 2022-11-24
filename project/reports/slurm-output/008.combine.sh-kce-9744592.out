@@ -1,0 +1,96 @@
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+[38;5;4mℹ Processing act: identity, width: 16, split: train[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:04:37), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_16_c_snps_train.sped[0m
+[38;5;4mℹ Processing act: relu, width: 16, split: train[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:06:11), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_16_c_snps_train.sped[0m
+[38;5;4mℹ Processing act: identity, width: 512, split: train[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:08:58), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_512_c_snps_train.sped[0m
+[38;5;4mℹ Processing act: relu, width: 512, split: train[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:08:53), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_512_c_snps_train.sped[0m
+[38;5;4mℹ Processing act: identity, width: 16, split: validation[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:05:45), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_16_c_snps_validation.sped[0m
+[38;5;4mℹ Processing act: relu, width: 16, split: validation[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:05:53), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_16_c_snps_validation.sped[0m
+[38;5;4mℹ Processing act: identity, width: 512, split: validation[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:09:24), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_512_c_snps_validation.sped[0m
+[38;5;4mℹ Processing act: relu, width: 512, split: validation[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:08:22), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_512_c_snps_validation.sped[0m
+[38;5;4mℹ Processing act: identity, width: 16, split: test[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:05:03), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_16_c_snps_test.sped[0m
+[38;5;4mℹ Processing act: relu, width: 16, split: test[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:05:04), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_16_c_snps_test.sped[0m
+[38;5;4mℹ Processing act: identity, width: 512, split: test[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:08:18), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_512_c_snps_test.sped[0m
+[38;5;4mℹ Processing act: relu, width: 512, split: test[0m
+[38;5;4mℹ Saving to sped file[0m
+[38;5;2m✔ Saved to sped file (time: 00:08:13), saved to:
+/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_512_c_snps_test.sped[0m

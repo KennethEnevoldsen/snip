@@ -11,4 +11,4 @@ GENO_PATH=/home/kce/dsmwpred/data/ukbb/geno.bed
 DATA_FOLDER=/home/kce/NLPPred/github/snip/data
 
 # convert the .bed data to .zarr
-snip convert $GENO_PATH $DATA_FOLDER/raw/ukbb_geno.zarr
+snip convert $GENO_PATH $DATA_FOLDER/raw/ukbb_geno.zarr --overwrite

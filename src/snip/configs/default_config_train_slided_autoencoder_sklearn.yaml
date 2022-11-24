@@ -5,6 +5,7 @@ project:
   run_name_prefix: "" # str: prefix of wandb run name
   verbose: true # bool
   n_jobs: 2 # int: number of jobs to run in parallel
+  create_interim: false # bool: whether to create interim data
 
 data:
   train_path: "data/processed/chrom_22_train.zarr"
@@ -17,10 +18,12 @@ data:
   width: 512 # int: number of snps. Inpu should be equal to the input layer. Note: should be equal to model input_size
   impute_missing: "mean"  # Optional[str]: method for imputing missing snps.
   num_workers: 1 # int: number of workers for dataloader
-  limit: 20000 # int: number of samples to load. If null, load all samples
+  limit: null # int: number of samples to load. If null, load all samples
+  chromosome: null # Optional[int]: if null, load all chromosomes
 
 model:
   architecture: "mlp"
   hidden_layer_sizes: [300, 256, 300] # input + output is estimated from data
   activation: "relu" # str: Options include identity and relu: https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html
   solver: "adam" # str: Options include adam and sgd
+  

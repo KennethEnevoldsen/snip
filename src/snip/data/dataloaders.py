@@ -249,11 +249,11 @@ class PLINKIterableDataset(IterableDataset):  # pylint: disable=abstract-method
                 "Normalizing object dtypes to string dtypes, for more see "
                 + "https://github.com/pydata/xarray/issues/3476",
             )
-        for v in list(self.genotype.coords.keys()):
-            if self.genotype.coords[v].dtype == object:
-                self.genotype.coords[v] = (
-                    self.genotype.coords[v].astype("unicode").compute()
-                )
+        # for v in list(self.genotype.coords.keys()):
+        #     if self.genotype.coords[v].dtype == object:
+        #         self.genotype.coords[v] = (
+        #             self.genotype.coords[v].astype("unicode").compute()
+        #         )
         ds = xr.Dataset(dict(genotype=self.genotype))
         ds.to_zarr(str(path), mode=mode, compute=True)
         self.tmp_save_ds = ds
@@ -583,6 +583,7 @@ def combine_plinkdatasets(
     datasets: List[PLINKIterableDataset],
     along_dim: str = "sample",
     rewrite_variants: Optional[bool] = None,
+    verbose: bool = True,
 ) -> PLINKIterableDataset:
     """Merge multiple PLINKIterableDatasets into one.
 
@@ -592,6 +593,7 @@ def combine_plinkdatasets(
         rewrite_variants (Optional[bool]): If True, the variant IDs will be rewritten.
             Defaults to None. If None, the variant IDs will be rewritten if the
             datasets have overlapping variant IDs.
+        verbose (bool): If True, print messages. Defaults to True.
 
     Returns:
         PLINKIterableDataset: The merged dataset.
@@ -604,26 +606,24 @@ def combine_plinkdatasets(
         genotype = xr.concat(genotypes, dim="variant")
 
     elif along_dim == "sample":
-        genotype = xr.concat(genotype, dim="sample")
+        genotype = xr.concat(genotypes, dim="sample")
     else:
         raise ValueError(f"Dimension {along_dim} not recognised.")
     if rewrite_variants is None:
         variants = genotype.variant.data
-        rewrite_variants = np.unique(variants).shape == variants.shape
+        rewrite_variants = np.unique(variants).shape != variants.shape
 
     if rewrite_variants:
-        coords = {
-            "variant": np.arange(0, genotype.shape[1]),  # create variant id
-            "chrom": ("variant", np.repeat(1, genotype.shape[1])),  # add chromosome
-            "a0": ("variant", np.repeat("A", genotype.shape[1])),  # add allele 1
-            "a1": ("variant", np.repeat("B", genotype.shape[1])),  # add allele 2
-            "snp": (
-                "variant",
-                np.array([f"c{t}" for t in range(genotype.shape[1])]),
-            ),  # add SNP id
-            "pos": ("variant", np.arange(0, genotype.shape[1])),  # add position
-        }
-        genotype.assign_coords(coords)
+        raise NotImplementedError("Rewriting variants not implemented yet.")
+        # if verbose:
+        #     msg.info("Rewriting variant IDs")
+        # coords = {
+        #     "variant": np.arange(0, genotype.shape[1]),  # create variant id
+        #     # "a0": ("variant", np.repeat("A", genotype.shape[1])),  # add allele 1
+        #     # "a1": ("variant", np.repeat("B", genotype.shape[1])),  # add allele 2
+        #     # "pos": ("variant", np.arange(0, genotype.shape[1])),  # add position
+        # }
+        # genotype = genotype.assign_coords(coords)
 
     dataset.genotype = genotype
     dataset.path = ""

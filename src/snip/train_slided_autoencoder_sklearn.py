@@ -111,20 +111,23 @@ def create_datasets(
         cfg.data.train_path,
         impute_missing=cfg.data.impute_missing,
         limit=cfg.data.limit,
+        chromosome=cfg.data.chromosome,
     )
     if not train.is_missing_imputed():
         if cfg.project.verbose:
             msg.info("Missing values are not imputed. Imputing missing values.")
         train.impute_missing()
-        train.update_on_disk()
-        if cfg.project.verbose:
-            msg.good("Missing values are imputed. Saved missing imputation to disk.")
+        # train.update_on_disk()
+        # if cfg.project.verbose:
+        #     msg.good("Missing values are imputed. Saved missing imputation to disk.")
 
     train_datasets = train.split_into_strides(stride=cfg.data.stride)
 
     validation = PLINKIterableDataset(
         cfg.data.validation_path,
         impute_missing=cfg.data.impute_missing,
+        limit=cfg.data.limit,
+        chromosome=cfg.data.chromosome,
     )
     validation.impute_missing_from(train)  # transfer the missing imputes.
     validation_datasets = validation.split_into_strides(stride=cfg.data.stride)
@@ -133,6 +136,8 @@ def create_datasets(
         test = PLINKIterableDataset(
             cfg.data.test_path,
             impute_missing=cfg.data.impute_missing,
+            limit=cfg.data.limit,
+            chromosome=cfg.data.chromosome,
         )
         test.impute_missing_from(train)
         test_datasets: Sequence[
@@ -189,7 +194,7 @@ def train(
     c_val = PLINKIterableDataset.from_array(c_snps, metadata_from=validation)
     yhat = decoder(c_snps)
     # calculate reconstruction error
-    val_reconstruction_error = np.mean((train_X - yhat) ** 2)
+    val_reconstruction_error = np.mean((validation_X - yhat) ** 2)
 
     # c_val.to_disk(interim_path / f"validation_{n}.zarr", mode="w")
     # apply test
@@ -198,6 +203,8 @@ def train(
         c_snps = encoder(test_X)
         c_test = PLINKIterableDataset.from_array(c_snps, metadata_from=test)
         # c_test.to_disk(interim_path / f"test_{n}.zarr", mode="w")
+    else:
+        c_test = None
     return c_train, c_val, c_test, train_reconstruction_error, val_reconstruction_error
 
 
@@ -264,9 +271,11 @@ def main(cfg: DictConfig) -> None:
     for split in ["train", "validation", "test"]:
         if split == "test" and not cfg.data.test_path:
             continue
-        # compressed_snps_paths = list(interim_path.glob(f"{split}_*.zarr"))
-        # genotypes = [PLINKIterableDataset(path) for path in compressed_snps_paths]
-        genotypes = compressions[split]
+        if cfg.project.create_interim:
+            compressed_snps_paths = list(interim_path.glob(f"{split}_*.zarr"))
+            genotypes = [PLINKIterableDataset(path) for path in compressed_snps_paths]
+        else:
+            genotypes = compressions[split]
 
         if cfg.project.verbose:
             msg.info(f"Merging {split}, consisting of {len(genotypes)} files")
@@ -280,7 +289,8 @@ def main(cfg: DictConfig) -> None:
         dataset.to_disk(result_path / f"c_snps_{split}.zarr", mode="w")
 
     # remove interim files
-    shutil.rmtree(interim_path)
+    if cfg.project.create_interim:
+        shutil.rmtree(interim_path)
 
 
 if __name__ == "__main__":

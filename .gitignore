@@ -143,6 +143,7 @@ docs/_build/*
 *.fam
 *.bed
 *.sped
+data/ldak_results/*
 
 # wandb
 wandb/*
@@ -155,3 +156,4 @@ poetry.lock
 
 # models
 **/models/*
+

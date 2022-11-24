@@ -47,10 +47,10 @@ repos:
       - id: flake8
         args: [--config, .flake8]
 
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.961
-    hooks:
-      - id: mypy
+  # - repo: https://github.com/pre-commit/mirrors-mypy
+  #   rev: v0.961
+  #   hooks:
+  #     - id: mypy
 
   # # due to it being too slow it is relegated to an independent workflow
   # - repo: https://github.com/terrencepreilly/darglint

@@ -97,7 +97,7 @@ ssh {node id}
 ```
 srun --pty -c 4 --mem=16g bash -A NLPPred
 ```
-Using 4 cores and 16gb memory.
+Using 4 cores and 16GB memory.
 
 For more on slurm please check out [this site](https://docs.rc.fas.harvard.edu/kb/convenient-slurm-commands).
 
