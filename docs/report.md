@@ -29,7 +29,7 @@ A single SNP analysis performed on compressed SNP (cSNPs).
 
 | Activation     | Stride/width | Compression factor | N significant (p < 5x10^-8) | Expected N given number of SNPs | N significant / expected |
 | -------------- | ------------ | ------------------ | --------------------------- | ------------------------------- | ------------------------ |
-| Identity       | 16           | 2x                 | 29                          | 0.013748                        | 2109.2903                |
+| Identity       | 16           | 2x                 | 29                          | 0.013748                        | **2109.2903**            |
 | Identity       | 512          | 2x                 | 7                           | 0.015503                        | 451.4963                 |
 | ReLU           | 16           | 2x                 | 20                          | 0.013748                        | 1454.6829                |
 | ReLU           | 512          | 2x                 | 1                           | 0.015503                        | 64.4994                  |
@@ -73,7 +73,7 @@ Analysis performed on Chromosome 1-22 using 20k participants derived from 4 diff
 | 512        | Identity            | 2x                            | 0.54         |
 | 16         | ReLU                | 2x                            | 0.59         |
 | 512        | ReLU                | 2x                            | 0.55         |
-|            |                     | Uncompressed                  | *0.82*       |
+|            |                     | Uncompressed                  | **0.82**     |
 
 
 
