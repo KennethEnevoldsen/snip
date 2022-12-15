@@ -8,8 +8,8 @@ Central idea of the project.
 - Is it possible to meaningfully compress single nucleotide polymorphism (SNP) data?
   - Is there a potential benefit for using a non-linear compression
 
-## Single SNP analys
-
+## Single cSNP analysis
+A single SNP analysis performed on compressed SNP (cSNPs).
 
 ![](images/single_snp_analysis/chr1-22_20k_identity_16_c_snps_train.quant.png)
 
@@ -61,6 +61,8 @@ Analysis performed on Chromosome 1-22 using 20k participants derived from 4 diff
 | 512        | Identity            | 2x                            | 0.54         |
 | 16         | ReLU                | 2x                            | 0.59         |
 | 512        | ReLU                | 2x                            | 0.55         |
+|            |                     | Uncompressed                  | *0.82*       |
+
 
 
 For more details you can inspect the following outputs from LDAK.
@@ -166,8 +168,32 @@ Component Heritability SD Size Mega_Intensity SD
 Her_K1 0.553665 0.026147 100962.00 5.483895 0.258981
 Her_Top 0.000000 NA NA NA NA
 Her_All 0.553665 0.026147 100962.00 5.483895 0.258981
-
 ```
+
+And based on the raw uncompressed SNPs:
+```
+Num_Kinships 1
+Num_Regions 0
+Num_Top_Predictors 0
+Num_Covariates 1
+Num_Environments 0
+Blupfile /home/kce/NLPPred/github/snip/data/ldak_results/geno.reml1.indi.blp
+Regfile none
+Coeffsfile /home/kce/NLPPred/github/snip/data/ldak_results/geno.reml1.coeff
+Covar_Heritability 0.0000
+Total_Samples 12862
+With_Phenotypes 12862
+Converged YES
+Null_Likelihood -18297.3966
+Alt_Likelihood -18055.7829
+LRT_Stat 483.2274
+LRT_P 2.1205e-107
+Component Heritability SD Size Mega_Intensity SD
+Her_K1 0.824049 0.037624 628028.73 1.312120 0.059908
+Her_Top 0.000000 NA NA NA NA
+Her_All 0.824049 0.037624 628028.73 1.312120 0.05990
+```
+
 
 </details>
 
@@ -192,7 +218,7 @@ Where $K$ is the kinship matrix.
 We can thus describe $y$ as:
 
 $$
-y \sim N(X\beta, K\sigma^2 + I\sigma^2_\epsilon)
+y \sim N(\beta_0, K\sigma^2 + I\sigma^2_\epsilon)
 $$
 
 Where $K$ is the kinship matrix and $\epsilon$ is the residual error.
@@ -321,3 +347,18 @@ command with `--ignore-weights YES` (I am a bit unsure of what this does - the `
 already provided the wieghting - is this an additional weight before the GCTA weighting) 
 and `--power -1` (GCTA / naive). I am a bit unsure how this is done.
 
+# TODO
+
+- [ ] Do a single snp analysis with the same number of individuals
+- [ ] Check relu compression (why is there trivial SNPs?)
+- [ ] Redo analysis with more ind.
+  - [ ]  time estimate (for compression?)
+  - [ ]  more traits (e.g. Doug Speed will send a path for the bloodsamples)
+- [ ] compare w. R^2 pruning
+- [x] Plot Single SNPs
+- [x] Figure out the role of the Q_J (examine)
+- [ ] Calculate correlation
+
+
+## central question:
+The fundamental question we are asking is, "are these compressions useful". Do they provide any benefits over having SNP data? So please think how we can answer this question. Ultimately, it is ok if the answer is "no", provided we are confident we have tried hard enough.  

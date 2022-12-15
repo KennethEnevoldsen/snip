@@ -1,0 +1,34 @@
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--calc-kins-direct /home/kce/NLPPred/github/snip/data/ldak_results//home/kce/dsmwpred/data/ukbb/geno.bed.GCTA
+--sped //home/kce/dsmwpred/data/ukbb/geno.bed
+--ignore-weights YES
+--power -1
+--max-threads 4
+
+Warning, predictors are assumed to be SNP allele counts (i.e., take values within [0,2]); if this is not the case, you should use "--SNP-data NO"
+
+Error reading //home/kce/dsmwpred/data/ukbb/geno.bed.sped; check file exists and is not empty
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results//home/kce/dsmwpred/data/ukbb/geno.bed.reml1
+--sped //home/kce/dsmwpred/data/ukbb/geno.bed
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--grm /home/kce/NLPPred/github/snip/data/ldak_results//home/kce/dsmwpred/data/ukbb/geno.bed.GCTA
+--max-threads 4
+
+Warning, predictors are assumed to be SNP allele counts (i.e., take values within [0,2]); if this is not the case, you should use "--SNP-data NO"
+
+Warning, genetic data files are provided but will not be used
+
+Error reading /home/kce/NLPPred/github/snip/data/ldak_results//home/kce/dsmwpred/data/ukbb/geno.bed.GCTA.grm.id; this file would have been created when calculating kinships
+

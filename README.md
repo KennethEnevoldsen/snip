@@ -119,3 +119,17 @@ For more on slurm please check out [this site](https://docs.rc.fas.harvard.edu/k
 [github issue tracker]: https://github.com/kennethenevoldsen/snip/issues
 [github discussions]: https://github.com/kennethenevoldsen/snip/discussions
 
+
+
+
+<!-- 
+
+- [ ] Check relu compression (why is there trivial SNPs?)
+- [ ] Redo analysis with more ind.
+  - [ ]  time estimate 
+  - [ ]  more traits
+- [ ] compare w. R^2 pruning
+- [ ] Plot Single SNPs
+- [ ] Figure out the role of the Q_J (examine)
+- [ ] Calculate correlation
+ -->

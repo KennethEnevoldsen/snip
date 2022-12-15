@@ -1,0 +1,54 @@
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--calc-kins-direct /home/kce/NLPPred/github/snip/data/ldak_results/geno.GCTA
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--ignore-weights YES
+--power -1
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Calculating kinships directly
+
+Predictors will be centred then scaled by V^(-1.0000/2) (option "--power"), where V=2*MAF*(1-MAF), the expected variance assuming Hardy-Weinberg Equilibrium; to instead scale based on observed variance use "--hwe-stand NO"
+
+Add "--kinship-gz YES" and/or "--kinship-raw YES" to save gzipped and/or text versions of the kinship matrix
+
+If memory is an issue, add "--single YES" (then calculations will performed using single precistion)
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors
+
+Warning, to process the data will require approximately 14.6 Gb; to reduce use "--bit-size" (currently 5000)
+
+Warning, to perform the analysis will require approximately 1146.1 Gb
+
+Calculating kinships for Chunk 1 of 126
+/var/spool/slurmd/job10614736/slurm_script: line 29: 15821 Segmentation fault      (core dumped) $LDAK --calc-kins-direct $OUTPUT_PATH/$GENO_PATH.GCTA --bfile $DATA_PATH/$GENO_PATH --ignore-weights YES --power -1 --max-threads $N_CORES
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 5 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/geno.reml1
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/geno.GCTA
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+Error reading /home/kce/NLPPred/github/snip/data/ldak_results/geno.GCTA.grm.id; this file would have been created when calculating kinships
+

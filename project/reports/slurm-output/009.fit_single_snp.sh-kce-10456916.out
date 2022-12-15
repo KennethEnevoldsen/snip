@@ -1,0 +1,224 @@
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_512_c_snps_train.sped
+Output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.reml1
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.reml1
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_512_c_snps_train
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--SNP-data NO
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.GCTA
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.GCTA.grm.id
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 12862
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.GCTA
+Warning, to store kinships will require approximately 1.2 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-18073.73	n/a		0.001000	0
+1	0.5552	0.5552	-18071.52	2.211106	0.001000	0
+2	0.5536	0.5536	-18071.52	0.003314	0.001000	0
+3	0.5537	0.5537	-18071.52	0.000000	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_16_c_snps_train.sped
+Output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.reml1
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.reml1
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_16_c_snps_train
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--SNP-data NO
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.GCTA
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.GCTA.grm.id
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 12862
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.GCTA
+Warning, to store kinships will require approximately 1.2 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-18073.33	n/a		0.001000	0
+1	0.5908	0.5908	-18068.08	5.248477	0.001000	0
+2	0.5872	0.5872	-18068.06	0.017943	0.001000	0
+3	0.5873	0.5873	-18068.06	0.000004	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_512_c_snps_train.sped
+Output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.reml1
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.reml1
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_512_c_snps_train
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--SNP-data NO
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.GCTA
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.GCTA.grm.id
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 12862
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.GCTA
+Warning, to store kinships will require approximately 1.2 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-18067.47	n/a		0.001000	0
+1	0.5456	0.5456	-18065.91	1.566898	0.001000	0
+2	0.5442	0.5442	-18065.90	0.002353	0.001000	0
+3	0.5442	0.5442	-18065.90	0.000001	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_train.sped
+Output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train.reml1
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train.reml1
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_train
+--pheno /home/kce/dsmwpred/data/ukbb/height.train
+--SNP-data NO
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train.GCTA
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train.GCTA.grm.id
+Checking responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 12862
+
+Reading responses for 200000 samples from /home/kce/dsmwpred/data/ukbb/height.train
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train.GCTA
+Warning, to store kinships will require approximately 1.2 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-18061.68	n/a		0.001000	0
+1	0.5992	0.5992	-18054.23	7.448345	0.001000	0
+2	0.6051	0.6051	-18054.20	0.025077	0.001000	0
+3	0.6050	0.6050	-18054.20	0.000011	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
