@@ -20,12 +20,20 @@ A single SNP analysis performed on compressed SNP (cSNPs).
 ![](images/single_snp_analysis/chr1-22_20k_relu_512_c_snps_train.quant.png)
 
 
-| Activation | Stride/width | N significant (p < 5x10^-8) | Expected N given number of SNPs | N significant / expected |
-| ---------- | ------------ | --------------------------- | ------------------------------- | ------------------------ |
-| Identity   | 16           | 29                          | 0.013748                        | 2109.2903                |
-| Identity   | 512          | 7                           | 0.015503                        | 451.4963                 |
-| ReLU       | 16           | 20                          | 0.013748                        | 1454.6829                |
-| ReLU       | 512          | 1                           | 0.015503                        | 64.4994                  |
+## Single SNP analysis
+
+![](images/single_snp_analysis/geno.quant.png)
+
+
+### Comparison
+
+| Activation     | Stride/width | Compression factor | N significant (p < 5x10^-8) | Expected N given number of SNPs | N significant / expected |
+| -------------- | ------------ | ------------------ | --------------------------- | ------------------------------- | ------------------------ |
+| Identity       | 16           | 2x                 | 29                          | 0.013748                        | 2109.2903                |
+| Identity       | 512          | 2x                 | 7                           | 0.015503                        | 451.4963                 |
+| ReLU           | 16           | 2x                 | 20                          | 0.013748                        | 1454.6829                |
+| ReLU           | 512          | 2x                 | 1                           | 0.015503                        | 64.4994                  |
+| (Uncompressed) |              | Uncompressed       | 50                          | 0.03143                         | 1590.5989                |
 
 
 <details>
@@ -47,6 +55,10 @@ chr1-22_20k_relu_512_c_snps_train.quant - 3 / 4
         N significant (p < 5x10^-8): 1
         Expected N given number of SNPs: 0.015503999999999999
         N significant / expected:  64.49948400412798
+geno.quant - 4 / 5
+        N significant (p < 5x10^-8): 50
+        Expected N given number of SNPs: 0.031434699999999996
+        N significant / expected:  1590.598924118888
 ```
 </details>
 

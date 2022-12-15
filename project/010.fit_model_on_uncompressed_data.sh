@@ -30,6 +30,15 @@ cut -f 1,2 $PHENO_PATH > $OUTPUT_PATH/individuals_pheno.txt
 join -1 1 -2 1 $OUTPUT_PATH/individuals.txt $OUTPUT_PATH/individuals_pheno.txt > $OUTPUT_PATH/individuals_intersect.txt
 
 
+# Perform single SNP analysis
+$LDAK --linear $OUTPUT_PATH/$GENO_PATH.quant \
+    --bfile $DATA_PATH/$GENO_PATH \
+    --pheno $PHENO_PATH \
+    --mpheno 1 \
+    --keep $OUTPUT_PATH/individuals_intersect.txt \
+    --max-threads $N_CORES
+
+
 # Calculate kinship matrix
 # https://dougspeed.com/calculate-kinships/
 $LDAK --calc-kins-direct $OUTPUT_PATH/$GENO_PATH.GCTA \
