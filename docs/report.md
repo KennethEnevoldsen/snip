@@ -27,13 +27,13 @@ A single SNP analysis performed on compressed SNP (cSNPs).
 
 ### Comparison
 
-| Activation     | Stride/width | Compression factor | N significant (p < 5x10^-8) | Expected N given number of SNPs | N significant / expected |
-| -------------- | ------------ | ------------------ | --------------------------- | ------------------------------- | ------------------------ |
-| Identity       | 16           | 2x                 | 29                          | 0.013748                        | **2109.2903**            |
-| Identity       | 512          | 2x                 | 7                           | 0.015503                        | 451.4963                 |
-| ReLU           | 16           | 2x                 | 20                          | 0.013748                        | 1454.6829                |
-| ReLU           | 512          | 2x                 | 1                           | 0.015503                        | 64.4994                  |
-| (Uncompressed) |              | Uncompressed       | 50                          | 0.03143                         | 1590.5989                |
+| Activation | Stride/width | Compression factor | N significant (p < 5x10^-8) | Expected N given number of SNPs | N significant / expected |
+| ---------- | ------------ | ------------------ | --------------------------- | ------------------------------- | ------------------------ |
+| Identity   | 16           | 2x                 | 29                          | 0.013748                        | **2109.2903**            |
+| Identity   | 512          | 2x                 | 7                           | 0.015503                        | 451.4963                 |
+| ReLU       | 16           | 2x                 | 20                          | 0.013748                        | 1454.6829                |
+| ReLU       | 512          | 2x                 | 1                           | 0.015503                        | 64.4994                  |
+|            |              | Uncompressed       | 50                          | 0.03143                         | 1590.5989                |
 
 
 <details>
@@ -361,7 +361,8 @@ and `--power -1` (GCTA / naive). I am a bit unsure how this is done.
 
 # TODO
 
-- [ ] Do a single snp analysis with the same number of individuals
+- [x] Do a single snp analysis with the same number of individuals
+  - Added to the report under the section "single snp analysis"
 - [ ] Check relu compression (why is there trivial SNPs?)
 - [ ] Redo analysis with more ind.
   - [ ]  time estimate (for compression?)
@@ -370,6 +371,8 @@ and `--power -1` (GCTA / naive). I am a bit unsure how this is done.
 - [x] Plot Single SNPs
 - [x] Figure out the role of the Q_J (examine)
 - [ ] Calculate correlation
+- [x] Check visualization, is there a even amount of c snps pr. chromosome?
+  -  It was caused by a normalization of the snps. I should have updated the plots now.
 
 
 ## central question:

@@ -35,11 +35,13 @@ if __name__ == "__main__":
 
         graph = sns.relplot(
             data=df,
-            x="cumulative_pos",
+            x="SNP number",
             y="-logp",
             aspect=4,
             hue="Chromosome",
             palette="Set1",
+            linewidth=0,  # no white border around points
+            alpha=0.3,
         )
         threshold = 5e-8
         graph.ax.axhline(y=-np.log10(threshold), color="r", linestyle="--")
