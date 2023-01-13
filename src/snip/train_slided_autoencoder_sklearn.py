@@ -1,6 +1,7 @@
 """A script for training and evaluating a slided autoencoder."""
 
 import shutil
+import time
 from argparse import Namespace
 from datetime import datetime
 from itertools import repeat
@@ -170,7 +171,7 @@ def train(
             the evaluation metrics.
     """
     # interim_path = Path(cfg.data.interim_path) / wandb.config.run_name
-
+    start = time.time()
     model = create_autoencoder(cfg)
     msg.info(f"Training autoencoder {n}")
 
@@ -185,10 +186,21 @@ def train(
     # # apply
     encoder = create_encoder(model)
     c_snps = encoder(train_X)
+    # check if there is trivial snps (i.e. the all have the same value) in the c_snps
+    n_trivial = np.sum(np.ptp(c_snps, axis=0) == 0)
+    print(
+        f"During processing of ae {n}: Number of trivial snps: {n_trivial} was found.",
+    )
+
     decoder = create_decoder(model)
     yhat = decoder(c_snps)
     # calculate reconstruction error
     train_reconstruction_error = np.mean((train_X - yhat) ** 2)
+    # calculate correlation
+    train_correlation = np.corrcoef(train_X.T, yhat.T)[
+        train_X.shape[1] :,
+        : train_X.shape[1],
+    ]
 
     c_train = PLINKIterableDataset.from_array(c_snps, metadata_from=train)
     # c_train.to_disk(interim_path / f"train_{n}.zarr", mode="w")
@@ -209,7 +221,17 @@ def train(
         # c_test.to_disk(interim_path / f"test_{n}.zarr", mode="w")
     else:
         c_test = None
-    return c_train, c_val, c_test, train_reconstruction_error, val_reconstruction_error
+    time_taken = time.time() - start
+    return (
+        c_train,
+        c_val,
+        c_test,
+        train_reconstruction_error,
+        val_reconstruction_error,
+        time_taken,
+        train_correlation,
+        (n, n_trivial),
+    )
 
 
 @hydra.main(
@@ -251,6 +273,10 @@ def main(cfg: DictConfig) -> None:
     # log avg, min, max reconstruction errors
     train_reconstruction_errors = [r[3] for r in results]
     val_reconstruction_errors = [r[4] for r in results]
+    time_taken = [r[5] for r in results]
+    train_correlations = [r[6] for r in results]
+    n_trivial = [r[7] for r in results]
+
     wandb.log(
         {
             "Mean(training reconstruction error)": np.mean(train_reconstruction_errors),
@@ -261,8 +287,15 @@ def main(cfg: DictConfig) -> None:
             "Min(validation reconstruction error)": np.min(val_reconstruction_errors),
             "Max(training reconstruction error)": np.max(train_reconstruction_errors),
             "Max(validation reconstruction error)": np.max(val_reconstruction_errors),
+            "Mean(time taken)": np.mean(time_taken),
+            "Min(time taken)": np.min(time_taken),
+            "Max(time taken)": np.max(time_taken),
+            "Mean(training correlation)": np.mean(train_correlations),
+            "Min(training correlation)": np.min(train_correlations),
+            "Max(training correlation)": np.max(train_correlations),
         },
     )
+    wandb.log(f"N trivial snps {n_trivial}")
 
     # convert reuslts to dict
     compressions: Dict[str, list] = {"train": [], "validation": [], "test": []}
@@ -288,7 +321,7 @@ def main(cfg: DictConfig) -> None:
         dataset = combine_plinkdatasets(
             genotypes,
             along_dim="variant",
-            rewrite_variants=True,
+            rewrite_variants=False,
         )
         dataset.to_disk(result_path / f"c_snps_{split}.zarr", mode="w")
 

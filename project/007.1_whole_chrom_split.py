@@ -4,8 +4,8 @@ import os
 from itertools import product
 
 outline = """#!/bin/bash
-#SBATCH --time=10:00:00
-#SBATCH --mem 32g
+#SBATCH --time=24:00:00
+#SBATCH --mem 64g
 #SBATCH -c {cores}
 #SBATCH --output ./project/reports/slurm-output/%x-%u-%j.out
 #SBATCH -A NLPPred
@@ -13,7 +13,7 @@ outline = """#!/bin/bash
 #SBATCH --mail-user=slurm-notifications-aaaahkuvjxiplokhffpn6qphzu@chcaa.slack.com
 
 python src/snip/train_slided_autoencoder_sklearn.py \\
-    project.wandb_mode=dryrun \\
+    project.wandb_mode=run \\
     project.n_jobs={cores} \\
     data.stride={stride} \\
     data.width={stride} \\
@@ -29,11 +29,25 @@ python src/snip/train_slided_autoencoder_sklearn.py \\
 """
 
 variations = {
-    "limit": [20000],
-    "activation": ["relu", "identity"],
+    "limit": [
+        20000,
+        50000,
+        100000,
+        200000,
+        # "null",
+    ],
+    "activation": [
+        "relu",
+        # "identity"
+    ],
     "cores": [8],
-    "chromosome": list(range(1, 23)),
-    "stride": [512, 16],
+    "chromosome":
+    # list(range(1, 23)),
+    [1],
+    "stride": [
+        512,
+        # 16
+    ],
 }
 
 
@@ -44,9 +58,13 @@ combinations = list(product(*variations.values()))
 for i, combination in enumerate(combinations):
     # create a dictionary of the parameters
     params = dict(zip(variations.keys(), combination))
+    if params["limit"] != "null":
+        limit_in_k = params["limit"] // 1000
+    else:
+        limit_in_k = "null"
     params[
         "prefix"
-    ] = f"chr{params['chromosome']}_20k_{params['activation']}_{params['stride']}"
+    ] = f"chr{params['chromosome']}_{limit_in_k}k_{params['activation']}_{params['stride']}"
     # calculate the hidden size
     stride = params["stride"]
     hidden_size = int(stride / 2)

@@ -561,15 +561,18 @@ class PLINKIterableDataset(IterableDataset):  # pylint: disable=abstract-method
             if arr.shape == metadata_from.shape:
                 arr = xr.DataArray(arr, coords=metadata_from.coords)
             else:
+                n_variants = arr.shape[1]
+                chrom = metadata_from.coords["chromosome"].data[0]
+                chrom_coords = np.repeat(chrom, n_variants)
+                chrom_str = f"{chrom:02d}"
+                snp_coords = np.array([f"c{chrom_str}_{i}" for i in range(n_variants)])
+
                 coords = {
-                    "variant": np.arange(0, arr.shape[1]),  # create variant id
-                    "chrom": ("variant", np.repeat(1, arr.shape[1])),  # add chromosome
+                    "chrom": ("variant", chrom_coords),
+                    "snp": ("variant", snp_coords),
+                    "variant": ("variant", np.arange(n_variants)),
                     "a0": ("variant", np.repeat("A", arr.shape[1])),  # add allele 1
                     "a1": ("variant", np.repeat("B", arr.shape[1])),  # add allele 2
-                    "snp": (
-                        "variant",
-                        np.array([f"c{t}" for t in range(arr.shape[1])]),
-                    ),  # add SNP id
                     "pos": ("variant", np.arange(0, arr.shape[1])),  # add position
                 }
                 # transfer coords frome the first dimension (sample)
@@ -615,15 +618,6 @@ def combine_plinkdatasets(
 
     if rewrite_variants:
         raise NotImplementedError("Rewriting variants not implemented yet.")
-        # if verbose:
-        #     msg.info("Rewriting variant IDs")
-        # coords = {
-        #     "variant": np.arange(0, genotype.shape[1]),  # create variant id
-        #     # "a0": ("variant", np.repeat("A", genotype.shape[1])),  # add allele 1
-        #     # "a1": ("variant", np.repeat("B", genotype.shape[1])),  # add allele 2
-        #     # "pos": ("variant", np.arange(0, genotype.shape[1])),  # add position
-        # }
-        # genotype = genotype.assign_coords(coords)
 
     dataset.genotype = genotype
     dataset.path = ""

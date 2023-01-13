@@ -338,6 +338,68 @@ To see all check the logs in the git history.
 </details>
 
 
+# Time requirements
+
+For running the compression using a width of 512 a ReLU activation and 20k individuals:
+
+```bash
+Min(time taken) 178.21815
+Mean(time taken) 1220.06111
+Max(time taken) 1701.23619
+```
+
+
+Running it for 50k individuals:
+```bash
+Min(time taken) 282.9348
+Mean(time taken) 940.33121
+Max(time taken) 1315.15438
+```
+
+Running it for 100k individuals:
+
+```bash
+Min(time taken) 199.60055
+Mean(time taken) 1222.3906
+Max(time taken) 2836.58991
+```
+
+Running it for 200k individuals:
+
+```bash
+Min(time taken) 488.47311
+Mean(time taken) 2703.75062
+Max(time taken) 4785.77009
+```
+
+
+The reported is time taken in seconds.
+
+# Correlation between decompressed and raw SNPs
+
+After training we test the pearson correlation between the decompressed and raw SNPs on the training set:
+
+
+For running the compression using a width of 512 a ReLU activation and 20k individuals:
+```
+Max(training correlation) 0.99804
+Mean(training correlation) 0.00515
+Min(training correlation) -0.99339
+```
+
+Using 100k individuals:
+```
+Max(training correlation) 0.99824
+Mean(training correlation) 0.00507
+Min(training correlation) -0.99009
+```
+This might indicate that there are areas where compression is not possible, while other
+areas are highly compressible without notably loss of information.
+
+
+# On Trivial SNPs
+
+
 # Question by Doug and answers
 
 - What is the role of the kinship matrix in the model? (what is the role of $K$?)
@@ -364,16 +426,21 @@ and `--power -1` (GCTA / naive). I am a bit unsure how this is done.
 - [x] Do a single snp analysis with the same number of individuals
   - Added to the report under the section "single snp analysis"
 - [ ] Check relu compression (why is there trivial SNPs?)
+  - [x] Started a test with 50k, 100k and all individuals for relu with 512 width for chr 1 (assuming more ind. will remove trivial cSNPs)
+    - [ ] if this does not work try to see if the reducing the size resolves the issue or removing the dropout
 - [ ] Redo analysis with more ind.
-  - [ ]  time estimate (for compression?)
+  - [x]  time estimate (for compression?)
+    - [x] Adding logging of time taken for compression, see section "Time requirements"
   - [ ]  more traits (e.g. Doug Speed will send a path for the bloodsamples)
 - [ ] compare w. R^2 pruning
 - [x] Plot Single SNPs
 - [x] Figure out the role of the Q_J (examine)
 - [ ] Calculate correlation
+  - [x] Added calculation of correlation to the script (only for training data), see section "Correlation between decompressed and raw SNPs". 
 - [x] Check visualization, is there a even amount of c snps pr. chromosome?
   -  It was caused by a normalization of the snps. I should have updated the plots now.
-
+- question: does it hit the max number of iterations? 
+- 
 
 ## central question:
 The fundamental question we are asking is, "are these compressions useful". Do they provide any benefits over having SNP data? So please think how we can answer this question. Ultimately, it is ok if the answer is "no", provided we are confident we have tried hard enough.  
