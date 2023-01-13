@@ -26,4 +26,5 @@ model:
   hidden_layer_sizes: [300, 256, 300] # input + output is estimated from data
   activation: "relu" # str: Options include identity and relu: https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPRegressor.html
   solver: "adam" # str: Options include adam and sgd
+  max_iter: 200 # int: number of epochs
   

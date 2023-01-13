@@ -562,9 +562,12 @@ class PLINKIterableDataset(IterableDataset):  # pylint: disable=abstract-method
                 arr = xr.DataArray(arr, coords=metadata_from.coords)
             else:
                 n_variants = arr.shape[1]
-                chrom = metadata_from.coords["chromosome"].data[0]
+                if np.unique(metadata_from.coords["chrom"].data).shape[0] == 1:
+                    chrom = metadata_from.coords["chrom"].data[0]
+                else:
+                    chrom = np.nan
                 chrom_coords = np.repeat(chrom, n_variants)
-                chrom_str = f"{chrom:02d}"
+                chrom_str = f"{int(chrom):02d}" if not np.nan else "NA"
                 snp_coords = np.array([f"c{chrom_str}_{i}" for i in range(n_variants)])
 
                 coords = {

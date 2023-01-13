@@ -11,6 +11,7 @@ from typing import Dict, Optional, Sequence, Tuple
 
 import dask
 import hydra
+import ndjson
 import numpy as np
 import wandb
 from omegaconf import DictConfig
@@ -36,6 +37,7 @@ def create_autoencoder(cfg: Namespace) -> MLPRegressor:
             hidden_layer_sizes=cfg.model.hidden_layer_sizes,
             activation=cfg.model.activation,
             solver=cfg.model.solver,
+            max_iter=cfg.model.max_iter,
         )
     else:
         raise NotImplementedError("Model not implemented")
@@ -170,6 +172,7 @@ def train(
         tuple: A tuple of the index of the dataset split, the trained autoencoder and
             the evaluation metrics.
     """
+    metadata = {"n": n}
     # interim_path = Path(cfg.data.interim_path) / wandb.config.run_name
     start = time.time()
     model = create_autoencoder(cfg)
@@ -183,59 +186,67 @@ def train(
 
     model.fit(train_X, train_X)
 
+    # check if model converged using the model.tol attribute
+    metadata["converged"] = model.n_iter_ < model.max_iter
+    metadata["n. iterations"] = model.n_iter_
+
     # # apply
     encoder = create_encoder(model)
     c_snps = encoder(train_X)
     # check if there is trivial snps (i.e. the all have the same value) in the c_snps
-    n_trivial = np.sum(np.ptp(c_snps, axis=0) == 0)
-    print(
-        f"During processing of ae {n}: Number of trivial snps: {n_trivial} was found.",
-    )
+    metadata["n. trivial snps"] = int(np.sum(np.ptp(c_snps, axis=0) == 0))
 
     decoder = create_decoder(model)
     yhat = decoder(c_snps)
     # calculate reconstruction error
-    train_reconstruction_error = np.mean((train_X - yhat) ** 2)
-    # calculate correlation
-    train_correlation = np.corrcoef(train_X.T, yhat.T)[
-        train_X.shape[1] :,
-        : train_X.shape[1],
-    ]
+    metadata["reconstruction error (training set)"] = float(
+        np.mean((train_X - yhat) ** 2),
+    )
+    # calculate correlation between the original and the reconstructed data
+    metadata["mean individual correlation (training set)"] = float(
+        np.mean([np.corrcoef(x, y)[0, 1] for x, y in zip(train_X, yhat)]),
+    )
+    metadata["mean snp correlation (traning set)"] = float(
+        np.mean([np.corrcoef(x, y)[0, 1] for x, y in zip(train_X.T, yhat.T)]),
+    )
 
     c_train = PLINKIterableDataset.from_array(c_snps, metadata_from=train)
-    # c_train.to_disk(interim_path / f"train_{n}.zarr", mode="w")
     # apply val
     validation_X = validation.get_X().compute()
     c_snps = encoder(validation_X)
     c_val = PLINKIterableDataset.from_array(c_snps, metadata_from=validation)
     yhat = decoder(c_snps)
     # calculate reconstruction error
-    val_reconstruction_error = np.mean((validation_X - yhat) ** 2)
+    metadata["validation reconstruction error"] = float(
+        np.mean((validation_X - yhat) ** 2),
+    )
+    # calculate correlation between the original and the reconstructed data
+    metadata["mean individual correlation (validation set)"] = float(
+        np.mean([np.corrcoef(x, y)[0, 1] for x, y in zip(validation_X, yhat)]),
+    )
+    metadata["mean snp correlation (validation set)"] = float(
+        np.mean([np.corrcoef(x, y)[0, 1] for x, y in zip(validation_X.T, yhat.T)]),
+    )
 
-    # c_val.to_disk(interim_path / f"validation_{n}.zarr", mode="w")
     # apply test
     if test:
         test_X = test.get_X().compute()
         c_snps = encoder(test_X)
         c_test = PLINKIterableDataset.from_array(c_snps, metadata_from=test)
-        # c_test.to_disk(interim_path / f"test_{n}.zarr", mode="w")
     else:
         c_test = None
-    time_taken = time.time() - start
+
+    metadata["time taken"] = time.time() - start  # type: ignore
     return (
         c_train,
         c_val,
         c_test,
-        train_reconstruction_error,
-        val_reconstruction_error,
-        time_taken,
-        train_correlation,
-        (n, n_trivial),
+        metadata,
     )
 
 
 @hydra.main(
-    config_path=CONFIG_PATH,
+    config_path=CONFIG_PATH,  # type : ignore
     config_name="default_config_train_slided_autoencoder_sklearn",
     version_base="1.2",
 )
@@ -251,51 +262,36 @@ def main(cfg: DictConfig) -> None:
     )
 
     wandb.config.run_name = (
-        f"{cfg.project.run_name_prefix}{wandb.run.name}_"
+        f"{cfg.project.run_name_prefix}{wandb.run.name}_"  # type: ignore
         + f"{datetime.today().strftime('%Y-%m-%d')}"
     )
 
     interim_path = Path(cfg.data.interim_path) / wandb.config.run_name
     result_path = Path(cfg.data.result_path) / wandb.config.run_name
+    interim_path.mkdir(parents=True, exist_ok=True)
+    result_path.mkdir(parents=True, exist_ok=True)
 
-    datasets = create_datasets(cfg)
+    datasets = create_datasets(cfg)  # type: ignore
     wandb.log({"N models": len(datasets[0])})
     msg.info(f"Training {len(datasets[0])} models")
     dataset_splits = zip(*datasets)
 
     # train the local MLPs in parallel
-    with Pool(cfg.project.n_jobs) as pool:
+
+    with Pool(processes=cfg.project.n_jobs) as pool:
         results = pool.starmap(
             train,
             zip(dataset_splits, range(len(datasets[0])), repeat(cfg)),
         )
 
-    # log avg, min, max reconstruction errors
-    train_reconstruction_errors = [r[3] for r in results]
-    val_reconstruction_errors = [r[4] for r in results]
-    time_taken = [r[5] for r in results]
-    train_correlations = [r[6] for r in results]
-    n_trivial = [r[7] for r in results]
+    # write all metadata to a file
+    metadata = [r[3] for r in results]
+    with open(result_path / "metadata.jsonl", "w") as f:
+        ndjson.dump(metadata, f)
 
-    wandb.log(
-        {
-            "Mean(training reconstruction error)": np.mean(train_reconstruction_errors),
-            "Mean(valilidation reconstruction error)": np.mean(
-                val_reconstruction_errors,
-            ),
-            "Min(training reconstruction error)": np.min(train_reconstruction_errors),
-            "Min(validation reconstruction error)": np.min(val_reconstruction_errors),
-            "Max(training reconstruction error)": np.max(train_reconstruction_errors),
-            "Max(validation reconstruction error)": np.max(val_reconstruction_errors),
-            "Mean(time taken)": np.mean(time_taken),
-            "Min(time taken)": np.min(time_taken),
-            "Max(time taken)": np.max(time_taken),
-            "Mean(training correlation)": np.mean(train_correlations),
-            "Min(training correlation)": np.min(train_correlations),
-            "Max(training correlation)": np.max(train_correlations),
-        },
-    )
-    wandb.log(f"N trivial snps {n_trivial}")
+    # log to wandb
+    for n, result in enumerate(results):
+        wandb.log({f"model {n}": result[3]})
 
     # convert reuslts to dict
     compressions: Dict[str, list] = {"train": [], "validation": [], "test": []}
@@ -331,4 +327,5 @@ def main(cfg: DictConfig) -> None:
 
 
 if __name__ == "__main__":
+    main()  # pylint: disable=no-value-for-parameter
     main()  # pylint: disable=no-value-for-parameter
