@@ -144,6 +144,7 @@ docs/_build/*
 *.bed
 *.sped
 data/ldak_results/*
+tests/data/*
 
 # wandb
 wandb/*
