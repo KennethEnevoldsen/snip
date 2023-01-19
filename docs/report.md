@@ -397,6 +397,9 @@ This might indicate that there are areas where compression is not possible, whil
 areas are highly compressible without notably loss of information.
 
 ## Correlation pr. for invdividuals
+
+Mean correlation pr. individual for the training set:
+```
 path
 chr1_100k_relu_512swept-salad-171_2023-01-16      0.922353
 chr1_100k_relu_512wild-aardvark-173_2023-01-16    0.922274
@@ -406,17 +409,24 @@ chr1_20k_relu_512usual-totem-174_2023-01-16       0.921541
 chr1_50k_relu_512devoted-deluge-172_2023-01-16    0.919716
 chr1_50k_relu_512lunar-frog-169_2023-01-16        0.920183
 Name: mean individual correlation (training set), dtype: float64
+```
 
 **In the following plot we see the distribution of correlations pr. individual**
 
 ![Correlation pr. individual](./images/figures/correlation_pr_individual.png)
 
+The correlation metrics used is the pearson correlation coefficient.
+
 ## Correlation pr. SNP
 
 ![Correlation pr. SNP](./images/figures/correlation_pr_snp.png)
+The correlation metrics used is the pearson correlation coefficient.
+
 
 # On Trivial SNPs
 ![Trivial SNPs](./images/figures/trivial_snps.png)
+
+The distribution of trivial snps for each submodel (512 snps width) for each model (each model is run on all of chr1) using 20k, 50k, 100k or 200k individuals.
 
 # Question by Doug and answers
 
