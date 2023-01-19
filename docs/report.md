@@ -396,9 +396,27 @@ Min(training correlation) -0.99009
 This might indicate that there are areas where compression is not possible, while other
 areas are highly compressible without notably loss of information.
 
+## Correlation pr. for invdividuals
+path
+chr1_100k_relu_512swept-salad-171_2023-01-16      0.922353
+chr1_100k_relu_512wild-aardvark-173_2023-01-16    0.922274
+chr1_200k_relu_512silvery-rain-169_2023-01-16     0.928858
+chr1_20k_relu_512skilled-flower-175_2023-01-17    0.921989
+chr1_20k_relu_512usual-totem-174_2023-01-16       0.921541
+chr1_50k_relu_512devoted-deluge-172_2023-01-16    0.919716
+chr1_50k_relu_512lunar-frog-169_2023-01-16        0.920183
+Name: mean individual correlation (training set), dtype: float64
+
+**In the following plot we see the distribution of correlations pr. individual**
+
+![Correlation pr. individual](./images/figures/correlation_pr_individual.png)
+
+## Correlation pr. SNP
+
+![Correlation pr. SNP](./images/figures/correlation_pr_snp.png)
 
 # On Trivial SNPs
-
+![Trivial SNPs](./images/figures/trivial_snps.png)
 
 # Question by Doug and answers
 
@@ -423,24 +441,26 @@ and `--power -1` (GCTA / naive). I am a bit unsure how this is done.
 
 # TODO
 
-- [x] Do a single snp analysis with the same number of individuals
-  - Added to the report under the section "single snp analysis"
 - [ ] Check relu compression (why is there trivial SNPs?)
   - [x] Started a test with 50k, 100k and all individuals for relu with 512 width for chr 1 (assuming more ind. will remove trivial cSNPs)
     - [ ] if this does not work try to see if the reducing the size resolves the issue or removing the dropout
 - [ ] Redo analysis with more ind.
-  - [x]  time estimate (for compression?)
+  - [x] time estimate (for compression?)
     - [x] Adding logging of time taken for compression, see section "Time requirements"
   - [ ]  more traits (e.g. Doug Speed will send a path for the bloodsamples)
 - [ ] compare w. R^2 pruning
+
+### Done / Answered
+- [x] Do a single snp analysis with the same number of individuals
+  - Added to the report under the section "single snp analysis"
 - [x] Plot Single SNPs
 - [x] Figure out the role of the Q_J (examine)
-- [ ] Calculate correlation
+- [x] Calculate correlation
   - [x] Added calculation of correlation to the script (only for training data), see section "Correlation between decompressed and raw SNPs". 
 - [x] Check visualization, is there a even amount of c snps pr. chromosome?
   -  It was caused by a normalization of the snps. I should have updated the plots now.
-- question: does it hit the max number of iterations? 
-- 
+- [x] question: does it hit the max number of iterations?
+  - Answer: All models converged.
 
 ## central question:
 The fundamental question we are asking is, "are these compressions useful". Do they provide any benefits over having SNP data? So please think how we can answer this question. Ultimately, it is ok if the answer is "no", provided we are confident we have tried hard enough.  

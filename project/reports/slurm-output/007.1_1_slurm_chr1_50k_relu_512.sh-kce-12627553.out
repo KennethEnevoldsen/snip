@@ -1,63 +1,0 @@
-wandb: Currently logged in as: kenevoldsen. Use `wandb login --relogin` to force relogin
-wandb: wandb version 0.13.8 is available!  To upgrade, please run:
-wandb:  $ pip install wandb --upgrade
-wandb: Tracking run with wandb version 0.13.3
-wandb: Run data is saved locally in /faststorage/project/NLPPred/github/snip/wandb/run-20230112_112148-om38acf5
-wandb: Run `wandb offline` to turn off syncing.
-wandb: Syncing run hearty-thunder-164
-wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/local%20mlp%20sklearn
-wandb: 🚀 View run at https://wandb.ai/kenevoldsen/local%20mlp%20sklearn/runs/om38acf5
-[38;5;4mℹ Missing values are not imputed. Imputing missing values.[0m
-[38;5;4mℹ Training 96 models[0m
-Error executing job with overrides: ['project.wandb_mode=run', 'project.n_jobs=8', 'data.stride=512', 'data.width=512', 'model.hidden_layer_sizes=[384, 256, 384]', 'data.result_path=data/compressed/whole_geno', 'data.train_path=/home/kce/NLPPred/github/snip/data/raw/ukbb_geno_train.zarr', 'data.validation_path=/home/kce/NLPPred/github/snip/data/raw/ukbb_geno_validation.zarr', 'data.test_path=/home/kce/NLPPred/github/snip/data/raw/ukbb_geno_test.zarr', 'model.activation=relu', 'data.limit=50000', 'data.chromosome=1', 'project.run_name_prefix=chr1_50k_relu_512']
-multiprocessing.pool.RemoteTraceback: 
-"""
-Traceback (most recent call last):
-  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/dataarray.py", line 760, in _getitem_coord
-    var = self._coords[key]
-KeyError: 'chromosome'
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/multiprocessing/pool.py", line 125, in worker
-    result = (True, func(*args, **kwds))
-  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/multiprocessing/pool.py", line 51, in starmapstar
-    return list(itertools.starmap(args[0], args[1]))
-  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder_sklearn.py", line 204, in train
-    c_train = PLINKIterableDataset.from_array(c_snps, metadata_from=train)
-  File "/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py", line 565, in from_array
-    chrom = metadata_from.coords["chromosome"].data[0]
-  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/coordinates.py", line 369, in __getitem__
-    return self._data._getitem_coord(key)
-  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/dataarray.py", line 763, in _getitem_coord
-    _, key, var = _get_virtual_variable(self._coords, key, dim_sizes)
-  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/core/dataset.py", line 175, in _get_virtual_variable
-    raise KeyError(key)
-KeyError: 'chromosome'
-"""
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "/faststorage/project/NLPPred/github/snip/src/snip/train_slided_autoencoder_sklearn.py", line 267, in main
-    results = pool.starmap(
-  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/multiprocessing/pool.py", line 372, in starmap
-    return self._map_async(func, iterable, starmapstar, chunksize).get()
-  File "/home/kce/miniconda3/envs/snip2/lib/python3.9/multiprocessing/pool.py", line 771, in get
-    raise self._value
-KeyError: 'chromosome'
-
-Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
-wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
-wandb: - 0.038 MB of 0.038 MB uploaded (0.000 MB deduped)wandb: \ 0.038 MB of 0.038 MB uploaded (0.000 MB deduped)wandb: | 0.038 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: / 0.038 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: - 0.038 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: \ 0.038 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: | 0.056 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: / 0.056 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: - 0.056 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: \ 0.056 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: | 0.056 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: / 0.056 MB of 0.056 MB uploaded (0.000 MB deduped)wandb: - 0.056 MB of 0.056 MB uploaded (0.000 MB deduped)wandb:                                                                                
-wandb: 
-wandb: Run history:
-wandb: N models ▁
-wandb: 
-wandb: Run summary:
-wandb: N models 96
-wandb: 
-wandb: Synced hearty-thunder-164: https://wandb.ai/kenevoldsen/local%20mlp%20sklearn/runs/om38acf5
-wandb: Synced 7 W&B file(s), 0 media file(s), 0 artifact file(s) and 2 other file(s)
-wandb: Find logs at: ./wandb/run-20230112_112148-om38acf5/logs

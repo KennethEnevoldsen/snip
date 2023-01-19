@@ -80,5 +80,5 @@ for i, combination in enumerate(combinations):
 
     # sbatch the slurm file
     os.system(f"sbatch {path}")
-    # clean up the slurm file
+    # # clean up the slurm file
     os.system(f"rm {path}")
