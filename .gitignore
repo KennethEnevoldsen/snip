@@ -145,7 +145,7 @@ docs/_build/*
 *.sped
 data/ldak_results/*
 tests/data/*
-# *.jsonl
+*.jsonl
 
 # wandb
 wandb/*

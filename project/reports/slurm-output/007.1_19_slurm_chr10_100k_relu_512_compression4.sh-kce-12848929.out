@@ -1,0 +1,64 @@
+wandb: Currently logged in as: kenevoldsen. Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.13.9 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.13.3
+wandb: Run data is saved locally in /faststorage/project/NLPPred/github/snip/wandb/run-20230121_190751-otauw0j3
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run stellar-river-228
+wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/local%20mlp%20sklearn
+wandb: 🚀 View run at https://wandb.ai/kenevoldsen/local%20mlp%20sklearn/runs/otauw0j3
+[38;5;4mℹ Missing values are not imputed. Imputing missing values.[0m
+[38;5;4mℹ Training 61 models[0m
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+[38;5;4mℹ Merging train, consisting of 61 files[0m
+[38;5;4mℹ Merging validation, consisting of 61 files[0m
+[38;5;4mℹ Merging test, consisting of 61 files[0m
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.016 MB of 0.016 MB uploaded (0.000 MB deduped)wandb: \ 0.016 MB of 0.016 MB uploaded (0.000 MB deduped)wandb: | 0.016 MB of 0.016 MB uploaded (0.000 MB deduped)wandb: / 0.016 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: - 0.016 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: \ 0.016 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: | 0.049 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: / 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: - 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: \ 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: | 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: / 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: - 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: \ 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: N models ▁
+wandb: 
+wandb: Run summary:
+wandb: N models 61
+wandb: 
+wandb: Synced stellar-river-228: https://wandb.ai/kenevoldsen/local%20mlp%20sklearn/runs/otauw0j3
+wandb: Synced 7 W&B file(s), 0 media file(s), 0 artifact file(s) and 2 other file(s)
+wandb: Find logs at: ./wandb/run-20230121_190751-otauw0j3/logs
+wandb: - Waiting for wandb.init()...wandb: wandb version 0.13.9 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.13.3
+wandb: Run data is saved locally in /faststorage/project/NLPPred/github/snip/wandb/run-20230122_005414-19yhx0ix
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run rosy-deluge-242
+wandb: ⭐️ View project at https://wandb.ai/kenevoldsen/local%20mlp%20sklearn
+wandb: 🚀 View run at https://wandb.ai/kenevoldsen/local%20mlp%20sklearn/runs/19yhx0ix
+[38;5;4mℹ Missing values are not imputed. Imputing missing values.[0m
+[38;5;4mℹ Training 61 models[0m
+wandb: Network error (ReadTimeout), entering retry loop.
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/xarray/conventions.py:205: SerializationWarning: variable None has data in the form of a dask array with dtype=object, which means it is being loaded into memory to determine a data type that can be safely stored on disk. To avoid this, coerce this variable to a fixed-size dtype with astype() before saving it.
+  warnings.warn(
+[38;5;4mℹ Merging train, consisting of 61 files[0m
+[38;5;4mℹ Merging validation, consisting of 61 files[0m
+[38;5;4mℹ Merging test, consisting of 61 files[0m
+wandb: Waiting for W&B process to finish... (success).
+wandb: - 0.016 MB of 0.016 MB uploaded (0.000 MB deduped)wandb: \ 0.016 MB of 0.016 MB uploaded (0.000 MB deduped)wandb: | 0.016 MB of 0.016 MB uploaded (0.000 MB deduped)wandb: / 0.016 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: - 0.016 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: \ 0.016 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: | 0.024 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: / 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: - 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: \ 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: | 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: / 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: - 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: \ 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: | 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: / 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb: - 0.060 MB of 0.060 MB uploaded (0.000 MB deduped)wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb: N models ▁
+wandb: 
+wandb: Run summary:
+wandb: N models 61
+wandb: 
+wandb: Synced rosy-deluge-242: https://wandb.ai/kenevoldsen/local%20mlp%20sklearn/runs/19yhx0ix
+wandb: Synced 7 W&B file(s), 0 media file(s), 0 artifact file(s) and 2 other file(s)
+wandb: Find logs at: ./wandb/run-20230122_005414-19yhx0ix/logs

@@ -18,7 +18,7 @@ OUTPUT_PATH='/home/kce/NLPPred/github/snip/data/ldak_results'
 PHENO_PATH='/home/kce/dsmwpred/data/ukbb/height.train'
 N_CORES=4
 
-/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_test.sped
+
 
 DATA_PATH='/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped'
 GENO_PATHS=("chr1-22_20k_relu_512_c_snps_train" "chr1-22_20k_relu_16_c_snps_train" "chr1-22_20k_identity_512_c_snps_train" "chr1-22_20k_identity_16_c_snps_train")

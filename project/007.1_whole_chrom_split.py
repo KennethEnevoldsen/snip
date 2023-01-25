@@ -30,23 +30,26 @@ python src/snip/train_slided_autoencoder_sklearn.py \\
 
 variations = {
     "limit": [
-        20000,
-        50000,
+        # 20000,
+        # 50000,
         100000,
-        200000,
+        # 200000,
         # "null",
     ],
     "activation": [
         "relu",
-        # "identity"
+        "identity",
     ],
     "cores": [8],
-    "chromosome":
-    # list(range(1, 23)),
-    [1],
+    "chromosome": list(range(1, 23)),
+    # [1],
     "stride": [
         512,
         # 16
+    ],
+    "compression": [
+        2,
+        4,
     ],
 }
 
@@ -64,11 +67,11 @@ for i, combination in enumerate(combinations):
         limit_in_k = "null"
     params[
         "prefix"
-    ] = f"chr{params['chromosome']}_{limit_in_k}k_{params['activation']}_{params['stride']}"
+    ] = f"chr{params['chromosome']}_{limit_in_k}k_{params['activation']}_{params['stride']}_compression{params['compression']}"
     # calculate the hidden size
     stride = params["stride"]
-    hidden_size = int(stride / 2)
-    intermediate_hidden = stride - int((stride - hidden_size) / 2)
+    hidden_size = int(stride / params["compression"])
+    intermediate_hidden = stride - int((stride - hidden_size) / params["compression"])
     params["hidden_size"] = [intermediate_hidden, hidden_size, intermediate_hidden]
     # create the slurm command
     slurm_command = outline.format(**params)
