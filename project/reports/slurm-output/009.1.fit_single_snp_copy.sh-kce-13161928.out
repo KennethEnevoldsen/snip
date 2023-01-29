@@ -1,0 +1,231 @@
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_512_c_snps_train.sped
+Output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train/urate.pheno.reml1
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train/urate.pheno.reml1
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_512_c_snps_train
+--pheno /home/kce/NLPPred/phenos/urate.pheno
+--SNP-data NO
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train/urate.pheno.GCTA
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train/urate.pheno.GCTA.grm.id
+Checking responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 19033
+
+Reading responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train/urate.pheno.GCTA
+Warning, to store kinships will require approximately 2.7 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train/urate.pheno.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-107526.40	n/a		0.001000	0
+1	0.4032	0.4032	-107466.87	59.531619	0.001000	0
+2	0.3025	0.3025	-107437.40	29.465704	0.001000	0
+3	0.2642	0.2642	-107434.75	2.654700	0.001000	0
+4	0.2655	0.2655	-107434.75	0.003934	0.001000	0
+5	0.2655	0.2655	-107434.75	0.000005	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_c_snps_train/urate.pheno.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_16_c_snps_train.sped
+Output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train/urate.pheno.reml1
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train/urate.pheno.reml1
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_relu_16_c_snps_train
+--pheno /home/kce/NLPPred/phenos/urate.pheno
+--SNP-data NO
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train/urate.pheno.GCTA
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train/urate.pheno.GCTA.grm.id
+Checking responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 19033
+
+Reading responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train/urate.pheno.GCTA
+Warning, to store kinships will require approximately 2.7 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train/urate.pheno.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-107518.52	n/a		0.001000	0
+1	0.4027	0.4027	-107468.61	49.909843	0.001000	0
+2	0.3024	0.3024	-107444.77	23.835050	0.001000	0
+3	0.2701	0.2701	-107443.08	1.686680	0.001000	0
+4	0.2709	0.2709	-107443.08	0.001552	0.001000	0
+5	0.2709	0.2709	-107443.08	0.000001	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_16_c_snps_train/urate.pheno.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_512_c_snps_train.sped
+Output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train/urate.pheno.reml1
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train/urate.pheno.reml1
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_512_c_snps_train
+--pheno /home/kce/NLPPred/phenos/urate.pheno
+--SNP-data NO
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train/urate.pheno.GCTA
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train/urate.pheno.GCTA.grm.id
+Checking responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 19033
+
+Reading responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train/urate.pheno.GCTA
+Warning, to store kinships will require approximately 2.7 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train/urate.pheno.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-107503.03	n/a		0.001000	0
+1	0.4033	0.4033	-107446.10	56.933278	0.001000	0
+2	0.3027	0.3027	-107418.98	27.122517	0.001000	0
+3	0.2732	0.2732	-107417.27	1.705842	0.001000	0
+4	0.2744	0.2744	-107417.27	0.002725	0.001000	0
+5	0.2743	0.2743	-107417.27	0.000005	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_512_c_snps_train/urate.pheno.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Processing: /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_train.sped
+Output path: /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train/urate.pheno.reml1
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train/urate.pheno.reml1
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_train
+--pheno /home/kce/NLPPred/phenos/urate.pheno
+--SNP-data NO
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train/urate.pheno.GCTA
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 20000 samples from /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train/urate.pheno.GCTA.grm.id
+Checking responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+Due to missing phenotypic values, the number of samples is reduced from 20000 to 19033
+
+Reading responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train/urate.pheno.GCTA
+Warning, to store kinships will require approximately 2.7 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train/urate.pheno.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-107469.23	n/a		0.001000	0
+1	0.4025	0.4025	-107428.24	40.991397	0.001000	0
+2	0.3032	0.3032	-107413.63	14.613987	0.001000	0
+3	0.3030	0.3030	-107413.57	0.058762	0.001000	0
+4	0.3030	0.3030	-107413.57	0.000001	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_identity_16_c_snps_train/urate.pheno.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

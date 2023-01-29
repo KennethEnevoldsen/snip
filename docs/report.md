@@ -36,6 +36,7 @@ A single SNP analysis performed on compressed SNP (cSNPs).
 |            |              | Uncompressed       | 50                          | 0.03143                         | 1590.5989                |
 
 
+
 <details>
 <summary>Raw output</summary>
 ```bash
@@ -375,6 +376,66 @@ Max(time taken) 4785.77009
 
 The reported is time taken in seconds.
 
+
+# Comparison with Pruning
+Copied in from e-mail from Doug Speed to Kenneth Enevoldsen:
+
+
+<details>
+    <summary> e-mail </summary>
+
+```
+I have run the pruning (although might have to repeat if I used the wrong files)
+
+Here is a summary
+wc -l pru*in 
+  110518 prune.05.in
+  161823 prune.1.in
+  240241 prune.2.in
+  427382 prune.5.in
+  548905 prune.8.in
+
+So pruning with r2 =0.2 results in 240k snps remaining , and r2=.1 means 160k remain (so we could test whether compressing is more efficient than pruning)
+
+here are the scripts
+
+
+#kenneth3.txt - do pruning 
+
+srun --mem=16g -c 2 --pty /bin/bash
+
+################
+
+cd /home/doug/NLPPred/doug
+
+#kenneth gave list of 20k individuals - prune these with different r2 values
+#(have picked .8, .5, .2, .1 and .05 - but can change later)
+
+echo "#"'!'"/bin/bash
+#SBATCH --mem 15G
+#SBATCH -t 2:0:0
+#SBATCH -c 2
+#SBATCH --constraint \"s05\"
+
+/home/doug/ldak5.2.linux --thin prune.8 --bfile /home/doug/dsmwpred/data/ukbb/geno --max-threads 2 --keep /home/doug/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_test.fam --window-cm 1 --window-prune .8
+
+/home/doug/ldak5.2.linux --thin prune.5 --bfile /home/doug/dsmwpred/data/ukbb/geno --max-threads 2 --keep /home/doug/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_test.fam --window-cm 1 --window-prune .5 --extract prune.8.in
+
+/home/doug/ldak5.2.linux --thin prune.2 --bfile /home/doug/dsmwpred/data/ukbb/geno --max-threads 2 --keep /home/doug/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_test.fam --window-cm 1 --window-prune .2 --extract prune.5.in
+
+/home/doug/ldak5.2.linux --thin prune.1 --bfile /home/doug/dsmwpred/data/ukbb/geno --max-threads 2 --keep /home/doug/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_test.fam --window-cm 1 --window-prune .1 --extract prune.2.in
+
+/home/doug/ldak5.2.linux --thin prune.05 --bfile /home/doug/dsmwpred/data/ukbb/geno --max-threads 2 --keep /home/doug/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_test.fam --window-cm 1 --window-prune .05 --extract prune.1.in
+
+" > scripts/thin
+
+chmod a+x scripts/thin
+```
+
+> *NOTE*: These were performed using the test individuals not the train.
+
+</details>
+
 # Correlation between decompressed and raw SNPs
 
 After training we test the pearson correlation between the decompressed and raw SNPs on the training set:
@@ -410,6 +471,7 @@ chr1_50k_relu_512devoted-deluge-172_2023-01-16    0.919716
 chr1_50k_relu_512lunar-frog-169_2023-01-16        0.920183
 Name: mean individual correlation (training set), dtype: float64
 ```
+
 
 **In the following plot we see the distribution of correlations pr. individual**
 
@@ -449,6 +511,7 @@ command with `--ignore-weights YES` (I am a bit unsure of what this does - the `
 already provided the wieghting - is this an additional weight before the GCTA weighting) 
 and `--power -1` (GCTA / naive). I am a bit unsure how this is done.
 
+
 # TODO
 
 - [ ] Check relu compression (why is there trivial SNPs?)
@@ -474,3 +537,44 @@ and `--power -1` (GCTA / naive). I am a bit unsure how this is done.
 
 ## central question:
 The fundamental question we are asking is, "are these compressions useful". Do they provide any benefits over having SNP data? So please think how we can answer this question. Ultimately, it is ok if the answer is "no", provided we are confident we have tried hard enough.  
+
+
+----
+
+# Multiple phenotypes analysis
+All performed on Chromosome 1-22 using 20k individuals.
+
+## Single SNP analysis
+Due to space I have not included the plots for the single SNP analysis, but you can see the individual plots in the `./images/figures/single_snp_analysis` folder.
+
+|    | activation   |   width | pheno       |   N significant (p < 5x10^-8) |   Expected N given number of SNPs |   N significant / expected |
+|---:|:-------------|--------:|:------------|------------------------------:|----------------------------------:|---------------------------:|
+|  0 | identity     |      16 | height      |                            29 |                         0.0137487 |                  2109.29   |
+|  1 | identity     |     512 | height      |                             7 |                         0.015504  |                   451.496  |
+|  2 | relu         |      16 | height      |                            20 |                         0.0137487 |                  1454.68   |
+|  3 | relu         |     512 | height      |                             1 |                         0.015504  |                    64.4995 |
+|  4 | identity     |      16 | alkaline    |                            88 |                         0.0137487 |                  6400.61   |
+|  5 | identity     |      16 | bilirubin   |                            60 |                         0.0137487 |                  4364.05   |
+|  6 | identity     |      16 | cholesterol |                            51 |                         0.0137487 |                  3709.44   |
+|  7 | identity     |      16 | hba1c       |                             8 |                         0.0137487 |                   581.873  |
+|  8 | identity     |      16 | height      |                            56 |                         0.0137487 |                  4073.11   |
+|  9 | identity     |      16 | urate       |                            77 |                         0.0137487 |                  5600.53   |
+| 10 | identity     |     512 | alkaline    |                            88 |                         0.015504  |                  5675.95   |
+| 11 | identity     |     512 | bilirubin   |                           201 |                         0.015504  |                 12964.4    |
+| 12 | identity     |     512 | cholesterol |                            35 |                         0.015504  |                  2257.48   |
+| 13 | identity     |     512 | hba1c       |                             0 |                         0.015504  |                     0      |
+| 14 | identity     |     512 | height      |                            17 |                         0.015504  |                  1096.49   |
+| 15 | identity     |     512 | urate       |                           136 |                         0.015504  |                  8771.93   |
+| 16 | relu         |      16 | alkaline    |                            71 |                         0.0137487 |                  5164.12   |
+| 17 | relu         |      16 | bilirubin   |                            50 |                         0.0137487 |                  3636.71   |
+| 18 | relu         |      16 | cholesterol |                            32 |                         0.0137487 |                  2327.49   |
+| 19 | relu         |      16 | hba1c       |                            18 |                         0.0137487 |                  1309.21   |
+| 20 | relu         |      16 | height      |                            39 |                         0.0137487 |                  2836.63   |
+| 21 | relu         |      16 | urate       |                            58 |                         0.0137487 |                  4218.58   |
+| 22 | relu         |     512 | alkaline    |                            22 |                         0.015504  |                  1418.99   |
+| 23 | relu         |     512 | bilirubin   |                            68 |                         0.015504  |                  4385.96   |
+| 24 | relu         |     512 | cholesterol |                            11 |                         0.015504  |                   709.494  |
+| 25 | relu         |     512 | hba1c       |                             7 |                         0.015504  |                   451.496  |
+| 26 | relu         |     512 | height      |                             7 |                         0.015504  |                   451.496  |
+| 27 | relu         |     512 | urate       |                            39 |                         0.015504  |                  2515.48   |
+

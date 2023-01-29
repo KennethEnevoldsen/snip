@@ -30,9 +30,9 @@ python src/snip/train_slided_autoencoder_sklearn.py \\
 
 variations = {
     "limit": [
-        # 20000,
+        20000,
         # 50000,
-        100000,
+        # 100000,
         # 200000,
         # "null",
     ],
@@ -44,12 +44,13 @@ variations = {
     "chromosome": list(range(1, 23)),
     # [1],
     "stride": [
-        512,
-        # 16
+        # 512,
+        16,
     ],
     "compression": [
-        2,
+        # 2,
         4,
+        1.5,
     ],
 }
 

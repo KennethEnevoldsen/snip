@@ -71,7 +71,7 @@ for GENO_PATH in "${GENO_PATHS[@]}"
             echo "Output path: $OUTPUT_PATH/$GENO_PATH/$PHENO.reml1"
             $LDAK --reml $OUTPUT_PATH/$GENO_PATH/$PHENO.reml1 \
                 --sped $DATA_PATH/$GENO_PATH \
-                --pheno $PHENO_PATH \
+                --pheno $PHENO_PATH/$PHENO \
                 --SNP-data NO \
                 --grm $OUTPUT_PATH/$GENO_PATH/$PHENO.GCTA \
                 --max-threads $N_CORES 
