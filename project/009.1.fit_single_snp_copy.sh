@@ -14,9 +14,7 @@
 LDAK='/home/kce/NLPPred/github/snip/ldak/ldak5.2.linux'
 OUTPUT_PATH='/home/kce/NLPPred/github/snip/data/ldak_results'
 PHENO_PATH='/home/kce/NLPPred/phenos'
-# PHENOS=("alkaline.pheno")
-# PHENOS=("bilirubin.pheno" "cholesterol.pheno" "hba1c.pheno" "height.pheno" 
-PHENOS=("urate.pheno")
+PHENOS=("alkaline.pheno" "bilirubin.pheno" "cholesterol.pheno" "hba1c.pheno" "height.pheno" "urate.pheno")
 N_CORES=4
 
 DATA_PATH='/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped'

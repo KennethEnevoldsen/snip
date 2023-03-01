@@ -1,5 +1,4 @@
 """!pip install seaborn."""
-import os
 from pathlib import Path
 
 import numpy as np
@@ -14,7 +13,36 @@ def read_assoc(filepath):
     return df
 
 
+def get_reml_path(filepath):
+    f = Path(filepath)
+    if f.parent.stem.startswith("chr"):
+        reml_output = f"{f.stem.split('.')[0]}.pheno.reml1.reml"
+    elif f.parent.stem.startswith("uncompressed") or f.parent.stem.startswith(
+        "pruning",
+    ):
+        stem_no_quant = ".".join(f.stem.split(".")[:-1])
+        reml_output = f"{stem_no_quant}.reml1.reml"
+    else:
+        reml_output = f"{f.stem}.reml1.reml"
+    reml_path = f.parent / reml_output
+    assert reml_path.exists(), f"REML file {reml_path} does not exist"
+    return reml_path
+
+
+def get_heritability(filepath):
+    """Get the heritability estimates for the phenotypes."""
+    reml_path = get_reml_path(filepath)
+    with open(reml_path, "r") as f:
+        lines = f.readlines()
+    _, her_all, her_sd = lines[-1].split(" ")[:3]
+    return float(her_all), float(her_sd)
+
+
 def create_single_snp_plot(filepath, save_path, df=None):
+    # check if savepath already exists
+    if save_path.exists():
+        print("Skipping:", save_path)
+        return
     f = Path(filepath)
     title = f.stem
     print("Processing:", title)
@@ -63,72 +91,92 @@ def extract_significant(assoc_df):
     }
 
 
+def get_info_from_filepath(filepath):
+    f = Path(filepath)
+    if "uncompressed" in f.stem or "prune" in f.stem:
+        pheno, _, compression = f.stem.split(".")[:3]
+        title = f.stem
+        chrom_range = "chr1-22"
+        samples = "20k"
+        width = ""
+        activation = ""
+        if compression == "prune":
+            compression = f"Pruning (r2={'.'.join(f.stem.split('.')[3:-1])})"
+    elif f.parent.stem.startswith("chr"):
+        pheno = f.stem.split(".")[0]
+        title = f.parent.stem
+        chrom_range, samples, activation, width = title.split("_")[:4]
+        compression = "Autoencoder x2"
+    return title, pheno, chrom_range, samples, activation, width, compression
+
+
+def create_table_row(filepath, df):
+    (
+        title,
+        pheno,
+        chrom_range,
+        samples,
+        activation,
+        width,
+        compression,
+    ) = get_info_from_filepath(filepath)
+
+    sign_rat = extract_significant(df)
+    her, her_sd = get_heritability(f)
+
+    return {
+        **sign_rat,
+        "title": title,
+        "chrom_range": chrom_range,
+        "samples": samples,
+        "activation": activation,
+        "width": width,
+        "pheno": pheno,
+        "heritability": her,
+        "heritability_sd": her_sd,
+        "compression": compression,
+    }
+
+
 if __name__ == "__main__":
     project_path = Path("/home/kce/NLPPred/github/snip")
     read_path = project_path / "data" / "ldak_results"
     save_path = project_path / "docs" / "images" / "single_snp_analysis"
     save_path.mkdir(parents=True, exist_ok=True)
 
-    files = [
-        read_path / f
-        for f in os.listdir(read_path)
-        if f.endswith(".assoc") and f.startswith("chr1")
-    ]
-
-    significance_ratios = []
-    for i, f in enumerate(sorted(files)):
-        title = f.stem
-        print(f"Processing: {title} ({i+1}/{len(files)})")
-        chrom_range, samples, activation, width = title.split("_")[:4]
-        df = read_assoc(f)
-        # create_single_snp_plot(f, save_path = save_path / f"{title}.png", df=df)
-        sign_rat = extract_significant(df)
-        sign_rat = {
-            **sign_rat,
-            "title": title,
-            "chrom_range": chrom_range,
-            "samples": samples,
-            "activation": activation,
-            "width": width,
-            "pheno": "height",
-        }
-        significance_ratios.append(sign_rat)
-
-    # do the same for the new series of phenotypes
     files = list(read_path.glob("chr1-22_20k*/*.assoc"))
+    # add uncompressed
+    files += list(read_path.glob("uncompressed/*.assoc"))
+    files += list(read_path.glob("pruning/*.assoc"))
 
+    table = []
     for i, f in enumerate(sorted(files)):
-        pheno = f.stem.split(".")[0]
-        chrom_range, samples, activation, width = f.parent.stem.split("_")[:4]
         df = read_assoc(f)
-        sign_rat = extract_significant(df)
-        sign_rat = {
-            **sign_rat,
-            "title": title,
-            "chrom_range": chrom_range,
-            "samples": samples,
-            "activation": activation,
-            "width": width,
-            "pheno": pheno,
-        }
+        row = create_table_row(f, df)
+        print(f"Processing {i+1}/{len(files)}: {row['title']}")
+        table.append(row)
+        create_single_snp_plot(
+            f,
+            save_path / f"{row['pheno']}_{row['title']}.png",
+            df=df,
+        )
 
-        significance_ratios.append(sign_rat)
-        create_single_snp_plot(f, save_path / f"{pheno}_{title}.png", df=df)
-
-    significance_ratios = pd.DataFrame(significance_ratios)
-    significance_ratios.to_csv(
-        project_path / "data" / "analysis" / "significance_ratios.csv",
+    results_df = pd.DataFrame(table)
+    results_df.to_csv(
+        project_path / "data" / "analysis" / "significance_ratio_and_heritability.csv",
         index=False,
     )
-    # select only the columns we want
-    report_df = significance_ratios[
+    # select only the columns we want for the report
+    report_df = results_df[
         [
+            "compression",
             "activation",
             "width",
             "pheno",
             "N significant (p < 5x10^-8)",
             "Expected N given number of SNPs",
             "N significant / expected",
+            "heritability",
         ]
     ]
-    print(report_df.groupby(["pheno", "activation", "width"]).to_markdown(index=False))
+    print(report_df.to_markdown(index=False))
