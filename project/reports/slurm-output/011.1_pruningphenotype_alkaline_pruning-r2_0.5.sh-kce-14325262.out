@@ -1,0 +1,260 @@
+Kinship matrix already exists
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--thin /home/kce/NLPPred/github/snip/data/ldak_results/pruning/prune.0.5
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--max-threads 4
+--keep /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_train.fam
+--window-cm 1
+--window-prune 0.5
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Thinning predictors so that no pair within 1.0000cM remains with correlation squared greater than 0.5000
+
+If you add "--pvalues", predictors with higher p-values will be excluded first
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Reading list of 20000 samples to keep from /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined_sped/chr1-22_20k_identity_16_c_snps_train.fam
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 20000 and 628694
+
+Will prune in two passes; first with windows of size 0.01cM, then 1.0000cM
+
+The bit-size will be set to 20 (you can change this using "--bit-size")
+Pass 1: Thinning for Chunk 1 of 31435; stay tuned for updates ;)
+Pass 1: Thinning for Chunk 2501 of 31435; kept 41900 out of 50000 predictors (83.80%)
+Pass 1: Thinning for Chunk 5001 of 31435; kept 83588 out of 100000 predictors (83.59%)
+Pass 1: Thinning for Chunk 7501 of 31435; kept 125676 out of 150000 predictors (83.78%)
+Pass 1: Thinning for Chunk 10001 of 31435; kept 167762 out of 200000 predictors (83.88%)
+Pass 1: Thinning for Chunk 12501 of 31435; kept 204169 out of 250000 predictors (81.67%)
+Pass 1: Thinning for Chunk 15001 of 31435; kept 246198 out of 300000 predictors (82.07%)
+Pass 1: Thinning for Chunk 17501 of 31435; kept 288724 out of 350000 predictors (82.49%)
+Pass 1: Thinning for Chunk 20001 of 31435; kept 330444 out of 400000 predictors (82.61%)
+Pass 1: Thinning for Chunk 22501 of 31435; kept 371901 out of 450000 predictors (82.64%)
+Pass 1: Thinning for Chunk 25001 of 31435; kept 414635 out of 500000 predictors (82.93%)
+Pass 1: Thinning for Chunk 27501 of 31435; kept 455885 out of 550000 predictors (82.89%)
+Pass 1: Thinning for Chunk 30001 of 31435; kept 497259 out of 600000 predictors (82.88%)
+
+The bit-size has now been set to 159
+Pass 2: Thinning for Chunk 1 of 3280; stay tuned for updates ;)
+Pass 2: Thinning for Chunk 301 of 3280; kept 39156 out of 47700 predictors (82.09%)
+Pass 2: Thinning for Chunk 601 of 3280; kept 77770 out of 95400 predictors (81.52%)
+Pass 2: Thinning for Chunk 901 of 3280; kept 116491 out of 143100 predictors (81.41%)
+Pass 2: Thinning for Chunk 1201 of 3280; kept 155698 out of 190800 predictors (81.60%)
+Pass 2: Thinning for Chunk 1501 of 3280; kept 193228 out of 238500 predictors (81.02%)
+Pass 2: Thinning for Chunk 1801 of 3280; kept 232198 out of 286200 predictors (81.13%)
+Pass 2: Thinning for Chunk 2101 of 3280; kept 270990 out of 333900 predictors (81.16%)
+Pass 2: Thinning for Chunk 2401 of 3280; kept 309934 out of 381600 predictors (81.22%)
+Pass 2: Thinning for Chunk 2701 of 3280; kept 349142 out of 429300 predictors (81.33%)
+Pass 2: Thinning for Chunk 3001 of 3280; kept 388850 out of 477000 predictors (81.52%)
+
+Thinning complete: 425834 predictors kept (saved in /home/kce/NLPPred/github/snip/data/ldak_results/pruning/prune.0.5.in), 202860 lost (/home/kce/NLPPred/github/snip/data/ldak_results/pruning/prune.0.5.out), 0 trivial (/home/kce/NLPPred/github/snip/data/ldak_results/pruning/prune.0.5.trivial)
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Performing single SNP analysis for alkaline.pheno
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 7 pairs of arguments:
+--linear /home/kce/NLPPred/github/snip/data/ldak_results/pruning/alkaline.pheno.prune.0.5.quant
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/NLPPred/phenos/alkaline.pheno
+--mpheno 1
+--keep /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+--extract /home/kce/NLPPred/github/snip/data/ldak_results/pruning/prune.0.5.in
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Reading list of 12862 samples to keep from /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+Checking responses for 379514 samples from /home/kce/NLPPred/phenos/alkaline.pheno
+Due to missing phenotypic values, the number of samples is reduced from 12862 to 12275
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Reading list of 425834 predictors to extract from /home/kce/NLPPred/github/snip/data/ldak_results/pruning/prune.0.5.in
+
+Data contain 392214 samples and 628694 predictors; will be using 12275 and 425834
+
+Reading responses for 379514 samples from /home/kce/NLPPred/phenos/alkaline.pheno
+
+Performing single-SNP analysis for Chunk 1 of 86
+Performing single-SNP analysis for Chunk 2 of 86
+Performing single-SNP analysis for Chunk 3 of 86
+Performing single-SNP analysis for Chunk 4 of 86
+Performing single-SNP analysis for Chunk 5 of 86
+Performing single-SNP analysis for Chunk 6 of 86
+Performing single-SNP analysis for Chunk 7 of 86
+Performing single-SNP analysis for Chunk 8 of 86
+Performing single-SNP analysis for Chunk 9 of 86
+Performing single-SNP analysis for Chunk 10 of 86
+Performing single-SNP analysis for Chunk 11 of 86
+Performing single-SNP analysis for Chunk 12 of 86
+Performing single-SNP analysis for Chunk 13 of 86
+Performing single-SNP analysis for Chunk 14 of 86
+Performing single-SNP analysis for Chunk 15 of 86
+Performing single-SNP analysis for Chunk 16 of 86
+Performing single-SNP analysis for Chunk 17 of 86
+Performing single-SNP analysis for Chunk 18 of 86
+Performing single-SNP analysis for Chunk 19 of 86
+Performing single-SNP analysis for Chunk 20 of 86
+Performing single-SNP analysis for Chunk 21 of 86
+Performing single-SNP analysis for Chunk 22 of 86
+Performing single-SNP analysis for Chunk 23 of 86
+Performing single-SNP analysis for Chunk 24 of 86
+Performing single-SNP analysis for Chunk 25 of 86
+Performing single-SNP analysis for Chunk 26 of 86
+Performing single-SNP analysis for Chunk 27 of 86
+Performing single-SNP analysis for Chunk 28 of 86
+Performing single-SNP analysis for Chunk 29 of 86
+Performing single-SNP analysis for Chunk 30 of 86
+Performing single-SNP analysis for Chunk 31 of 86
+Performing single-SNP analysis for Chunk 32 of 86
+Performing single-SNP analysis for Chunk 33 of 86
+Performing single-SNP analysis for Chunk 34 of 86
+Performing single-SNP analysis for Chunk 35 of 86
+Performing single-SNP analysis for Chunk 36 of 86
+Performing single-SNP analysis for Chunk 37 of 86
+Performing single-SNP analysis for Chunk 38 of 86
+Performing single-SNP analysis for Chunk 39 of 86
+Performing single-SNP analysis for Chunk 40 of 86
+Performing single-SNP analysis for Chunk 41 of 86
+Performing single-SNP analysis for Chunk 42 of 86
+Performing single-SNP analysis for Chunk 43 of 86
+Performing single-SNP analysis for Chunk 44 of 86
+Performing single-SNP analysis for Chunk 45 of 86
+Performing single-SNP analysis for Chunk 46 of 86
+Performing single-SNP analysis for Chunk 47 of 86
+Performing single-SNP analysis for Chunk 48 of 86
+Performing single-SNP analysis for Chunk 49 of 86
+Performing single-SNP analysis for Chunk 50 of 86
+Performing single-SNP analysis for Chunk 51 of 86
+Performing single-SNP analysis for Chunk 52 of 86
+Performing single-SNP analysis for Chunk 53 of 86
+Performing single-SNP analysis for Chunk 54 of 86
+Performing single-SNP analysis for Chunk 55 of 86
+Performing single-SNP analysis for Chunk 56 of 86
+Performing single-SNP analysis for Chunk 57 of 86
+Performing single-SNP analysis for Chunk 58 of 86
+Performing single-SNP analysis for Chunk 59 of 86
+Performing single-SNP analysis for Chunk 60 of 86
+Performing single-SNP analysis for Chunk 61 of 86
+Performing single-SNP analysis for Chunk 62 of 86
+Performing single-SNP analysis for Chunk 63 of 86
+Performing single-SNP analysis for Chunk 64 of 86
+Performing single-SNP analysis for Chunk 65 of 86
+Performing single-SNP analysis for Chunk 66 of 86
+Performing single-SNP analysis for Chunk 67 of 86
+Performing single-SNP analysis for Chunk 68 of 86
+Performing single-SNP analysis for Chunk 69 of 86
+Performing single-SNP analysis for Chunk 70 of 86
+Performing single-SNP analysis for Chunk 71 of 86
+Performing single-SNP analysis for Chunk 72 of 86
+Performing single-SNP analysis for Chunk 73 of 86
+Performing single-SNP analysis for Chunk 74 of 86
+Performing single-SNP analysis for Chunk 75 of 86
+Performing single-SNP analysis for Chunk 76 of 86
+Performing single-SNP analysis for Chunk 77 of 86
+Performing single-SNP analysis for Chunk 78 of 86
+Performing single-SNP analysis for Chunk 79 of 86
+Performing single-SNP analysis for Chunk 80 of 86
+Performing single-SNP analysis for Chunk 81 of 86
+Performing single-SNP analysis for Chunk 82 of 86
+Performing single-SNP analysis for Chunk 83 of 86
+Performing single-SNP analysis for Chunk 84 of 86
+Performing single-SNP analysis for Chunk 85 of 86
+Performing single-SNP analysis for Chunk 86 of 86
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/pruning/alkaline.pheno.prune.0.5.quant.assoc, with a summary version in /home/kce/NLPPred/github/snip/data/ldak_results/pruning/alkaline.pheno.prune.0.5.quant.summaries, p-values in /home/kce/NLPPred/github/snip/data/ldak_results/pruning/alkaline.pheno.prune.0.5.quant.pvalues and score file in /home/kce/NLPPred/github/snip/data/ldak_results/pruning/alkaline.pheno.prune.0.5.quant.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Performing REML analysis for alkaline.pheno
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 8 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/pruning/alkaline.pheno.prune.0.5.reml1
+--bfile /home/kce/NLPPred/github/snip/data/ldak_results/pruning/prune.0.5.in
+--pheno /home/kce/NLPPred/phenos/alkaline.pheno
+--mpheno 1
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/pruning/geno.GCTA
+--extract /home/kce/NLPPred/github/snip/data/ldak_results/pruning/prune.0.5.in
+--keep /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+--max-threads 4
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 12862 samples from /home/kce/NLPPred/github/snip/data/ldak_results/pruning/geno.GCTA.grm.id
+Reading list of 12862 samples to keep from /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+Checking responses for 379514 samples from /home/kce/NLPPred/phenos/alkaline.pheno
+Due to missing phenotypic values, the number of samples is reduced from 12862 to 12275
+
+Reading responses for 379514 samples from /home/kce/NLPPred/phenos/alkaline.pheno
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/pruning/geno.GCTA
+Warning, to store kinships will require approximately 1.1 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/pruning/geno.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-57729.65	n/a		0.001000	0
+1	0.4004	0.4004	-57723.26	6.383289	0.001000	0
+2	0.3408	0.3408	-57722.19	1.077692	0.001000	0
+3	0.3406	0.3406	-57722.18	0.000393	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/pruning/alkaline.pheno.prune.0.5.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
