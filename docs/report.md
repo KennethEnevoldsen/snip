@@ -522,6 +522,15 @@ and `--power -1` (GCTA / naive). I am a bit unsure how this is done.
     - [x] Adding logging of time taken for compression, see section "Time requirements"
   - [ ]  more traits (e.g. Doug Speed will send a path for the bloodsamples)
 - [ ] compare w. R^2 pruning
+- [ ] Check with clumping on single SNPs, see mail from doug:
+
+<details>
+<summary>Mail from Doug</summary>
+
+Thanks for the single-snp results. As well as total number significant predictors, I think it will be useful to have number of approximately independent significant predictors (as if there are, say, 80 significant, this could be 80 unique, or a few hits in ld regions). This is probably only an issue for the snp data (as I guess the compressions are by default almost indendent)
+(this idea of clumping snps was described in slides 1b of your gwas course)
+
+</details>
 
 ### Done / Answered
 - [x] Do a single snp analysis with the same number of individuals
@@ -547,34 +556,45 @@ All performed on Chromosome 1-22 using 20k individuals.
 ## Single SNP analysis
 Due to space I have not included the plots for the single SNP analysis, but you can see the individual plots in the `./images/figures/single_snp_analysis` folder.
 
-|    | activation   |   width | pheno       |   N significant (p < 5x10^-8) |   Expected N given number of SNPs |   N significant / expected |
-|---:|:-------------|--------:|:------------|------------------------------:|----------------------------------:|---------------------------:|
-|  0 | identity     |      16 | height      |                            29 |                         0.0137487 |                  2109.29   |
-|  1 | identity     |     512 | height      |                             7 |                         0.015504  |                   451.496  |
-|  2 | relu         |      16 | height      |                            20 |                         0.0137487 |                  1454.68   |
-|  3 | relu         |     512 | height      |                             1 |                         0.015504  |                    64.4995 |
-|  4 | identity     |      16 | alkaline    |                            88 |                         0.0137487 |                  6400.61   |
-|  5 | identity     |      16 | bilirubin   |                            60 |                         0.0137487 |                  4364.05   |
-|  6 | identity     |      16 | cholesterol |                            51 |                         0.0137487 |                  3709.44   |
-|  7 | identity     |      16 | hba1c       |                             8 |                         0.0137487 |                   581.873  |
-|  8 | identity     |      16 | height      |                            56 |                         0.0137487 |                  4073.11   |
-|  9 | identity     |      16 | urate       |                            77 |                         0.0137487 |                  5600.53   |
-| 10 | identity     |     512 | alkaline    |                            88 |                         0.015504  |                  5675.95   |
-| 11 | identity     |     512 | bilirubin   |                           201 |                         0.015504  |                 12964.4    |
-| 12 | identity     |     512 | cholesterol |                            35 |                         0.015504  |                  2257.48   |
-| 13 | identity     |     512 | hba1c       |                             0 |                         0.015504  |                     0      |
-| 14 | identity     |     512 | height      |                            17 |                         0.015504  |                  1096.49   |
-| 15 | identity     |     512 | urate       |                           136 |                         0.015504  |                  8771.93   |
-| 16 | relu         |      16 | alkaline    |                            71 |                         0.0137487 |                  5164.12   |
-| 17 | relu         |      16 | bilirubin   |                            50 |                         0.0137487 |                  3636.71   |
-| 18 | relu         |      16 | cholesterol |                            32 |                         0.0137487 |                  2327.49   |
-| 19 | relu         |      16 | hba1c       |                            18 |                         0.0137487 |                  1309.21   |
-| 20 | relu         |      16 | height      |                            39 |                         0.0137487 |                  2836.63   |
-| 21 | relu         |      16 | urate       |                            58 |                         0.0137487 |                  4218.58   |
-| 22 | relu         |     512 | alkaline    |                            22 |                         0.015504  |                  1418.99   |
-| 23 | relu         |     512 | bilirubin   |                            68 |                         0.015504  |                  4385.96   |
-| 24 | relu         |     512 | cholesterol |                            11 |                         0.015504  |                   709.494  |
-| 25 | relu         |     512 | hba1c       |                             7 |                         0.015504  |                   451.496  |
-| 26 | relu         |     512 | height      |                             7 |                         0.015504  |                   451.496  |
-| 27 | relu         |     512 | urate       |                            39 |                         0.015504  |                  2515.48   |
 
+### Table 1
+
+**width**: is the width of the autoencoder model.
+**activation**: is the activation function used in the model.
+**heritability** is the heritability obtained using the `ldak --reml` command assuming the GCTA model.
+
+
+| activation   | width | pheno       | N significant (p < 5x10^-8) | Expected N given number of SNPs | N significant / expected | heritability |
+| :----------- | :---- | :---------- | --------------------------: | ------------------------------: | -----------------------: | -----------: |
+| identity     | 16    | alkaline    |                          88 |                       0.0137487 |                  6400.61 |     0.217275 |
+| identity     | 16    | bilirubin   |                          60 |                       0.0137487 |                  4364.05 |     0.577245 |
+| identity     | 16    | cholesterol |                          51 |                       0.0137487 |                  3709.44 |     0.197577 |
+| identity     | 16    | hba1c       |                           8 |                       0.0137487 |                  581.873 |     0.160755 |
+| identity     | 16    | height      |                          56 |                       0.0137487 |                  4073.11 |     0.567587 |
+| identity     | 16    | urate       |                          77 |                       0.0137487 |                  5600.53 |     0.303026 |
+| identity     | 512   | alkaline    |                          88 |                        0.015504 |                  5675.95 |     0.231631 |
+| identity     | 512   | bilirubin   |                         201 |                        0.015504 |                  12964.4 |     0.545401 |
+| identity     | 512   | cholesterol |                          35 |                        0.015504 |                  2257.48 |     0.184681 |
+| identity     | 512   | hba1c       |                           0 |                        0.015504 |                        0 |      0.13631 |
+| identity     | 512   | height      |                          17 |                        0.015504 |                  1096.49 |     0.514717 |
+| identity     | 512   | urate       |                         136 |                        0.015504 |                  8771.93 |     0.274293 |
+| relu         | 16    | alkaline    |                          71 |                       0.0137487 |                  5164.12 |     0.218466 |
+| relu         | 16    | bilirubin   |                          50 |                       0.0137487 |                  3636.71 |     0.544057 |
+| relu         | 16    | cholesterol |                          32 |                       0.0137487 |                  2327.49 |     0.177689 |
+| relu         | 16    | hba1c       |                          18 |                       0.0137487 |                  1309.21 |     0.149087 |
+| relu         | 16    | height      |                          39 |                       0.0137487 |                  2836.63 |     0.525311 |
+| relu         | 16    | urate       |                          58 |                       0.0137487 |                  4218.58 |     0.270907 |
+| relu         | 512   | alkaline    |                          22 |                        0.015504 |                  1418.99 |     0.253273 |
+| relu         | 512   | bilirubin   |                          68 |                        0.015504 |                  4385.96 |     0.484175 |
+| relu         | 512   | cholesterol |                          11 |                        0.015504 |                  709.494 |     0.174309 |
+| relu         | 512   | hba1c       |                           7 |                        0.015504 |                  451.496 |       0.1354 |
+| relu         | 512   | height      |                           7 |                        0.015504 |                  451.496 |     0.513571 |
+| relu         | 512   | urate       |                          39 |                        0.015504 |                  2515.48 |     0.265469 |
+| uncompressed |       | alkaline    |                          85 |                       0.0314347 |                  2704.02 |     0.340562 |
+| uncompressed |       | bilirubin   |                         108 |                       0.0314347 |                  3435.69 |     0.768607 |
+| uncompressed |       | cholesterol |                          65 |                       0.0314347 |                  2067.78 |     0.302432 |
+| uncompressed |       | hba1c       |                           3 |                       0.0314347 |                  95.4359 |     0.223455 |
+| uncompressed |       | height      |                          51 |                       0.0314347 |                  1622.41 |     0.817177 |
+| uncompressed |       | urate       |                          90 |                       0.0314347 |                  2863.08 |      0.40331 |
+
+<!-- table generated using src/visualizations/single_snp_visualizations.py -->
