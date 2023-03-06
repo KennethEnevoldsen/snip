@@ -106,7 +106,13 @@ def get_info_from_filepath(filepath):
         pheno = f.stem.split(".")[0]
         title = f.parent.stem
         chrom_range, samples, activation, width = title.split("_")[:4]
-        compression = "Autoencoder x2"
+        if "compression" in f.parent.stem:
+            compression_factor = f.parent.name.split("_")[-4]
+        else:
+            compression_factor = 2
+        if compression_factor == "identity":
+            print("test")
+        compression = f"Autoencoder x{compression_factor}"
     return title, pheno, chrom_range, samples, activation, width, compression
 
 

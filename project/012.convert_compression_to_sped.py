@@ -127,8 +127,8 @@ if __name__ == "__main__":
         ), "There are duplicates in the chr column"
         n, act, width, compression = group
 
-        # if n != "20":
-        #     continue
+        if n != "20":
+            continue
 
         # check for missing compressions
         print(group, end=" ")
