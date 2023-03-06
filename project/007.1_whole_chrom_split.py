@@ -4,7 +4,7 @@ import os
 from itertools import product
 
 outline = """#!/bin/bash
-#SBATCH --time=24:00:00
+#SBATCH --time=48:00:00
 #SBATCH --mem 64g
 #SBATCH -c {cores}
 #SBATCH --output ./project/reports/slurm-output/%x-%u-%j.out
@@ -37,12 +37,12 @@ variations = {
         # "null",
     ],
     "activation": [
-        "relu",
+        # "relu",
         "identity",
     ],
     "cores": [8],
-    "chromosome": list(range(1, 23)),
-    # [1],
+    # "chromosome": list(range(1, 23)),
+    "chromosome": [17],
     "stride": [
         # 512,
         16,
@@ -50,7 +50,7 @@ variations = {
     "compression": [
         # 2,
         4,
-        1.5,
+        # 1.5,
     ],
 }
 

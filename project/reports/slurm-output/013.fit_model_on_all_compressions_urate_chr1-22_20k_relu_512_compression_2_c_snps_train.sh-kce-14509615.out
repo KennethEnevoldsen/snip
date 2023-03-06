@@ -1,0 +1,400 @@
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--calc-kins-direct /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/geno.GCTA
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--ignore-weights YES
+--power -1
+--max-threads 4
+--keep /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Calculating kinships directly
+
+Predictors will be centred then scaled by V^(-1.0000/2) (option "--power"), where V=2*MAF*(1-MAF), the expected variance assuming Hardy-Weinberg Equilibrium; to instead scale based on observed variance use "--hwe-stand NO"
+
+Add "--kinship-gz YES" and/or "--kinship-raw YES" to save gzipped and/or text versions of the kinship matrix
+
+If memory is an issue, add "--single YES" (then calculations will performed using single precistion)
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Reading list of 12862 samples to keep from /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 12862 and 628694
+
+Warning, to perform the analysis will require approximately 1.2 Gb
+
+Calculating kinships for Chunk 1 of 126
+Calculating kinships for Chunk 2 of 126
+Calculating kinships for Chunk 3 of 126
+Calculating kinships for Chunk 4 of 126
+Calculating kinships for Chunk 5 of 126
+Calculating kinships for Chunk 6 of 126
+Calculating kinships for Chunk 7 of 126
+Calculating kinships for Chunk 8 of 126
+Calculating kinships for Chunk 9 of 126
+Calculating kinships for Chunk 10 of 126
+Calculating kinships for Chunk 11 of 126
+Calculating kinships for Chunk 12 of 126
+Calculating kinships for Chunk 13 of 126
+Calculating kinships for Chunk 14 of 126
+Calculating kinships for Chunk 15 of 126
+Calculating kinships for Chunk 16 of 126
+Calculating kinships for Chunk 17 of 126
+Calculating kinships for Chunk 18 of 126
+Calculating kinships for Chunk 19 of 126
+Calculating kinships for Chunk 20 of 126
+Calculating kinships for Chunk 21 of 126
+Calculating kinships for Chunk 22 of 126
+Calculating kinships for Chunk 23 of 126
+Calculating kinships for Chunk 24 of 126
+Calculating kinships for Chunk 25 of 126
+Calculating kinships for Chunk 26 of 126
+Calculating kinships for Chunk 27 of 126
+Calculating kinships for Chunk 28 of 126
+Calculating kinships for Chunk 29 of 126
+Calculating kinships for Chunk 30 of 126
+Calculating kinships for Chunk 31 of 126
+Calculating kinships for Chunk 32 of 126
+Calculating kinships for Chunk 33 of 126
+Calculating kinships for Chunk 34 of 126
+Calculating kinships for Chunk 35 of 126
+Calculating kinships for Chunk 36 of 126
+Calculating kinships for Chunk 37 of 126
+Calculating kinships for Chunk 38 of 126
+Calculating kinships for Chunk 39 of 126
+Calculating kinships for Chunk 40 of 126
+Calculating kinships for Chunk 41 of 126
+Calculating kinships for Chunk 42 of 126
+Calculating kinships for Chunk 43 of 126
+Calculating kinships for Chunk 44 of 126
+Calculating kinships for Chunk 45 of 126
+Calculating kinships for Chunk 46 of 126
+Calculating kinships for Chunk 47 of 126
+Calculating kinships for Chunk 48 of 126
+Calculating kinships for Chunk 49 of 126
+Calculating kinships for Chunk 50 of 126
+Calculating kinships for Chunk 51 of 126
+Calculating kinships for Chunk 52 of 126
+Calculating kinships for Chunk 53 of 126
+Calculating kinships for Chunk 54 of 126
+Calculating kinships for Chunk 55 of 126
+Calculating kinships for Chunk 56 of 126
+Calculating kinships for Chunk 57 of 126
+Calculating kinships for Chunk 58 of 126
+Calculating kinships for Chunk 59 of 126
+Calculating kinships for Chunk 60 of 126
+Calculating kinships for Chunk 61 of 126
+Calculating kinships for Chunk 62 of 126
+Calculating kinships for Chunk 63 of 126
+Calculating kinships for Chunk 64 of 126
+Calculating kinships for Chunk 65 of 126
+Calculating kinships for Chunk 66 of 126
+Calculating kinships for Chunk 67 of 126
+Calculating kinships for Chunk 68 of 126
+Calculating kinships for Chunk 69 of 126
+Calculating kinships for Chunk 70 of 126
+Calculating kinships for Chunk 71 of 126
+Calculating kinships for Chunk 72 of 126
+Calculating kinships for Chunk 73 of 126
+Calculating kinships for Chunk 74 of 126
+Calculating kinships for Chunk 75 of 126
+Calculating kinships for Chunk 76 of 126
+Calculating kinships for Chunk 77 of 126
+Calculating kinships for Chunk 78 of 126
+Calculating kinships for Chunk 79 of 126
+Calculating kinships for Chunk 80 of 126
+Calculating kinships for Chunk 81 of 126
+Calculating kinships for Chunk 82 of 126
+Calculating kinships for Chunk 83 of 126
+Calculating kinships for Chunk 84 of 126
+Calculating kinships for Chunk 85 of 126
+Calculating kinships for Chunk 86 of 126
+Calculating kinships for Chunk 87 of 126
+Calculating kinships for Chunk 88 of 126
+Calculating kinships for Chunk 89 of 126
+Calculating kinships for Chunk 90 of 126
+Calculating kinships for Chunk 91 of 126
+Calculating kinships for Chunk 92 of 126
+Calculating kinships for Chunk 93 of 126
+Calculating kinships for Chunk 94 of 126
+Calculating kinships for Chunk 95 of 126
+Calculating kinships for Chunk 96 of 126
+Calculating kinships for Chunk 97 of 126
+Calculating kinships for Chunk 98 of 126
+Calculating kinships for Chunk 99 of 126
+Calculating kinships for Chunk 100 of 126
+Calculating kinships for Chunk 101 of 126
+Calculating kinships for Chunk 102 of 126
+Calculating kinships for Chunk 103 of 126
+Calculating kinships for Chunk 104 of 126
+Calculating kinships for Chunk 105 of 126
+Calculating kinships for Chunk 106 of 126
+Calculating kinships for Chunk 107 of 126
+Calculating kinships for Chunk 108 of 126
+Calculating kinships for Chunk 109 of 126
+Calculating kinships for Chunk 110 of 126
+Calculating kinships for Chunk 111 of 126
+Calculating kinships for Chunk 112 of 126
+Calculating kinships for Chunk 113 of 126
+Calculating kinships for Chunk 114 of 126
+Calculating kinships for Chunk 115 of 126
+Calculating kinships for Chunk 116 of 126
+Calculating kinships for Chunk 117 of 126
+Calculating kinships for Chunk 118 of 126
+Calculating kinships for Chunk 119 of 126
+Calculating kinships for Chunk 120 of 126
+Calculating kinships for Chunk 121 of 126
+Calculating kinships for Chunk 122 of 126
+Calculating kinships for Chunk 123 of 126
+Calculating kinships for Chunk 124 of 126
+Calculating kinships for Chunk 125 of 126
+Calculating kinships for Chunk 126 of 126
+
+Kinship matrix saved in files with prefix /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/geno.GCTA
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Performing single SNP analysis for urate.pheno
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 6 pairs of arguments:
+--linear /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/urate.pheno.quant
+--bfile /home/kce/dsmwpred/data/ukbb/geno
+--pheno /home/kce/NLPPred/phenos/urate.pheno
+--mpheno 1
+--keep /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+--max-threads 4
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing (standard) linear regression (to instead perform mixed model linear regression, use "--grm")
+
+To perform weighted linear regression, use "--sample-weights"
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors as extra covariates
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 392214 samples from /home/kce/dsmwpred/data/ukbb/geno.fam
+Reading list of 12862 samples to keep from /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+Checking responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+Due to missing phenotypic values, the number of samples is reduced from 12862 to 12256
+
+Reading details for 628694 predictors from /home/kce/dsmwpred/data/ukbb/geno.bim
+Warning, Predictor 2:11944_T_C has a negative genetic distance (-0.00053)
+Warning, Predictor 18:11358_A_G has a negative genetic distance (-0.000833)
+
+Data contain 392214 samples and 628694 predictors; will be using 12256 and 628694
+
+Reading responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+
+Performing single-SNP analysis for Chunk 1 of 126
+Performing single-SNP analysis for Chunk 2 of 126
+Performing single-SNP analysis for Chunk 3 of 126
+Performing single-SNP analysis for Chunk 4 of 126
+Performing single-SNP analysis for Chunk 5 of 126
+Performing single-SNP analysis for Chunk 6 of 126
+Performing single-SNP analysis for Chunk 7 of 126
+Performing single-SNP analysis for Chunk 8 of 126
+Performing single-SNP analysis for Chunk 9 of 126
+Performing single-SNP analysis for Chunk 10 of 126
+Performing single-SNP analysis for Chunk 11 of 126
+Performing single-SNP analysis for Chunk 12 of 126
+Performing single-SNP analysis for Chunk 13 of 126
+Performing single-SNP analysis for Chunk 14 of 126
+Performing single-SNP analysis for Chunk 15 of 126
+Performing single-SNP analysis for Chunk 16 of 126
+Performing single-SNP analysis for Chunk 17 of 126
+Performing single-SNP analysis for Chunk 18 of 126
+Performing single-SNP analysis for Chunk 19 of 126
+Performing single-SNP analysis for Chunk 20 of 126
+Performing single-SNP analysis for Chunk 21 of 126
+Performing single-SNP analysis for Chunk 22 of 126
+Performing single-SNP analysis for Chunk 23 of 126
+Performing single-SNP analysis for Chunk 24 of 126
+Performing single-SNP analysis for Chunk 25 of 126
+Performing single-SNP analysis for Chunk 26 of 126
+Performing single-SNP analysis for Chunk 27 of 126
+Performing single-SNP analysis for Chunk 28 of 126
+Performing single-SNP analysis for Chunk 29 of 126
+Performing single-SNP analysis for Chunk 30 of 126
+Performing single-SNP analysis for Chunk 31 of 126
+Performing single-SNP analysis for Chunk 32 of 126
+Performing single-SNP analysis for Chunk 33 of 126
+Performing single-SNP analysis for Chunk 34 of 126
+Performing single-SNP analysis for Chunk 35 of 126
+Performing single-SNP analysis for Chunk 36 of 126
+Performing single-SNP analysis for Chunk 37 of 126
+Performing single-SNP analysis for Chunk 38 of 126
+Performing single-SNP analysis for Chunk 39 of 126
+Performing single-SNP analysis for Chunk 40 of 126
+Performing single-SNP analysis for Chunk 41 of 126
+Performing single-SNP analysis for Chunk 42 of 126
+Performing single-SNP analysis for Chunk 43 of 126
+Performing single-SNP analysis for Chunk 44 of 126
+Performing single-SNP analysis for Chunk 45 of 126
+Performing single-SNP analysis for Chunk 46 of 126
+Performing single-SNP analysis for Chunk 47 of 126
+Performing single-SNP analysis for Chunk 48 of 126
+Performing single-SNP analysis for Chunk 49 of 126
+Performing single-SNP analysis for Chunk 50 of 126
+Performing single-SNP analysis for Chunk 51 of 126
+Performing single-SNP analysis for Chunk 52 of 126
+Performing single-SNP analysis for Chunk 53 of 126
+Performing single-SNP analysis for Chunk 54 of 126
+Performing single-SNP analysis for Chunk 55 of 126
+Performing single-SNP analysis for Chunk 56 of 126
+Performing single-SNP analysis for Chunk 57 of 126
+Performing single-SNP analysis for Chunk 58 of 126
+Performing single-SNP analysis for Chunk 59 of 126
+Performing single-SNP analysis for Chunk 60 of 126
+Performing single-SNP analysis for Chunk 61 of 126
+Performing single-SNP analysis for Chunk 62 of 126
+Performing single-SNP analysis for Chunk 63 of 126
+Performing single-SNP analysis for Chunk 64 of 126
+Performing single-SNP analysis for Chunk 65 of 126
+Performing single-SNP analysis for Chunk 66 of 126
+Performing single-SNP analysis for Chunk 67 of 126
+Performing single-SNP analysis for Chunk 68 of 126
+Performing single-SNP analysis for Chunk 69 of 126
+Performing single-SNP analysis for Chunk 70 of 126
+Performing single-SNP analysis for Chunk 71 of 126
+Performing single-SNP analysis for Chunk 72 of 126
+Performing single-SNP analysis for Chunk 73 of 126
+Performing single-SNP analysis for Chunk 74 of 126
+Performing single-SNP analysis for Chunk 75 of 126
+Performing single-SNP analysis for Chunk 76 of 126
+Performing single-SNP analysis for Chunk 77 of 126
+Performing single-SNP analysis for Chunk 78 of 126
+Performing single-SNP analysis for Chunk 79 of 126
+Performing single-SNP analysis for Chunk 80 of 126
+Performing single-SNP analysis for Chunk 81 of 126
+Performing single-SNP analysis for Chunk 82 of 126
+Performing single-SNP analysis for Chunk 83 of 126
+Performing single-SNP analysis for Chunk 84 of 126
+Performing single-SNP analysis for Chunk 85 of 126
+Performing single-SNP analysis for Chunk 86 of 126
+Performing single-SNP analysis for Chunk 87 of 126
+Performing single-SNP analysis for Chunk 88 of 126
+Performing single-SNP analysis for Chunk 89 of 126
+Performing single-SNP analysis for Chunk 90 of 126
+Performing single-SNP analysis for Chunk 91 of 126
+Performing single-SNP analysis for Chunk 92 of 126
+Performing single-SNP analysis for Chunk 93 of 126
+Performing single-SNP analysis for Chunk 94 of 126
+Performing single-SNP analysis for Chunk 95 of 126
+Performing single-SNP analysis for Chunk 96 of 126
+Performing single-SNP analysis for Chunk 97 of 126
+Performing single-SNP analysis for Chunk 98 of 126
+Performing single-SNP analysis for Chunk 99 of 126
+Performing single-SNP analysis for Chunk 100 of 126
+Performing single-SNP analysis for Chunk 101 of 126
+Performing single-SNP analysis for Chunk 102 of 126
+Performing single-SNP analysis for Chunk 103 of 126
+Performing single-SNP analysis for Chunk 104 of 126
+Performing single-SNP analysis for Chunk 105 of 126
+Performing single-SNP analysis for Chunk 106 of 126
+Performing single-SNP analysis for Chunk 107 of 126
+Performing single-SNP analysis for Chunk 108 of 126
+Performing single-SNP analysis for Chunk 109 of 126
+Performing single-SNP analysis for Chunk 110 of 126
+Performing single-SNP analysis for Chunk 111 of 126
+Performing single-SNP analysis for Chunk 112 of 126
+Performing single-SNP analysis for Chunk 113 of 126
+Performing single-SNP analysis for Chunk 114 of 126
+Performing single-SNP analysis for Chunk 115 of 126
+Performing single-SNP analysis for Chunk 116 of 126
+Performing single-SNP analysis for Chunk 117 of 126
+Performing single-SNP analysis for Chunk 118 of 126
+Performing single-SNP analysis for Chunk 119 of 126
+Performing single-SNP analysis for Chunk 120 of 126
+Performing single-SNP analysis for Chunk 121 of 126
+Performing single-SNP analysis for Chunk 122 of 126
+Performing single-SNP analysis for Chunk 123 of 126
+Performing single-SNP analysis for Chunk 124 of 126
+Performing single-SNP analysis for Chunk 125 of 126
+Performing single-SNP analysis for Chunk 126 of 126
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/urate.pheno.quant.assoc, with a summary version in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/urate.pheno.quant.summaries, p-values in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/urate.pheno.quant.pvalues and score file in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/urate.pheno.quant.score
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Performing REML analysis for urate.pheno
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+LDAK - Software for obtaining Linkage Disequilibrium Adjusted Kinships and Loads More
+Version 5.2 - Help pages at http://www.ldak.org
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+There are 7 pairs of arguments:
+--reml /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/urate.pheno.reml1
+--sped /home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_relu_512_compression_2_c_snps_train.sped
+--pheno /home/kce/NLPPred/phenos/urate.pheno
+--mpheno 1
+--grm /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/geno.GCTA
+--keep /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+--max-threads 4
+
+Warning, predictors are assumed to be SNP allele counts (i.e., take values within [0,2]); if this is not the case, you should use "--SNP-data NO"
+
+Warning, genetic data files are provided but will not be used
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Performing generalized REML with 1 kinship matrix and 0 regions
+
+Variance components can be negative (to prevent this, use "--constrain YES")
+
+Consider using "--covar" to provide covariates
+
+Consider using "--top-preds" to include (strongly-associated) predictors; these will be treated as fixed effects, except that the variance they explain will count towards total heritability
+
+If you would like to perform a permutation analysis, add "--permute YES"
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
+Reading IDs for 12862 samples from /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/geno.GCTA.grm.id
+Reading list of 12862 samples to keep from /home/kce/NLPPred/github/snip/data/ldak_results/individuals_intersect.txt
+Checking responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+Due to missing phenotypic values, the number of samples is reduced from 12862 to 12256
+
+Reading responses for 379045 samples from /home/kce/NLPPred/phenos/urate.pheno
+
+Reading trace of kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/geno.GCTA
+Warning, to store kinships will require approximately 1.1 Gb
+
+Reading kinship matrix with stem /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/geno.GCTA
+
+Performing an eigen-decomposition; this can take a while
+If preferred, you can perform the analysis in two steps; first replace the main argument with "--decompose" (this will save the eigen-decomposition) then restart adding "--eigen"
+
+Iter	Her_K1	Her_All	Likelihood	Difference	Target	Num_Constrained
+Start	0.5000	0.5000	-69214.49	n/a		0.001000	0
+1	0.4007	0.4007	-69211.53	2.957330	0.001000	0
+2	0.4034	0.4034	-69211.53	0.005580	0.001000	0
+3	0.4033	0.4033	-69211.53	0.000004	0.001000	0
+
+Main results saved in /home/kce/NLPPred/github/snip/data/ldak_results/chr1-22_20k_relu_512_compression_2_c_snps_train/urate.pheno.reml1.reml
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+Mission completed. All your basepair are belong to us :)
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --

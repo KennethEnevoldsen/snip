@@ -1,0 +1,2 @@
+/var/spool/slurmd/job14503050/slurm_script: line 10: 35597 Killed                  python project/012.convert_compression_to_sped.py
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=14503050.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

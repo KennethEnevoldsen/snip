@@ -1,0 +1,16 @@
+Deleting empty folder /faststorage/project/NLPPred/github/snip/data/compressed/whole_geno/chr12_20k_relu_16_compression1.5treasured-dawn-533_2023-03-05
+Removed 168 duplicates
+('100', 'identity', '512', '2') [38;5;4mℹ Combining train data[0m
+[38;5;4mℹ Saving to sped file[0m
+Traceback (most recent call last):
+  File "/faststorage/project/NLPPred/github/snip/project/012.convert_compression_to_sped.py", line 142, in <module>
+    write_to_sped(df, act, width, compression)
+  File "/faststorage/project/NLPPred/github/snip/project/012.convert_compression_to_sped.py", line 111, in write_to_sped
+    ds.to_disk(save_path)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py", line 235, in to_disk
+    write_sped(self.genotype, path)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/write_sped.py", line 78, in write_sped
+    _write_sped(G, sped)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/write_sped.py", line 96, in _write_sped
+    arr.astype(np.float32).T.tofile(sped)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/kce/NLPPred/github/snip/data/compressed/whole_geno/combined/chr1-22_20k_identity_512_compression_2_c_snps_train.sped'

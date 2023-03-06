@@ -286,6 +286,7 @@ def main(cfg: DictConfig) -> None:
 
     # write all metadata to a file
     metadata = [r[3] for r in results]
+    result_path.mkdir(parents=True, exist_ok=True)
     with open(result_path / "metadata.jsonl", "w") as f:
         ndjson.dump(metadata, f)
 
