@@ -1,0 +1,11 @@
+Removed 170 duplicates
+('20', 'identity', '16', '1.5') [38;5;4mℹ Combining train data[0m
+[38;5;4mℹ Saving to sped file[0m
+Traceback (most recent call last):
+  File "/faststorage/project/NLPPred/github/snip/project/012.convert_compression_to_sped.py", line 148, in <module>
+    write_to_sped(df, act, width, compression, overwrite=True)
+  File "/faststorage/project/NLPPred/github/snip/project/012.convert_compression_to_sped.py", line 117, in write_to_sped
+    ds.to_disk(save_path)
+  File "/faststorage/project/NLPPred/github/snip/src/snip/data/dataloaders.py", line 232, in to_disk
+    raise ValueError(
+ValueError: File already exists. Use mode='w' to overwrite existing file.

@@ -1,0 +1,13 @@
+Deleting empty folder /faststorage/project/NLPPred/github/snip/data/compressed/whole_geno/chr7_20k_identity_512_compression1.5youthful-wood-646_2023-03-08
+Deleting empty folder /faststorage/project/NLPPred/github/snip/data/compressed/whole_geno/chr6_20k_identity_512_compression1.5usual-fire-643_2023-03-08
+Deleting empty folder /faststorage/project/NLPPred/github/snip/data/compressed/whole_geno/chr8_20k_identity_512_compression2elated-leaf-647_2023-03-08
+Deleting empty folder /faststorage/project/NLPPred/github/snip/data/compressed/whole_geno/chr7_20k_identity_512_compression4sandy-plasma-645_2023-03-08
+Removed 84 duplicates
+('20', 'identity', '16', '1.5')
+('20', 'identity', '16', '1.5') [38;5;4mℹ Combining train data[0m
+Traceback (most recent call last):
+  File "/faststorage/project/NLPPred/github/snip/project/012.convert_compression_to_sped.py", line 161, in <module>
+    write_to_sped(df, act, width, compression, overwrite=True)
+  File "/faststorage/project/NLPPred/github/snip/project/012.convert_compression_to_sped.py", line 106, in write_to_sped
+    ds.genotype = genotype.assign_coords(coords)
+UnboundLocalError: local variable 'genotype' referenced before assignment

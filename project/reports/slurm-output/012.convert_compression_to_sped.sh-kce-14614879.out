@@ -1,0 +1,6 @@
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:288: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/home/kce/miniconda3/envs/snip2/lib/python3.9/site-packages/pandas_plink/_write.py:261: FutureWarning: the 'line_terminator'' keyword is deprecated, use 'lineterminator' instead.
+  df.to_csv(
+/var/spool/slurmd/job14614879/slurm_script: line 10:  6589 Killed                  python project/012.convert_compression_to_sped.py
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=14614879.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.
