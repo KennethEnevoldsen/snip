@@ -159,3 +159,5 @@ poetry.lock
 # models
 **/models/*
 
+# slurm files
+*.out
