@@ -75,9 +75,9 @@ def write_sped(
 
     G = _fill_sample(G)
     G = _fill_variant(G)
-    _write_sped(G, sped)
-    _write_fam(fam, G)
     _write_bim(bim, G)
+    _write_fam(fam, G)
+    _write_sped(G, sped)
 
 
 def _write_sped(G: xr.DataArray, sped: Union[str, Path]) -> None:

@@ -1,6 +1,6 @@
 #!/bin/bash
-#SBATCH --time=24:00:00
-#SBATCH --mem 256g
+#SBATCH --time=12:00:00
+#SBATCH --mem 380g
 #SBATCH -c 4
 #SBATCH --output ./project/reports/slurm-output/%x-%u-%j.out
 #SBATCH -A NLPPred

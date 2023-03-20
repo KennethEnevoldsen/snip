@@ -4,7 +4,7 @@ import os
 from itertools import product
 
 outline = """#!/bin/bash
-#SBATCH --time=48:00:00
+#SBATCH --time=24:00:00
 #SBATCH --mem 64g
 #SBATCH -c {cores}
 #SBATCH --output ./project/reports/slurm-output/%x-%u-%j.out
@@ -30,19 +30,19 @@ python src/snip/train_slided_autoencoder_sklearn.py \\
 
 variations = {
     "limit": [
-        20000,
+        # 20000,
         # 50000,
-        # 100000,
+        100000,
         # 200000,
         # "null",
     ],
     "activation": [
-        # "relu",
-        "identity",
+        "relu",
+        # "identity",
     ],
-    "cores": [8],
+    "cores": [12],
     # "chromosome": list(range(1, 23)),
-    "chromosome": [17],
+    "chromosome": [18],
     "stride": [
         # 512,
         16,
@@ -53,7 +53,7 @@ variations = {
         # 1.5,
     ],
 }
-
+# _slurm_chr18_100k_identity_16_compression4.
 
 # create a list of all combinations of the parameters
 combinations = list(product(*variations.values()))

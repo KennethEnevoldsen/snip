@@ -21,19 +21,20 @@ N_CORES=4
 OUTPUT_PATH='/home/kce/NLPPred/github/snip/data/ldak_results'
 PHENO_PATH='/home/kce/NLPPred/phenos'
 PHENO="{phenotype}.pheno"
-DATA_PATH="/home/kce/dsmwpred/data/ukbb"
-GENO_PATH='geno'
+SPED_FILE='{sped_path}'
+SAVE_FOLDER_NAME='{path}'
 
-mkdir -p $OUTPUT_PATH/{path}
+mkdir -p $OUTPUT_PATH/$SAVE_FOLDER_NAME
 
 # create kinship matrix
 
 # check if it exists
-if [ -f $OUTPUT_PATH/{path}/geno.GCTA.grm.details ]; then
+if [ -f $OUTPUT_PATH/$SAVE_FOLDER_NAME/geno.GCTA.grm.details ]; then
     echo "Kinship matrix already exists"
 else
-    $LDAK --calc-kins-direct $OUTPUT_PATH/{path}/geno.GCTA \\
-        --bfile $DATA_PATH/$GENO_PATH \\
+    $LDAK --calc-kins-direct $OUTPUT_PATH/$SAVE_FOLDER_NAME/geno.GCTA \\
+        --sped $SPED_FILE \\
+        --SNP-data NO \\
         --ignore-weights YES \\
         --power -1 \\
         --max-threads $N_CORES \\
@@ -46,11 +47,11 @@ fi
 
 SS_ANALYSIS_DONE=false
 # check if single SNP analysis already done by checking
-# 1) if $OUTPUT_PATH/{path}/"$PHENO.quant.progress" exists
-if [ -f $OUTPUT_PATH/{path}/"$PHENO.quant.progress" ]; then
+# 1) if $OUTPUT_PATH/$SAVE_FOLDER_NAME/"$PHENO.quant.progress" exists
+if [ -f $OUTPUT_PATH/$SAVE_FOLDER_NAME/"$PHENO.quant.progress" ]; then
     # and 2) if the last line in the file states that X is equal to Y. The last line is on the form: "Performing single-SNP analysis for Chunk X of Y"
     echo "Single SNP analysis already started"
-    LAST_LINE=$(tail -n 1 $OUTPUT_PATH/{path}/"$PHENO.quant.progress")
+    LAST_LINE=$(tail -n 1 $OUTPUT_PATH/$SAVE_FOLDER_NAME/"$PHENO.quant.progress")
     # extract X and Y from the last line
     X=$(echo $LAST_LINE | cut -d' ' -f 6)
     Y=$(echo $LAST_LINE | cut -d' ' -f 8)
@@ -65,8 +66,8 @@ fi
 if [ $SS_ANALYSIS_DONE = false ]; then
     echo "Performing single SNP analysis for $PHENO"
 
-    $LDAK --linear $OUTPUT_PATH/{path}/"$PHENO.quant" \\
-        --bfile $DATA_PATH/$GENO_PATH \\
+    $LDAK --linear $OUTPUT_PATH/$SAVE_FOLDER_NAME/"$PHENO.quant" \\
+        --sped $SPED_FILE \\
         --pheno $PHENO_PATH/$PHENO \\
         --mpheno 1 \\
         --keep $OUTPUT_PATH/individuals_intersect.txt \\
@@ -74,15 +75,15 @@ if [ $SS_ANALYSIS_DONE = false ]; then
 fi
 
 # perform REML analysis
-if [ -f $OUTPUT_PATH/{path}/"$PHENO.reml1.reml" ]; then
+if [ -f $OUTPUT_PATH/$SAVE_FOLDER_NAME/"$PHENO.reml1.reml" ]; then
     echo "REML analysis already done"
 else
     echo "Performing REML analysis for $PHENO"
-    $LDAK --reml $OUTPUT_PATH/{path}/"$PHENO.reml1" \\
-        --sped {sped_path} \\
+    $LDAK --reml $OUTPUT_PATH/$SAVE_FOLDER_NAME/"$PHENO.reml1" \\
+        --sped $SPED_FILE \\
         --pheno $PHENO_PATH/$PHENO \\
         --mpheno 1 \\
-        --grm $OUTPUT_PATH/{path}/geno.GCTA \\
+        --grm $OUTPUT_PATH/$SAVE_FOLDER_NAME/geno.GCTA \\
         --keep $OUTPUT_PATH/individuals_intersect.txt \\
         --max-threads $N_CORES
 fi
@@ -106,6 +107,7 @@ for i, combination in enumerate(combinations):
     # create a dictionary of the parameters
     params = dict(zip(variations.keys(), combination))
     params["path"] = params["sped_path"].stem
+    params["sped_path"] = f"{params['sped_path'].parent}/{params['sped_path'].stem}"
 
     # create the run name
     filename = os.path.basename(__file__)[:-3]  # no .py
@@ -116,10 +118,12 @@ for i, combination in enumerate(combinations):
     # create the slurm file
     path = f"project/{filename}"
     print(f"Creating: {path}")
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w") as f:
         f.write(slurm_command)
 
-    # sbatch the slurm file
-    os.system(f"sbatch {path}")
-    # # clean up the slurm file
-    os.system(f"rm {path}")
+    break
+    # # sbatch the slurm file
+    # os.system(f"sbatch {path}")
+    # # # clean up the slurm file
+    # os.system(f"rm {path}")

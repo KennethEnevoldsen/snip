@@ -67,7 +67,7 @@ def dataframe_from_folders(data_path):
     return table
 
 
-def write_to_sped(df, act, width, compression):
+def write_to_sped(df, act, width, compression, overwrite=False):
     data_path = "/home/kce/NLPPred/github/snip/data/compressed/whole_geno"
     start_time = time.time()
     paths = df["folder"].tolist()
@@ -79,7 +79,7 @@ def write_to_sped(df, act, width, compression):
             str(data_path)
             + f"/combined/chr1-22_20k_{act}_{width}_compression_{compression}_c_snps_{split}.sped"
         )
-        if Path(save_path).exists():
+        if Path(save_path).exists() and not overwrite:
             msg.info("Save path already exists, skipping")
             print(f"{save_path}")
             continue
@@ -96,11 +96,28 @@ def write_to_sped(df, act, width, compression):
                 set(variants),
             ), "There are duplicates in the variant column"
 
+            # fix variant column
+            n_variants = ds.genotype.shape[1]
+            snp_coords = np.array([f"c{chrom}_{i}" for i in range(n_variants)])
+
+            coords = {
+                "snp": ("variant", snp_coords),
+            }
+            ds.genotype = ds.genotype.assign_coords(coords)
             datasets.append(ds)
 
         # combine datasets
         genotypes = [ds.genotype for ds in datasets]
         genotype = xr.concat(genotypes, dim="variant")
+
+        # fix columns
+        n_variants = genotype.shape[1]
+        coords = {
+            "variant": ("variant", np.arange(n_variants) + 1),
+            "cm": ("variant", np.arange(n_variants) + 1),
+            "pos": ("variant", np.arange(n_variants) + 1),
+        }
+        genotype = genotype.assign_coords(coords)
 
         ds = datasets[0]
         ds.genotype = genotype
@@ -109,7 +126,7 @@ def write_to_sped(df, act, width, compression):
         msg.info("Saving to sped file")
         # ensure path
         Path(save_path).parent.mkdir(parents=True, exist_ok=True)
-        ds.to_disk(save_path)
+        ds.to_disk(save_path, mode="w")
         msg.good(
             f"Saved to sped file (time: {time.strftime('%H:%M:%S', time.gmtime(time.time() - start_time))}), saved to:\n {save_path}",
         )
@@ -127,10 +144,11 @@ if __name__ == "__main__":
         ), "There are duplicates in the chr column"
         n, act, width, compression = group
 
-        if n != "20":
-            continue
+        # if n != "20":
+        #     continue
 
         # check for missing compressions
+        print(group)
         print(group, end=" ")
         missing_a_chrom = False
         for i in range(1, 23):
@@ -140,4 +158,4 @@ if __name__ == "__main__":
         if missing_a_chrom:
             continue
 
-        write_to_sped(df, act, width, compression)
+        write_to_sped(df, act, width, compression, overwrite=True)

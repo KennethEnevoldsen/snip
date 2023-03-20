@@ -15,15 +15,8 @@ def read_assoc(filepath):
 
 def get_reml_path(filepath):
     f = Path(filepath)
-    if f.parent.stem.startswith("chr"):
-        reml_output = f"{f.stem.split('.')[0]}.pheno.reml1.reml"
-    elif f.parent.stem.startswith("uncompressed") or f.parent.stem.startswith(
-        "pruning",
-    ):
-        stem_no_quant = ".".join(f.stem.split(".")[:-1])
-        reml_output = f"{stem_no_quant}.reml1.reml"
-    else:
-        reml_output = f"{f.stem}.reml1.reml"
+    stem_no_quant = ".".join(f.stem.split(".")[:-1])
+    reml_output = f"{stem_no_quant}.reml1.reml"
     reml_path = f.parent / reml_output
     assert reml_path.exists(), f"REML file {reml_path} does not exist"
     return reml_path
@@ -152,14 +145,14 @@ if __name__ == "__main__":
 
     files = list(read_path.glob("chr1-22_20k*/*.assoc"))
     # add uncompressed
-    files += list(read_path.glob("uncompressed/*.assoc"))
-    files += list(read_path.glob("pruning/*.assoc"))
+    # files += list(read_path.glob("uncompressed/*.assoc"))
+    # files += list(read_path.glob("pruning/*.assoc"))
 
     table = []
     for i, f in enumerate(sorted(files)):
         df = read_assoc(f)
         row = create_table_row(f, df)
-        print(f"Processing {i+1}/{len(files)}: {row['title']}")
+        print(f"Processing {i+1}/{len(files)}: {f.parent.name}/{f.stem}")
         table.append(row)
         create_single_snp_plot(
             f,
@@ -186,3 +179,5 @@ if __name__ == "__main__":
         ]
     ]
     print(report_df.to_markdown(index=False))
+
+    report_df
