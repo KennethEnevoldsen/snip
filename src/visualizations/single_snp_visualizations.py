@@ -25,7 +25,7 @@ def get_reml_path(filepath):
 def get_heritability(filepath):
     """Get the heritability estimates for the phenotypes."""
     reml_path = get_reml_path(filepath)
-    with open(reml_path, "r") as f:
+    with open(reml_path) as f:
         lines = f.readlines()
     _, her_all, her_sd = lines[-1].split(" ")[:3]
     return float(her_all), float(her_sd)

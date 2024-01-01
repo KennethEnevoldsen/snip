@@ -74,7 +74,9 @@ class PlAEWrapper(pl.LightningModule):
         optimizer = fetch_optimizer(self.optimizer_name)
 
         return optimizer(
-            self.parameters(), lr=self.learning_rate, **self.optimizer_params
+            self.parameters(),
+            lr=self.learning_rate,
+            **self.optimizer_params,
         )
 
     def training_step(

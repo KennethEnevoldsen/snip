@@ -11,7 +11,7 @@ from .utils import data_path  # noqa
 
 
 def test_train_slided_autoencoder_sklearn(data_path: Path):  # noqa
-    """test whether the autoencoder trains as intended."""
+    """Test whether the autoencoder trains as intended."""
 
     # create train and test set
     ds = PLINKIterableDataset(data_path / "human.bed")

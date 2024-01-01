@@ -28,7 +28,7 @@ def create_test_data_cli(
     ),
     overwrite: bool = False,
 ):
-    r"""CLI for for creating test data
+    r"""CLI for for creating test data.
 
     Intended usage:
 

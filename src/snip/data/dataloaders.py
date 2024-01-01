@@ -110,8 +110,7 @@ class PLINKIterableDataset(IterableDataset):  # pylint: disable=abstract-method
 
     def __create_iter(self) -> Iterator:
         for X in self.batch_iter(self.buffer_size):
-            for x in X:
-                yield x
+            yield from X
 
     def create_data_array_iter(self, batch_size: Optional[int] = None) -> Iterator:
         """Create iterable of DataArrays.
@@ -190,8 +189,7 @@ class PLINKIterableDataset(IterableDataset):  # pylint: disable=abstract-method
         """Create a iterator of the dataset."""
         dataset_iter = self.create_data_array_iter()
 
-        for x in dataset_iter:
-            yield x
+        yield from dataset_iter
 
     def update_on_disk(self) -> None:
         """Update the file on disk."""
